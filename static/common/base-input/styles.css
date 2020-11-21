@@ -1,0 +1,30 @@
+.base-input {
+    width: 100%;
+    min-height: 36px;
+    height: 36px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-color: #f8f8f8;
+    outline: none;
+    resize: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.base-input:focus {
+    border-color: #6c63ff;
+}
+
+.base-input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.5em;
+    color: #999999;
+}
+
+.base-input-type-textarea {
+    height: 36px;
+    padding: 7px 20px;
+}

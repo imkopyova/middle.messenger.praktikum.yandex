@@ -1,0 +1,31 @@
+.base-button {
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    background-color: #6c63ff;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: transform 150ms ease-in;
+    cursor: pointer;
+}
+
+.base-button:focus {
+    background-color: #dfddff;
+    color: #6c63ff;
+}
+
+.base-button:hover {
+    transform: scale(1.02);
+}
+
+.base-button-inverse {
+    color: #6c63ff;
+    background-color: transparent;
+}
+
+.base-button-inverse:hover {
+    text-decoration: underline;
+    transform: scale(1);
+}
+}

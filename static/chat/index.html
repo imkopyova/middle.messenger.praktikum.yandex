@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/common/typography.css">
+    <link rel="stylesheet" href="/common/circle-button/styles.css">
+    <link rel="stylesheet" href="/common/base-input/styles.css">
+    <link rel="stylesheet" href="/common/chat-preview/styles.css">
+    <link rel="stylesheet" href="/common/message/styles.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Messenger – Чат</title>
+</head>
+<body>
+    <div class="chat__page">
+        <aside class="chat__aside aside">
+            <header class="aside__header">
+                <h1 class="h1 aside__title">Чаты</h1>
+                <div class="aside-buttons">
+                    <button class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">                        
+                        <div class="circle-button__background circle-button__background-color-grey"></div>
+                        <div class="circle-button__content circle-button__content-type-newchat"></div>
+                    </button>
+                    <button class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">
+                        <div class="circle-button__background circle-button__background-color-grey"></div>
+                        <div class="circle-button__content circle-button__content-type-profile"></div>
+                    </button>
+                </div>
+            </header>
+            <form class="aside__search">
+                <input type="text" placeholder="Поиск" class="base-input text-normal" />
+            </form>
+            <ul class="aside__list">
+                <li class="chat-preview">
+                    <a href="/chat/" class="chat-preview__link">
+                        <div class="chat-preview__avatar"></div>
+                        <div class="chat-preview__content">
+                            <span class="chat-preview__title text-semibold">Киноклуб</span>
+                            <span class="chat-preview__text text-normal">Вы: Друзья, у меня для вас особенная новость!</span>
+                        </div>
+                        <div class="chat-preview__indicators">
+                            <span class="chat-preview__datetime text-small">11:49</span>
+                            
+                        </div>
+                    </a>
+                </li>
+                <li class="chat-preview chat-preview-type-active">
+                    <a href="/chat/" class="chat-preview__link">
+                        <div class="chat-preview__avatar">
+                            <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                        </div>
+                        <div class="chat-preview__content">
+                            <span class="chat-preview__title text-semibold">Вася</span>
+                            <span class="chat-preview__text text-normal">Супер!</span>
+                        </div>
+                        <div class="chat-preview__indicators">
+                            <span class="chat-preview__datetime text-small">11 окт</span>
+                            <div class="chat-preview__counter text-small">1</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>        
+        </aside>
+        <main class="chat__main">
+            <header class="chat__header">
+                <div class="chat__info">
+                    <div class="chat__avatar">
+                        <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                    </div>
+                    <h2 class="h2 chat__name">Вася</h2>
+                </div>
+                <button class="chat__button circle-button circle-button-hover-scale">
+                    <div class="circle-button__background circle-button__background-color-grey"></div>
+                    <div class="circle-button__content circle-button__content-type-options"></div>
+                </button>
+            </header>
+            <section class="chat__messages">
+                <div class="message__day">
+                    <div class="message message-author-me">
+                        <p class="message__text text-normal">Супер!</p>
+                        <span class="message__time text-small">13:47</span>
+                        <span class="message__check"></span>
+                    </div>
+                    <div class="message message-author-they message-content-image">
+                        <img src="https://images.unsplash.com/photo-1605867700633-c410783f70f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="photo" class="message__image" />
+                        <span class="message__time text-small">11:49</span>
+                    </div>
+                    <div class="message message-author-they">
+                        <p class="message__text text-normal">
+                            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                            Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали.
+                        </p>
+                        <span class="message__time text-small">11:49</span>
+                    </div>
+                    <p class="text-semibold message__date">11 октября</p> 
+                </div>  
+            </section>
+            <form class="chat__writing">
+                <button class="chat__button circle-button circle-button-hover-color">
+                    <div class="circle-button__background"></div>
+                    <div class="circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"></div>
+                </button>
+                <button class="chat__button circle-button circle-button-hover-color">
+                    <div class="circle-button__background"></div>
+                    <div class="circle-button__content circle-button__content-color-grey circle-button__content-type-smiled"></div>
+                </button>
+                <textarea placeholder="Cообщение" class="chat__textarea base-input base-input-type-textarea text-normal"></textarea>
+                <button class="chat__button circle-button circle-button-hover-scale">
+                    <div class="circle-button__background circle-button__background-color-accent"></div>
+                    <div class="circle-button__content circle-button__content-color-white circle-button__content-type-send"></div>
+                </button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
