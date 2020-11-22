@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/common/typography.css">
+    <link rel="stylesheet" href="/common/circle-button/styles.css">
+    <link rel="stylesheet" href="/common/page/styles.css">
+    <link rel="stylesheet" href="/common/avatar/styles.css">
+    <link rel="stylesheet" href="/common/profile/styles.css">
+    <link rel="stylesheet" href="/common/modal/styles.css">
+    <script src="/common/getFieldsValues.js" async></script>
+    <title>Messenger – Профиль</title>
+</head>
+<body>
+    <div class="page-centered">
+        <a href="/chat/" class="page__back circle-button circle-button-hover-color">                        
+            <div class="circle-button__background circle-button__background-color-grey"></div>
+            <div class="circle-button__content circle-button__content-type-arrow-left"></div>
+        </a>
+
+        <main class="profile">
+            <div class="avatar__placeholder profile__avatar">
+                <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                <button class="text-normal profile__button-avatar">Поменять аватар</button>
+            </div>
+            <nav class="profile__buttons">
+                <div class="profile__button-container">
+                    <button class="profile__button circle-button circle-button-hover-scale">                        
+                        <div class="circle-button__background circle-button__background-color-grey"></div>
+                        <div class="circle-button__content circle-button__content-type-profile"></div>
+                    </button>
+                    <span class="text-small profile__tooltip">Изменить профиль</span>
+                </div>
+                <div class="profile__button-container">
+                    <button class="profile__button circle-button circle-button-hover-scale">                        
+                        <div class="circle-button__background circle-button__background-color-grey"></div>
+                        <div class="circle-button__content circle-button__content-type-lock"></div>
+                    </button>
+                    <span class="text-small profile__tooltip">Изменить пароль</span>
+                </div>
+                <div class="profile__button-container">
+                    <button class="profile__button circle-button circle-button-hover-scale">                        
+                        <div class="circle-button__background circle-button__background-color-grey"></div>
+                        <div class="circle-button__content circle-button__content-type-circle-x"></div>
+                    </button>
+                    <span class="text-small profile__tooltip">Выйти</span>
+                </div>
+            </nav>
+            <ul class="profile__data-list">
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Почта</span>
+                    <span class="text-normal profile__value">pochta@yandex.ru</span>
+                </li>
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Логин</span>
+                    <span class="text-normal profile__value">ivanivanov</span>
+                </li>
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Имя</span>
+                    <span class="text-normal profile__value">Иван</span>
+                </li>
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Фамилия</span>
+                    <span class="text-normal profile__value">Иванов</span>
+                </li>
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Имя в чате</span>
+                    <span class="text-normal profile__value">Иван</span>
+                </li>
+                <li class="profile__data-item">
+                    <span class="text-normal profile__param">Телефон</span>
+                    <span class="text-normal profile__value">+7 (909) 967 30 30</span>
+                </li>
+            </ul>
+        </main>
+    </div>
+
+    <div class="modal__background">
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Добавить пользователя</h3>
+            <form name="add-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+                <label class="field">
+                    <span class="text-small field__label">Логин</span>
+                    <input type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <button class="text-semibold base-button base-button-inverse modal__button">Добавить</button>
+            </form>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Удалить пользователя</h3>
+            <form name="remove-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+                <label class="field">
+                    <span class="text-small field__label">Логин</span>
+                    <input type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <button class="text-semibold base-button base-button-inverse modal__button modal__button-type-warning">Удалить</button>
+            </form>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Удалить чат?</h3>
+            <button class="text-semibold base-button modal__button">Отмена</button>
+            <button class="text-semibold base-button base-button-inverse modal__button modal__button-type-warning">Удалить</button>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Не удалось загрузить файл</h3>
+            <button class="text-semibold base-button modal__button">Отмена</button>
+        </div>
+    </div>
+</body>
+</html>

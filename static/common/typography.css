@@ -1,0 +1,55 @@
+/*  COLORS:
+    accent-transparent: #dfddff;
+    accent: #6c63ff;
+    warning-transparent: #ffe8e8;
+    warning: #ff4848;
+    grey-light: #f8f8f8;
+    grey: #999999;
+    black-light: #333333;
+
+    transition: all 300ms ease-in;
+ */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+.h1 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.h2 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.h3 {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.text-semibold {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+
+.text-caption {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.text-normal {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.5em;
+}
+
+.text-small {
+    font-weight: normal;
+    font-size: 12px;
+}

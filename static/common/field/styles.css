@@ -1,0 +1,34 @@
+.field {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.field:not(:last-of-type) {
+    margin-bottom: 8px;
+}
+
+.field-state-error .field__error {
+    visibility: visible;
+}
+
+.field-state-error .base-input {
+    border-color: #ff4848;
+    background-color: #ffe8e8;
+}
+
+.field__input {
+    margin: 5px 0 2px;
+}
+
+.field__label {
+    color: #999999;
+    margin-left: 15px;
+}
+
+.field__error {
+    visibility: hidden;
+    color: #ff4848;
+    margin-left: 15px;
+}

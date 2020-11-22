@@ -1,0 +1,135 @@
+.chat__page {
+    margin: 0;
+    display: flex;
+    justify-content: stretch;
+}
+
+.chat__aside {
+    flex-shrink: 0;
+    position: sticky;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.chat__main {
+    width: 100%;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.chat__header {
+    width: 100%;
+    padding: 10px 18px;
+    box-sizing: border-box;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+
+    position: sticky;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.chat__info {
+    display: flex;
+    align-items: center;
+}
+
+.chat__avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.chat__name {
+    margin: 0;
+}
+
+.chat__textarea {
+    margin-right: 10px;
+}
+
+.chat__button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.chat__button-spacing-with-space {
+    margin-left: 10px;
+}
+
+.chat__messages {
+    height: 100%;
+    flex-shrink: 1;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.chat__writing {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 12px 20px 12px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: stretch;
+    flex-shrink: 0;
+    flex-grow: 1;
+    align-items: center;
+
+    position: sticky;
+    right: 0;
+    bottom: 0;
+}
+
+.chat__messages {
+
+}
+
+
+.aside {
+    width: 360px;
+    height: 100vh;
+    border-right: 1px solid #f8f8f8;
+    z-index: 20;
+}
+
+.aside__header {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aside__title {
+    margin: 0;
+    color: #333333;
+}
+
+.aside-buttons {
+    display: flex;
+}
+
+.aside__search {
+    width: 100%;
+    padding: 0 15px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.aside__list {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
