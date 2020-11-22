@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/common/page/styles.css">
     <link rel="stylesheet" href="/common/avatar/styles.css">
     <link rel="stylesheet" href="/common/profile/styles.css">
+    <link rel="stylesheet" href="/common/modal/styles.css">
+    <script src="/common/getFieldsValues.js" async></script>
     <title>Messenger – Профиль</title>
 </head>
 <body>
@@ -73,6 +75,40 @@
                 </li>
             </ul>
         </main>
+    </div>
+
+    <div class="modal__background">
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Добавить пользователя</h3>
+            <form name="add-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+                <label class="field">
+                    <span class="text-small field__label">Логин</span>
+                    <input type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <button class="text-semibold base-button base-button-inverse modal__button">Добавить</button>
+            </form>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Удалить пользователя</h3>
+            <form name="remove-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+                <label class="field">
+                    <span class="text-small field__label">Логин</span>
+                    <input type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <button class="text-semibold base-button base-button-inverse modal__button modal__button-type-warning">Удалить</button>
+            </form>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Удалить чат?</h3>
+            <button class="text-semibold base-button modal__button">Отмена</button>
+            <button class="text-semibold base-button base-button-inverse modal__button modal__button-type-warning">Удалить</button>
+        </div>
+        <div class="modal__container">
+            <h3 class="h3 modal__title">Не удалось загрузить файл</h3>
+            <button class="text-semibold base-button modal__button">Отмена</button>
+        </div>
     </div>
 </body>
 </html>
