@@ -4,3 +4,11 @@
     border-radius: 100%;
     object-fit: cover;
 }
+
+.avatar__placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background: url("/common/icons/user.svg") no-repeat;
+    background-size: cover;  
+}

@@ -8,7 +8,6 @@
     outline: none;
     background: transparent;
     border-radius: 100%;
-    transition: transform 150ms ease-in;
     cursor: pointer;
 }
 
@@ -16,6 +15,7 @@
     width: 100%;
     height: 100%;
     border-radius: 100%;
+    transition: transform 150ms ease-in;
 }
 
 .circle-button__background-color-grey {
@@ -73,7 +73,15 @@
     -webkit-mask-box-image: url("/common/icons/arrow-left.svg");
 }
 
-.circle-button-hover-scale:hover {
+.circle-button__content-type-lock {
+    -webkit-mask-box-image: url("/common/icons/lock.svg");
+}
+
+.circle-button__content-type-circle-x {
+    -webkit-mask-box-image: url("/common/icons/circle-x.svg");
+}
+
+.circle-button-hover-scale:hover .circle-button__background {
     transform: scale(1.1);
 }
 

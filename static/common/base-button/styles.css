@@ -1,5 +1,6 @@
 .base-button {
-    width: 100%;
+    max-width: 100%;
+    width: 192px;
     height: 40px;
     color: #ffffff;
     background-color: #6c63ff;
@@ -27,5 +28,4 @@
 .base-button-inverse:hover {
     text-decoration: underline;
     transform: scale(1);
-}
 }
