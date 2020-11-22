@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/common/chat-preview/styles.css">
     <link rel="stylesheet" href="/common/message/styles.css">
     <link rel="stylesheet" href="./styles.css">
+    <script src="/common/getFieldsValues.js" async></script>
+    <script src="/common/getTextareaValues.js" async></script>
     <title>Messenger – Чат</title>
 </head>
 <body>
@@ -29,7 +31,7 @@
                     </button>
                 </div>
             </header>
-            <form class="aside__search">
+            <form name="search" onsubmit="getFieldsValues(this);return false" class="aside__search">
                 <input type="text" placeholder="Поиск" class="base-input text-normal" />
             </form>
             <ul class="aside__list">
@@ -97,7 +99,7 @@
                     <p class="text-semibold message__date">11 октября</p> 
                 </div>  
             </section>
-            <form class="chat__writing">
+            <form name="new-message" onsubmit="getTextareaValues(this);return false" class="chat__writing">
                 <button class="chat__button circle-button circle-button-hover-color">
                     <div class="circle-button__background"></div>
                     <div class="circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"></div>
