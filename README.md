@@ -1,4 +1,4 @@
-# Messenger
+# [Messenger](https://messenger-imkopyova.netlify.app/)
 Messenger — это учебный проект, написанный на JavaScript.
 
 ## Установка
