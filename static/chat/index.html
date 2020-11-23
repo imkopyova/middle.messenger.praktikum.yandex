@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="/common/message/styles.css">
     <link rel="stylesheet" href="/common/options/styles.css">
     <link rel="stylesheet" href="./styles.css">
-    <script src="/common/getFieldsValues.js" async></script>
-    <script src="/common/getTextareaValues.js" async></script>
+    <script src="/index.js" async></script>
     <title>Messenger – Чат</title>
 </head>
 <body>
@@ -32,8 +31,8 @@
                     </button>
                 </div>
             </header>
-            <form name="search" onsubmit="getFieldsValues(this);return false" class="aside__search">
-                <input type="text" placeholder="Поиск" class="base-input text-normal" />
+            <form name="search" class="aside__search">
+                <input name="search"  type="text" placeholder="Поиск" class="base-input text-normal" />
             </form>
             <ul class="aside__list">
                 <li class="chat-preview">
@@ -127,16 +126,16 @@
                     <p class="text-semibold message__date">11 октября</p> 
                 </div>  
             </div>
-            <form name="new-message" onsubmit="getTextareaValues(this);return false" class="chat__writing">
+            <form name="new-message" class="chat__writing">
                 <div class="chat__button circle-button circle-button-hover-color">
                     <div class="circle-button__background"></div>
-                    <input type="file" class="chat__button-type-file circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"/>
+                    <input name="file" type="file" class="chat__button-type-file circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"/>
                 </div>
                 <button type="button" class="chat__button circle-button circle-button-hover-color">
                     <div class="circle-button__background"></div>
                     <div class="circle-button__content circle-button__content-color-grey circle-button__content-type-smiled"></div>
                 </button>
-                <textarea placeholder="Cообщение" class="chat__textarea base-input base-input-type-textarea text-normal"></textarea>
+                <textarea name="message" placeholder="Cообщение" class="chat__textarea base-input base-input-type-textarea text-normal"></textarea>
                 <button type="submit" class="chat__button circle-button circle-button-hover-scale">
                     <div class="circle-button__background circle-button__background-color-accent"></div>
                     <div class="circle-button__content circle-button__content-color-white circle-button__content-type-send"></div>

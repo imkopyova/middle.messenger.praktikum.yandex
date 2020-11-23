@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/common/page/styles.css">
     <link rel="stylesheet" href="/common/avatar/styles.css">
     <link rel="stylesheet" href="/common/profile/styles.css">
-    <script src="/common/getFieldsValues.js" async></script>
+    <script src="/index.js" async></script>
     <title>Messenger – Изменить профиль</title>
 </head>
 <body>
@@ -22,44 +22,40 @@
             <div class="circle-button__content circle-button__content-type-arrow-left"></div>
         </a>
         <main class="profile">
-            <div class="avatar__placeholder profile__avatar">
-                <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
-                <input type="file" class="text-normal profile__avatar-input" />
-            </div>
-            <form name="profile-edit" onsubmit="getFieldsValues(this);return false" class="profile__form">
-                <label class="field">
-                    <span class="text-small field__label">Почта</span>
-                    <input type="text" class="field__input base-input">
-                    <span class="text-small field__error"></span>
-                </label>
-                <label class="field">
-                    <span class="text-small field__label">Логин</span>
-                    <input type="password" class="field__input base-input">
-                    <span class="text-small field__error"></span>
-                </label>
+            <form name="profile-edit" class="profile__form">
+                <div class="avatar__placeholder profile__avatar profile__avatar-type-editing">
+                    <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                    <input name="avatar" type="file" class="text-normal profile__avatar-input" />
+                </div>
+
                 <label class="field">
                     <span class="text-small field__label">Имя</span>
-                    <input type="text" class="field__input base-input">
+                    <input name="first_name" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Фамилия</span>
-                    <input type="text" class="field__input base-input">
+                    <input name="second_name" type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <label class="field">
+                    <span class="text-small field__label">Имя в чате</span>
+                    <input name="display_name" type="text" class="field__input base-input">
+                    <span class="text-small field__error"></span>
+                </label>
+                <label class="field">
+                    <span class="text-small field__label">Логин</span>
+                    <input name="login" type="password" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Телефон</span>
-                    <input type="text" class="field__input base-input">
+                    <input name="phone" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
-                    <span class="text-small field__label">Пароль</span>
-                    <input type="text" class="field__input base-input">
-                    <span class="text-small field__error"></span>
-                </label>
-                <label class="field">
-                    <span class="text-small field__label">Пароль (еще раз)</span>
-                    <input type="text" class="field__input base-input">
+                    <span class="text-small field__label">Почта</span>
+                    <input name="email" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <button class="base-button profile__base-button">Сохранить</button>

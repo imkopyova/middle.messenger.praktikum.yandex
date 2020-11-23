@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/common/avatar/styles.css">
     <link rel="stylesheet" href="/common/profile/styles.css">
     <link rel="stylesheet" href="/common/modal/styles.css">
-    <script src="/common/getFieldsValues.js" async></script>
+    <script src="/index.js" async></script>
     <title>Messenger – Профиль</title>
 </head>
 <body>
@@ -79,10 +79,10 @@
     <div class="modal__background">
         <div class="modal__container">
             <h3 class="heading-small modal__title">Добавить пользователя</h3>
-            <form name="add-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+            <form name="add-user" class="modal__form">
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
-                    <input type="text" class="field__input base-input">
+                    <input name="login" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <button type="submit" class="text-semibold base-button base-button-inverse modal__button">Добавить</button>
@@ -90,10 +90,10 @@
         </div>
         <div class="modal__container">
             <h3 class="heading-small modal__title">Удалить пользователя</h3>
-            <form name="remove-user" onsubmit="getFieldsValues(this);return false" class="modal__form">
+            <form name="remove-user" class="modal__form">
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
-                    <input type="text" class="field__input base-input">
+                    <input name="login" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <button type="submit" class="text-semibold base-button base-button-inverse modal__button modal__button-type-warning">Удалить</button>
