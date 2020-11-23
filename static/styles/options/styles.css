@@ -75,17 +75,17 @@
 }
 
 .options__item-icon-type-circle-plus {
-    -webkit-mask-box-image: url("/common/icons/circle-plus.svg");
+    -webkit-mask-box-image: url("/styles/icons/circle-plus.svg");
 }
 
 .options__item-icon-type-circle-minus {
-    -webkit-mask-box-image: url("/common/icons/circle-minus.svg");
+    -webkit-mask-box-image: url("/styles/icons/circle-minus.svg");
 }
 
 .options__item-icon-type-sticker {
-    -webkit-mask-box-image: url("/common/icons/sticker.svg");
+    -webkit-mask-box-image: url("/styles/icons/sticker.svg");
 }
 
 .options__item-icon-type-circle-x {
-    -webkit-mask-box-image: url("/common/icons/circle-x.svg");
+    -webkit-mask-box-image: url("/styles/icons/circle-x.svg");
 }
