@@ -9,6 +9,9 @@
     outline: none;
     transition: transform 150ms ease-in;
     cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .base-button:focus {
@@ -28,4 +31,10 @@
 .base-button-inverse:hover {
     text-decoration: underline;
     transform: scale(1);
+}
+
+.base-button-type-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

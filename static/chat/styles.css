@@ -61,6 +61,15 @@
     width: 40px;
     height: 40px;
     flex-shrink: 0;
+    cursor: pointer;
+}
+
+.chat__button-type-file {
+    cursor: pointer;
+}
+
+.chat__button-type-file::-webkit-file-upload-button {
+    visibility: hidden;
 }
 
 .chat__button-spacing-with-space {

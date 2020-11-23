@@ -17,17 +17,17 @@ body {
     padding: 0;
 }
 
-.h1 {
+.heading-bid {
     font-weight: bold;
     font-size: 24px;
 }
 
-.h2 {
+.heading-normal {
     font-weight: bold;
     font-size: 15px;
 }
 
-.h3 {
+.heading-small {
     font-weight: bold;
     font-size: 17px;
 }
