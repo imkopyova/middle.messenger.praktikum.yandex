@@ -1,11 +1,11 @@
 import { template } from "./template.js";
 import { Block } from "../../components/block/Block.js";
 
-export class ErrorPage extends Block {
+export class Error404Page extends Block {
     constructor() {
         super("div", {
-            errorCode: "500",
-            errorText: "Мы уже фиксим",
+            errorCode: "404",
+            errorText: "Не туда попали",
         });
     }
 

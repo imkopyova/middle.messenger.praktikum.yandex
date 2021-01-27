@@ -1,7 +1,7 @@
-import { ErrorPage } from "./ErrorPage.js";
+import { SigninPage } from "./SigninPage.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 const root = document.querySelector(".root");
-const pageContent = new ErrorPage().render();
+const pageContent = new SigninPage().render();
 
 root.append(parseStringToHtml(pageContent));
