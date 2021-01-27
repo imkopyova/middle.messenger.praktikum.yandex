@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/typography.css">
-    <link rel="stylesheet" href="/styles/circle-button/styles.css">
-    <link rel="stylesheet" href="/styles/page/styles.css">
-    <link rel="stylesheet" href="/styles/avatar/styles.css">
-    <link rel="stylesheet" href="/styles/profile/styles.css">
-    <link rel="stylesheet" href="/styles/modal/styles.css">
-    <script src="/index.js" async></script>
-    <title>Messenger – Профиль</title>
-</head>
-<body>
+export const template = Handlebars.compile(`
     <div class="page-centered">
         <a href="/chat/" class="page__back circle-button circle-button-hover-color">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>
@@ -22,7 +7,7 @@
 
         <main class="profile">
             <div class="avatar__placeholder profile__avatar">
-                <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                <img src={{ imgSrc }} alt="avatar" class="avatar">
             </div>
             <nav class="profile__buttons">
                 <div class="profile__button-container">
@@ -109,5 +94,4 @@
             <button type="button" class="text-semibold base-button modal__button">Отмена</button>
         </div>
     </div>
-</body>
-</html>
+`);
