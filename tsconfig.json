@@ -10,5 +10,6 @@
         "sourceMap": true,
         "strictNullChecks": true,
     },
-    "include": ["./src/**/*"],
+    "include": ["./src/**/*", "node_modules/handlebars/types"],
+    "lib": ["es6", "dom"],
 }

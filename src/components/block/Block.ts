@@ -1,7 +1,7 @@
 import { EventBus } from "../../helpers/eventBus.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
-type TProps = {[key: string]: unknown};
+export type TProps = {[key: string]: unknown};
 
 type TBlockConstructor<T> = {
     tagName: string,
@@ -18,7 +18,7 @@ export class Block<T extends TProps> {
   
     _element: HTMLElement;
     _meta: TBlockConstructor<T>;
-    props: ProxyHandler<T>;
+    props: TProps;
     eventBus: () => EventBus;
   
     constructor(tagName: string, props: T) {

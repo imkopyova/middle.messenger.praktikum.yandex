@@ -4,4 +4,4 @@ import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 const root = document.querySelector(".root");
 const pageContent = new LoginPage().render();
 
-root.append(parseStringToHtml(pageContent));
+root && root.append(parseStringToHtml(pageContent));

@@ -35,27 +35,27 @@ export const template = Handlebars.compile(`
             <ul class="profile__data-list">
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Почта</span>
-                    <span class="text-normal profile__value">pochta@yandex.ru</span>
+                    <span class="text-normal profile__value">{{ mail }}</span>
                 </li>
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Логин</span>
-                    <span class="text-normal profile__value">ivanivanov</span>
+                    <span class="text-normal profile__value">{{ login }}</span>
                 </li>
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Имя</span>
-                    <span class="text-normal profile__value">Иван</span>
+                    <span class="text-normal profile__value">{{ first_name }}</span>
                 </li>
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Фамилия</span>
-                    <span class="text-normal profile__value">Иванов</span>
+                    <span class="text-normal profile__value">{{ last_name }}</span>
                 </li>
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Имя в чате</span>
-                    <span class="text-normal profile__value">Иван</span>
+                    <span class="text-normal profile__value">{{ nickname }}</span>
                 </li>
                 <li class="profile__data-item">
                     <span class="text-normal profile__param">Телефон</span>
-                    <span class="text-normal profile__value">+7 (909) 967 30 30</span>
+                    <span class="text-normal profile__value">{{ phone }}</span>
                 </li>
             </ul>
         </main>
