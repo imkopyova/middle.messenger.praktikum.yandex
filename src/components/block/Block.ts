@@ -1,7 +1,14 @@
 import { EventBus } from "../../helpers/eventBus.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
-export class Block {
+type TProps = {[key: string]: unknown};
+
+type TBlockConstructor<T> = {
+    tagName: string,
+    props: T,
+}
+
+export class Block<T extends TProps> {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
@@ -9,13 +16,15 @@ export class Block {
       FLOW_RENDER: "flow:render"
     };
   
-    _element = null;
-    _meta = null;
+    _element: HTMLElement;
+    _meta: TBlockConstructor<T>;
+    props: ProxyHandler<T>;
+    eventBus: () => EventBus;
   
-    constructor(tagName = "div", props = {}) {
+    constructor(tagName: string, props: T) {
         const eventBus = new EventBus();
         this._meta = {
-            tagName,
+            tagName: tagName || "div",
             props
         };
   
@@ -27,7 +36,7 @@ export class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
   
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -49,9 +58,9 @@ export class Block {
         this.componentDidMount();
     }
   
-    componentDidMount(oldProps) {}
+    componentDidMount(oldProps?: T) {}
   
-    _componentDidUpdate(oldProps, newProps) {
+    _componentDidUpdate(oldProps: T, newProps: T) {
         if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
             return false;
         }
@@ -60,11 +69,11 @@ export class Block {
         return response;
     }
   
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(oldProps: T, newProps: T) {
         return true;
     }
   
-    setProps = nextProps => {
+    setProps = (nextProps: T) => {
         if (!nextProps) {
             return;
         }
@@ -79,34 +88,33 @@ export class Block {
     }
   
     _render() {
-        const block = this.render();
-        this._element.append(parseStringToHtml(block));
-        
+        const block = parseStringToHtml(this.render());
+        this._element.append(block);
     }
   
-    render() {}
+    render(): string {
+        return "";
+    }
   
     getContent() {
         return this.element;
     }
   
-    _makePropsProxy(props) {
-        const self = this;
+    _makePropsProxy(props: TProps) {
     
         const proxyProps = new Proxy(props, {
-            set(target, prop, value) {
+            set(target, prop: string, value) {
                 target[prop] = value;
                 return true;
             },
-            deleteProperty(target, prop) {
+            deleteProperty() {
                 throw new Error("нет доступа");
-                return false;
             }
         })
         return proxyProps;
     }
   
-    _createDocumentElement(tagName) {
+    _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
   
