@@ -11,6 +11,13 @@ function onSubmit(event: Event) {
     event.preventDefault();
     const element = <HTMLFormElement>event.target;
     let formData = new FormData(element);
+
+    const fields = document.querySelectorAll(".field");
+    for (let field of fields) {
+        const input = <HTMLInputElement>field.querySelector("input");
+        validateInput(input, field);
+    }
+
     for (let [name, value] of formData) {
         console.log(`${name}: ${value}`)
     }
@@ -21,13 +28,10 @@ function onFocus(field: Element) {
 }
 
 function onBlur(event: Event, field: Element) {
-    const isValid = validateInput(<HTMLInputElement>event.target);
-    if (!isValid) {
-        field.classList.add("field-state-error");
-    }
+    validateInput(<HTMLInputElement>event.target, field);
 }
 
-function validateInput(input: HTMLInputElement): boolean {
+function validateInput(input: HTMLInputElement, field: Element) {
     const type = input.type;
     const value = input.value;
 
@@ -36,7 +40,11 @@ function validateInput(input: HTMLInputElement): boolean {
         regexp = validations[type];
     }
 
-    return regexp.test(value);
+    const isValid = regexp.test(value);
+
+    if (!isValid) {
+        field.classList.add("field-state-error");
+    }
 }
 
 function addBlurFocusListener(field: Element) {
