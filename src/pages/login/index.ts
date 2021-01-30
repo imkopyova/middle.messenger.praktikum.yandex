@@ -1,7 +1,6 @@
 import { LoginPage } from "./LoginPage.js";
-import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 const root = document.querySelector(".root");
-const pageContent = new LoginPage().render();
+const pageContent = new LoginPage().getElement();
 
-root && root.append(parseStringToHtml(pageContent));
+root && root.append(pageContent);

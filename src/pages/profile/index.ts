@@ -1,5 +1,4 @@
 import { ProfilePage } from "./ProfilePage.js";
-import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 const root = document.querySelector(".root");
 const pageContent = new ProfilePage({
@@ -10,6 +9,6 @@ const pageContent = new ProfilePage({
     last_name: "Doe",
     nickname: "John",
     phone: "+7 (909) 967 30 30",
-}).render();
+}).getElement();
 
-root && root.append(parseStringToHtml(pageContent));
+root && root.append(pageContent);

@@ -54,25 +54,26 @@ export class Block<T extends TProps, C extends TChildren,> {
     init() {
         this._createResources();
         this._render();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
   
     _componentDidMount() {
+        console.log("componentDidMount", this.props)
         this.componentDidMount();
     }
   
-    componentDidMount(oldProps?: T) {}
+    componentDidMount() {}
   
     _componentDidUpdate(oldProps: T, newProps: T) {
+        console.log(oldProps, newProps)
         if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
             return false;
         }
-        const response = this.componentDidUpdate(oldProps, newProps);
+        const response = this.componentDidUpdate();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         return response;
     }
   
-    componentDidUpdate(oldProps?: T, newProps?: T) {
+    componentDidUpdate() {
         return true;
     }
   
@@ -91,16 +92,10 @@ export class Block<T extends TProps, C extends TChildren,> {
     }
   
     _render() {
+        console.log("_render", this.props)
         const block = parseStringToHtml(this.render());
-
-        // if (this.children) {
-        //     for(let child in this.children) {
-        //         const childElement = this.children[child];
-        //         const childContainer = (block as HTMLElement).querySelector(`[data-child='${child}']`);
-        //         childContainer?.append(childElement);
-        //     }
-        // }
         this._element.append(block);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
   
     render(): string {
