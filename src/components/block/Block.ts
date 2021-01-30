@@ -2,13 +2,14 @@ import { EventBus } from "../../helpers/eventBus.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 export type TProps = {[key: string]: unknown};
+export type TChildren = {[key: string]: HTMLElement};
 
 type TBlockConstructor<T> = {
     tagName: string,
     props: T,
 }
 
-export class Block<T extends TProps> {
+export class Block<T extends TProps, C extends TChildren,> {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
@@ -18,10 +19,11 @@ export class Block<T extends TProps> {
   
     _element: HTMLElement;
     _meta: TBlockConstructor<T>;
-    props: TProps;
+    props: T;
+    children: C;
     eventBus: () => EventBus;
   
-    constructor(tagName: string, props: T) {
+    constructor(tagName: string, props: T, children: C) {
         const eventBus = new EventBus();
         this._meta = {
             tagName: tagName || "div",
@@ -29,6 +31,7 @@ export class Block<T extends TProps> {
         };
   
         this.props = this._makePropsProxy(props);
+        this.children = children || {};
     
         this.eventBus = () => eventBus;
     
@@ -69,7 +72,7 @@ export class Block<T extends TProps> {
         return response;
     }
   
-    componentDidUpdate(oldProps: T, newProps: T) {
+    componentDidUpdate(oldProps?: T, newProps?: T) {
         return true;
     }
   
@@ -89,6 +92,14 @@ export class Block<T extends TProps> {
   
     _render() {
         const block = parseStringToHtml(this.render());
+
+        // if (this.children) {
+        //     for(let child in this.children) {
+        //         const childElement = this.children[child];
+        //         const childContainer = (block as HTMLElement).querySelector(`[data-child='${child}']`);
+        //         childContainer?.append(childElement);
+        //     }
+        // }
         this._element.append(block);
     }
   
@@ -100,10 +111,9 @@ export class Block<T extends TProps> {
         return this.element;
     }
   
-    _makePropsProxy(props: TProps) {
-    
+    _makePropsProxy(props: T): T {
         const proxyProps = new Proxy(props, {
-            set(target, prop: string, value) {
+            set(target: T, prop: keyof T, value) {
                 target[prop] = value;
                 return true;
             },
@@ -124,5 +134,9 @@ export class Block<T extends TProps> {
   
     hide() {
         this._element.style.display = "none";
+    }
+
+    getElement(): HTMLElement {
+        return this._element;
     }
 }

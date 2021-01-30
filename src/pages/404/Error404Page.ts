@@ -1,14 +1,14 @@
 import { template } from "./template.js";
-import { Block, TProps } from "../../components/block/Block.js";
+import { Block, TProps, TChildren } from "../../components/block/Block.js";
 
 interface IError404PageProps extends TProps {
     errorCode: string,
     errorText: string,
 }
 
-export class Error404Page extends Block<IError404PageProps> {
+export class Error404Page extends Block<IError404PageProps, TChildren> {
     constructor(props: IError404PageProps) {
-        super("div", {...props});
+        super("div", {...props}, {});
     }
 
     render () {

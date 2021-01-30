@@ -1,4 +1,4 @@
-export function parseStringToHtml(blockAsString: string): Node {
+export function parseStringToHtml(blockAsString: string): HTMLElement {
     const blockAsHtml = new DOMParser().parseFromString(blockAsString, 'text/html').body.firstChild;
-    return blockAsHtml || document.createElement("div");
+    return blockAsHtml as HTMLElement || document.createElement("div");
 }

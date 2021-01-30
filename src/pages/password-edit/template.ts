@@ -24,7 +24,7 @@ export const template = Handlebars.compile(`
                 <input name="password_new_again" type="password" class="field__input base-input">
                 <span class="text-small field__error"></span>
             </label>
-            <button type="submit" class="base-button profile__base-button">Сохранить</button>
+            <div class="profile__base-button">{{ childComponent this "button" }}</div>
         </form>
     </main>
 </div>

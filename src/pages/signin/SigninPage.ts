@@ -1,9 +1,9 @@
 import { template } from "./template.js";
-import { Block, TProps } from "../../components/block/Block.js";
+import { Block, TProps, TChildren } from "../../components/block/Block.js";
 
-export class SigninPage extends Block<TProps> {
+export class SigninPage extends Block<TProps, TChildren> {
     constructor() {
-        super("div", {});
+        super("div", {}, {});
     }
 
     render () {

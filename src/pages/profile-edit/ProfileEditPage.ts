@@ -1,13 +1,13 @@
 import { template } from "./template.js";
-import { Block, TProps } from "../../components/block/Block.js";
+import { Block, TProps, TChildren } from "../../components/block/Block.js";
 
 interface IProfileEditPageProps extends TProps {
     imgSrc: string,
 }
 
-export class ProfileEditPage extends Block<IProfileEditPageProps> {
+export class ProfileEditPage extends Block<IProfileEditPageProps, TChildren> {
     constructor(props: IProfileEditPageProps) {
-        super("div", {...props});
+        super("div", {...props}, {});
     }
 
     render () {

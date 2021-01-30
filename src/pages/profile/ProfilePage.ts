@@ -1,5 +1,5 @@
 import { template } from "./template.js";
-import { Block, TProps } from "../../components/block/Block.js";
+import { Block, TProps, TChildren } from "../../components/block/Block.js";
 
 interface IProfilePageProps extends TProps {
     imgSrc: string,
@@ -11,9 +11,9 @@ interface IProfilePageProps extends TProps {
     phone: string,
 }
 
-export class ProfilePage extends Block<IProfilePageProps> {
+export class ProfilePage extends Block<IProfilePageProps, TChildren> {
     constructor(props: IProfilePageProps) {
-        super("div", { ...props});
+        super("div", { ...props}, {});
     }
 
     render () {
