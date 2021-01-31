@@ -5,7 +5,7 @@ export const template = Handlebars.compile(`
             <div class="circle-button__content circle-button__content-type-arrow-left"></div>
         </a>
         <main class="profile">
-            <form name="profile-edit" class="profile__form">
+            <form name="profile-edit" method="POST" class="profile__form">
                 <div class="avatar__placeholder profile__avatar profile__avatar-type-editing">
                     <img src={{ imgSrc }} alt="avatar" class="avatar">
                     <input name="avatar" type="file" class="text-normal profile__avatar-input" />

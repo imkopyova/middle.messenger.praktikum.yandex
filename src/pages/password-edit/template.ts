@@ -4,12 +4,11 @@ export const template = Handlebars.compile(`
         <div class="circle-button__background circle-button__background-color-grey"></div>
         <div class="circle-button__content circle-button__content-type-arrow-left"></div>
     </a>
-    <span class="text-small field__label">{{ test }}</span>
     <main class="profile">
         <div class="avatar__placeholder profile__avatar">
             <img src="{{ imgSrc }}" alt="avatar" class="avatar">
         </div>
-        <form name="password-edit" class="profile__form">
+        <form name="password-edit" method="POST" class="profile__form">
             <label class="field">
                 <span class="text-small field__label">Старый ароль</span>
                 <input name="password_old" type="password" class="field__input base-input">

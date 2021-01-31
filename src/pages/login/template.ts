@@ -2,7 +2,7 @@ export const template = Handlebars.compile(`
 <div class="page-centered">
 <main class="auth__container">
     <h1 class="heading-bid auth__title login__title">Вход</h1>
-    <form name="login" class="auth__form">
+    <form name="login" method="POST" class="auth__form">
         <div class="auth__fields">
             <label class="field field-state-error">
                 <span class="text-small field__label">Логин</span>

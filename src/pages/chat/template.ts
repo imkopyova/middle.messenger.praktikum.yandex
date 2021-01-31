@@ -14,7 +14,7 @@ export const template = Handlebars.compile(`
                     </a>
                 </div>
             </header>
-            <form name="search" class="aside__search">
+            <form name="search" method="POST" class="aside__search">
                 <input name="search"  type="text" placeholder="Поиск" class="base-input text-normal" />
             </form>
             <ul class="aside__list">
@@ -109,7 +109,7 @@ export const template = Handlebars.compile(`
                     <p class="text-semibold message__date">11 октября</p> 
                 </div>  
             </div>
-            <form name="new-message" class="chat__writing">
+            <form name="new-message" method="POST" class="chat__writing">
                 <div class="chat__button circle-button circle-button-hover-color">
                     <div class="circle-button__background"></div>
                     <input name="file" type="file" class="chat__button-type-file circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"/>

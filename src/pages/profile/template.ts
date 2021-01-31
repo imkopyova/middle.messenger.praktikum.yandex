@@ -64,7 +64,7 @@ export const template = Handlebars.compile(`
     <div class="modal__background">
         <div class="modal__container">
             <h3 class="heading-small modal__title">Добавить пользователя</h3>
-            <form name="add-user" class="modal__form">
+            <form name="add-user" method="POST" class="modal__form">
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
                     <input name="login" type="text" class="field__input base-input">
@@ -75,7 +75,7 @@ export const template = Handlebars.compile(`
         </div>
         <div class="modal__container">
             <h3 class="heading-small modal__title">Удалить пользователя</h3>
-            <form name="remove-user" class="modal__form">
+            <form name="remove-user" method="POST" class="modal__form">
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
                     <input name="login" type="text" class="field__input base-input">
