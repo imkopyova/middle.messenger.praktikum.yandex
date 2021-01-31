@@ -8,7 +8,7 @@ interface IError404PageProps extends TProps {
 
 export class Error404Page extends Block<IError404PageProps, TChildren> {
     constructor(props: IError404PageProps) {
-        super("div", {...props}, {});
+        super({...props}, {});
     }
 
     render () {

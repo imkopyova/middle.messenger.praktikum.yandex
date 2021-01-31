@@ -5,6 +5,7 @@ import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 interface IPasswordEditPageProps extends TProps {
     imgSrc: string,
+    test: string
 }
 
 interface IPasswordEditPageChildren extends TChildren {
@@ -14,7 +15,6 @@ interface IPasswordEditPageChildren extends TChildren {
 export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEditPageChildren> {
     constructor(props: IPasswordEditPageProps) {
         super(
-            "div",
             {...props}, 
             {
                 button: parseStringToHtml(
@@ -30,7 +30,9 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
     render () {
         return template({
             imgSrc: this.props.imgSrc,
+            test: this.props.test,
             button: this.children.button,
+           
         });
     }
 }

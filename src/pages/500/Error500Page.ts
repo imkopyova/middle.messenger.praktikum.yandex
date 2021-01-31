@@ -8,7 +8,7 @@ interface IError500PageProps extends TProps {
 
 export class Error500Page extends Block<IError500PageProps, TChildren> {
     constructor(props: IError500PageProps) {
-        super("div", {...props}, {});
+        super({...props}, {});
     }
 
     render () {

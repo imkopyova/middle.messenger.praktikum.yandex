@@ -3,7 +3,7 @@ import { Block, TProps, TChildren} from "../../components/block/Block.js";
 
 export class LoginPage extends Block<TProps, TChildren> {
     constructor() {
-        super("div", {}, {});
+        super({}, {});
     }
 
     render () {

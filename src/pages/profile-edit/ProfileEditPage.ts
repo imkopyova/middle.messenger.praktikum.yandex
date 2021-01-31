@@ -7,7 +7,7 @@ interface IProfileEditPageProps extends TProps {
 
 export class ProfileEditPage extends Block<IProfileEditPageProps, TChildren> {
     constructor(props: IProfileEditPageProps) {
-        super("div", {...props}, {});
+        super({...props}, {});
     }
 
     render () {

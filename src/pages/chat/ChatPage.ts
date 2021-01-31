@@ -7,7 +7,7 @@ interface IChatPageProps extends TProps {
 
 export class ChatPage extends Block<IChatPageProps, TChildren> {
     constructor(props: IChatPageProps) {
-        super("div", {...props}, {});
+        super({...props}, {});
     }
 
     render () {

@@ -13,7 +13,7 @@ interface IProfilePageProps extends TProps {
 
 export class ProfilePage extends Block<IProfilePageProps, TChildren> {
     constructor(props: IProfilePageProps) {
-        super("div", { ...props}, {});
+        super({ ...props}, {});
     }
 
     render () {

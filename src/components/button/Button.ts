@@ -8,17 +8,10 @@ export interface IButtonProps extends TProps {
 
 export class Button extends Block<IButtonProps, TChildren> {
     constructor(props: IButtonProps) {
-        super("div", {...props}, {});
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount Button")
-        const button = this._element.querySelector("button");
-        button?.addEventListener("click", () => this.props.onClick())
+        super({...props}, {});
     }
 
     render () {
-        console.log("render Button")
         return template({
             text: this.props.text,
         });

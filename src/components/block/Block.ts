@@ -1,15 +1,13 @@
 import { EventBus } from "../../helpers/eventBus.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
-export type TProps = {[key: string]: unknown};
+export type TProps = {
+    [key: string]: unknown,
+    onClick?: () => void,
+};
 export type TChildren = {[key: string]: HTMLElement};
 
-type TBlockConstructor<T> = {
-    tagName: string,
-    props: T,
-}
-
-export class Block<T extends TProps, C extends TChildren,> {
+export class Block<T extends TProps, C extends TChildren> {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
@@ -18,17 +16,12 @@ export class Block<T extends TProps, C extends TChildren,> {
     };
   
     _element: HTMLElement;
-    _meta: TBlockConstructor<T>;
     props: T;
     children: C;
     eventBus: () => EventBus;
   
-    constructor(tagName: string, props: T, children: C) {
+    constructor(props: T, children: C) {
         const eventBus = new EventBus();
-        this._meta = {
-            tagName: tagName || "div",
-            props
-        };
   
         this.props = this._makePropsProxy(props);
         this.children = children || {};
@@ -45,67 +38,7 @@ export class Block<T extends TProps, C extends TChildren,> {
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
-  
-    _createResources() {
-        const { tagName } = this._meta;
-        this._element = this._createDocumentElement(tagName);
-    }
-  
-    init() {
-        this._createResources();
-        this._render();
-    }
-  
-    _componentDidMount() {
-        console.log("componentDidMount", this.props)
-        this.componentDidMount();
-    }
-  
-    componentDidMount() {}
-  
-    _componentDidUpdate(oldProps: T, newProps: T) {
-        console.log(oldProps, newProps)
-        if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
-            return false;
-        }
-        const response = this.componentDidUpdate();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-        return response;
-    }
-  
-    componentDidUpdate() {
-        return true;
-    }
-  
-    setProps = (nextProps: T) => {
-        if (!nextProps) {
-            return;
-        }
-    
-        const oldProps = {...this.props};
-        Object.assign(this.props, nextProps);
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
-    };
-  
-    get element() {
-        return this._element;
-    }
-  
-    _render() {
-        console.log("_render", this.props)
-        const block = parseStringToHtml(this.render());
-        this._element.append(block);
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-    }
-  
-    render(): string {
-        return "";
-    }
-  
-    getContent() {
-        return this.element;
-    }
-  
+
     _makePropsProxy(props: T): T {
         const proxyProps = new Proxy(props, {
             set(target: T, prop: keyof T, value) {
@@ -119,19 +52,67 @@ export class Block<T extends TProps, C extends TChildren,> {
         return proxyProps;
     }
   
-    _createDocumentElement(tagName: string) {
-        return document.createElement(tagName);
+    _createResources() {
+        const tagName = "div";
+        this._element = document.createElement(tagName);
     }
   
-    show() {
-        this._element.style.display = "block";
+    init() {
+        this._createResources();
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
   
-    hide() {
-        this._element.style.display = "none";
+    _componentDidMount() {
+        this.componentDidMount();
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+  
+    _componentDidUpdate(oldProps: T, newProps: T) {
+
+        if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
+            return false;
+        }
+        const response = this.componentDidUpdate();
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+
+        return response;
+    }
+  
+    _render() {
+        const block = parseStringToHtml(this.render());
+        if (this.props.onClick) {
+            block.addEventListener("click", this.props.onClick)
+        }
+
+        this._element.firstElementChild  ? this._element.replaceChild(block, this._element.firstElementChild ) : this._element.append(block);
+    }
+
+    setProps = (nextProps: T) => {
+        if (!nextProps) {
+            return;
+        }
+        const oldProps = {...this.props};
+        Object.assign(this.props, nextProps);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
+    };
+
+    componentDidMount(): void {}
+    componentDidUpdate(): boolean { return true }
+    render(): string { return "" }
+
+    get element() {
+        return this._element;
     }
 
     getElement(): HTMLElement {
-        return this._element;
+        return this.element;
+    }
+  
+    show() {
+        this.getElement().style.display = "block";
+    }
+  
+    hide() {
+        this.getElement().style.display = "none";
     }
 }
