@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/typography.css">
-    <link rel="stylesheet" href="/styles/circle-button/styles.css">
-    <link rel="stylesheet" href="/styles/base-input/styles.css">
-    <link rel="stylesheet" href="/styles/chat-preview/styles.css">
-    <link rel="stylesheet" href="/styles/message/styles.css">
-    <link rel="stylesheet" href="/styles/options/styles.css">
-    <link rel="stylesheet" href="/styles/avatar/styles.css">
-    <link rel="stylesheet" href="./styles.css">
-    <script src="/index.js" async></script>
-    <title>Messenger – Чат</title>
-</head>
-<body>
+export const template = Handlebars.compile(`
     <div class="chat__page">
         <aside class="chat__aside aside">
             <header class="aside__header">
@@ -32,7 +14,7 @@
                     </a>
                 </div>
             </header>
-            <form name="search" class="aside__search">
+            <form name="search" method="POST" class="aside__search">
                 <input name="search"  type="text" placeholder="Поиск" class="base-input text-normal" />
             </form>
             <ul class="aside__list">
@@ -127,7 +109,7 @@
                     <p class="text-semibold message__date">11 октября</p> 
                 </div>  
             </div>
-            <form name="new-message" class="chat__writing">
+            <form name="new-message" method="POST" class="chat__writing">
                 <div class="chat__button circle-button circle-button-hover-color">
                     <div class="circle-button__background"></div>
                     <input name="file" type="file" class="chat__button-type-file circle-button__content circle-button__content-color-grey circle-button__content-type-paperclip"/>
@@ -144,5 +126,4 @@
             </form>
         </main>
     </div>
-</body>
-</html>
+`);
