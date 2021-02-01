@@ -1,7 +1,6 @@
 import { template } from "./template.js";
 import { Block } from "../../components/block/Block.js";
 import { Button } from "../../components/button/Button.js";
-import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
@@ -16,12 +15,11 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
         super(
             {...props}, 
             {
-                button: parseStringToHtml(
+                button: 
                     new Button({
                         text: "Сохранить",
                         onClick: (e) => console.log(e)}
-                    ).render()
-                )
+                    ).getElement()
             }
         );
     }

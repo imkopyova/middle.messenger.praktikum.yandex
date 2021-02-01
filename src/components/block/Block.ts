@@ -64,6 +64,7 @@ export class Block<T extends TProps, C extends TChildren> {
   
     _componentDidMount() {
         this.componentDidMount();
+        // console.log("_componentDidMount")
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
   
