@@ -6,12 +6,12 @@ export const template = Handlebars.compile(`
             <div class="auth__fields">
                 <label class="field">
                     <span class="text-small field__label">Почта</span>
-                    <input name="email" type="text" class="field__input base-input">
+                    <input name="email" type="email" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
-                    <input name="login" type="password" class="field__input base-input">
+                    <input name="login" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
@@ -26,17 +26,17 @@ export const template = Handlebars.compile(`
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Телефон</span>
-                    <input name="phone" type="text" class="field__input base-input">
+                    <input name="phone" type="tel" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Пароль</span>
-                    <input name="password" type="text" class="field__input base-input">
+                    <input name="password" type="password" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Пароль (еще раз)</span>
-                    <input name="password_again" type="text" class="field__input base-input">
+                    <input name="password_again" type="password" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
             </div>

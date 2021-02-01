@@ -2,8 +2,8 @@ import { EventBus } from "../../helpers/eventBus.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
 export type TProps = {
-    [key: string]: unknown,
-    onClick?: () => void,
+    [key: string]: string | number | boolean | Function | undefined,
+    onClick?: (e?: Event) => void,
 };
 export type TChildren = {[key: string]: HTMLElement};
 

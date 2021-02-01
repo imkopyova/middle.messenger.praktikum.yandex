@@ -3,7 +3,7 @@ import { Block, TProps, TChildren } from "../../components/block/Block.js";
 
 export interface IButtonProps extends TProps {
     text: string,
-    onClick: () => void,
+    onClick: (e: Event) => void,
 }
 
 export class Button extends Block<IButtonProps, TChildren> {

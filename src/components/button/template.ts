@@ -1,3 +1,3 @@
 export const template = Handlebars.compile(`
-    <button type="submit" class="base-button">{{ text }}</button>
+    <button type="button" class="base-button">{{ text }}</button>
 `);

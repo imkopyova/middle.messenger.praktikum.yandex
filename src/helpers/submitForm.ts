@@ -7,20 +7,27 @@ const validations: {[key: string]: RegExp} = {
     password: /\w+/,
 }
 
-function onSubmit(event: Event) {
+export function onSubmit(event: Event) {
     event.preventDefault();
+    console.log(onSubmit);
     const element = <HTMLFormElement>event.target;
     let formData = new FormData(element);
+    let hasErrors = false;
 
     const fields = document.querySelectorAll(".field");
     for (let field of fields) {
         const input = <HTMLInputElement>field.querySelector("input");
-        validateInput(input, field);
+        const isValid = validateInput(input, field);
+        if (!isValid) {
+            hasErrors = true;
+        }
     }
 
-    for (let [name, value] of formData) {
-        console.log(`${name}: ${value}`)
-    }
+    if (!hasErrors) {
+        for (let [name, value] of formData) {
+            console.log(`${name}: ${value}`)
+        }
+    } 
 }
 
 function onFocus(field: Element) {
@@ -31,7 +38,7 @@ function onBlur(event: Event, field: Element) {
     validateInput(<HTMLInputElement>event.target, field);
 }
 
-function validateInput(input: HTMLInputElement, field: Element) {
+function validateInput(input: HTMLInputElement, field: Element): boolean {
     const type = input.type;
     const value = input.value;
 
@@ -44,7 +51,9 @@ function validateInput(input: HTMLInputElement, field: Element) {
 
     if (!isValid) {
         field.classList.add("field-state-error");
+        return false;
     }
+    return true;
 }
 
 function addBlurFocusListener(field: Element) {

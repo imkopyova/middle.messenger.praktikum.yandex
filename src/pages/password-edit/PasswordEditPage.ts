@@ -19,7 +19,7 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
                 button: parseStringToHtml(
                     new Button({
                         text: "Сохранить",
-                        onClick: () => alert("button")}
+                        onClick: (e) => console.log(e)}
                     ).render()
                 )
             }

@@ -28,17 +28,17 @@ export const template = Handlebars.compile(`
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Логин</span>
-                    <input name="login" type="password" class="field__input base-input">
+                    <input name="login" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Телефон</span>
-                    <input name="phone" type="text" class="field__input base-input">
+                    <input name="phone" type="tel" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Почта</span>
-                    <input name="email" type="text" class="field__input base-input">
+                    <input name="email" type="mail" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <button class="base-button profile__base-button">Сохранить</button>
