@@ -18,7 +18,7 @@ export class Block<T extends TProps, C extends TChildren> {
     _element: HTMLElement;
     props: T;
     children: C;
-    eventBus: () => EventBus;
+    eventBus: EventBus;
   
     constructor(props: T, children: C) {
         const eventBus = new EventBus();
@@ -26,7 +26,7 @@ export class Block<T extends TProps, C extends TChildren> {
         this.props = this._makePropsProxy(props);
         this.children = children || {};
     
-        this.eventBus = () => eventBus;
+        this.eventBus = eventBus;
     
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -59,12 +59,12 @@ export class Block<T extends TProps, C extends TChildren> {
   
     init() {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
   
     _componentDidMount() {
         this.componentDidMount();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
   
     _componentDidUpdate(oldProps: T, newProps: T) {
@@ -73,7 +73,7 @@ export class Block<T extends TProps, C extends TChildren> {
             return false;
         }
         const response = this.componentDidUpdate();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
 
         return response;
     }
@@ -92,8 +92,8 @@ export class Block<T extends TProps, C extends TChildren> {
             return;
         }
         const oldProps = {...this.props};
-        this.props = {...this.props, nextProps};
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
+        this.props = {...oldProps, ...nextProps};
+        this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 
     componentDidMount(): void {}
