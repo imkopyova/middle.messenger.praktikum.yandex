@@ -1,7 +1,7 @@
 import { template } from "./template.js";
-import { Block, TProps, TChildren } from "../../components/block/Block.js";
+import { Block, TChildren } from "../../components/block/Block.js";
 
-export interface IButtonProps extends TProps {
+export type IButtonProps = {
     text: string,
     onClick: (e: Event) => void,
 }

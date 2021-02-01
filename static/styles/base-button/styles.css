@@ -9,7 +9,7 @@
     outline: none;
     transition: transform 150ms ease-in;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
+    font-family: inherit;
     font-weight: 600;
     font-size: 14px;
 }

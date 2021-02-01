@@ -1,7 +1,7 @@
 import { template } from "./template.js";
-import { Block, TProps, TChildren } from "../../components/block/Block.js";
+import { Block, TChildren } from "../../components/block/Block.js";
 
-interface IError500PageProps extends TProps {
+type IError500PageProps = {
     errorCode: string,
     errorText: string,
 }

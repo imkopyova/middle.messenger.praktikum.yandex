@@ -1,7 +1,7 @@
 import { template } from "./template.js";
-import { Block, TProps, TChildren } from "../../components/block/Block.js";
+import { Block, TChildren } from "../../components/block/Block.js";
 
-interface IChatPageProps extends TProps {
+type IChatPageProps = {
     imgSrc: string,
 }
 

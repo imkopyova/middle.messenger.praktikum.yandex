@@ -92,7 +92,7 @@ export class Block<T extends TProps, C extends TChildren> {
             return;
         }
         const oldProps = {...this.props};
-        Object.assign(this.props, nextProps);
+        this.props = {...this.props, nextProps};
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 

@@ -1,13 +1,13 @@
 import { template } from "./template.js";
-import { Block, TProps, TChildren } from "../../components/block/Block.js";
+import { Block } from "../../components/block/Block.js";
 import { Button } from "../../components/button/Button.js";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
 
-interface IPasswordEditPageProps extends TProps {
+type IPasswordEditPageProps = {
     imgSrc: string,
 }
 
-interface IPasswordEditPageChildren extends TChildren {
+type IPasswordEditPageChildren = {
     button: HTMLElement,
 }
 

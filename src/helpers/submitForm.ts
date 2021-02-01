@@ -9,7 +9,6 @@ const validations: {[key: string]: RegExp} = {
 
 export function onSubmit(event: Event) {
     event.preventDefault();
-    console.log(onSubmit);
     const element = <HTMLFormElement>event.target;
     let formData = new FormData(element);
     let hasErrors = false;
