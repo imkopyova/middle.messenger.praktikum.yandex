@@ -7,7 +7,7 @@ type IPasswordEditPageProps = {
 }
 
 type IPasswordEditPageChildren = {
-    button: HTMLElement,
+    button: any,
 }
 
 export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEditPageChildren> {
@@ -18,8 +18,8 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
                 button: 
                     new Button({
                         text: "Сохранить",
-                        onClick: (e) => console.log(e)}
-                    ).getElement()
+                        onClick: () => console.log("event from child component")}
+                    )
             }
         );
     }
@@ -27,7 +27,7 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
     render () {
         return template({
             imgSrc: this.props.imgSrc,
-            button: this.children.button,
+            button: this.children.button.getElement(),
            
         });
     }

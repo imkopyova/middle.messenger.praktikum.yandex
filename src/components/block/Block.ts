@@ -5,7 +5,7 @@ export type TProps = {
     [key: string]: string | number | boolean | Function | undefined,
     onClick?: (e?: Event) => void,
 };
-export type TChildren = {[key: string]: HTMLElement};
+export type TChildren = {[key: string]: any};
 
 export class Block<T extends TProps, C extends TChildren> {
     static EVENTS = {
@@ -51,6 +51,19 @@ export class Block<T extends TProps, C extends TChildren> {
         })
         return proxyProps;
     }
+
+    _addChildrenEventListeners(children: TChildren): void {
+        for (let name in children) {
+            const childProps = children[name].props;
+
+            if (childProps.onClick) {
+                const elementChildren = this._element.querySelectorAll(`[data-child="${name}"]`)
+                for (let child of elementChildren) {
+                    child.addEventListener("click", childProps.onClick)
+                }
+            }
+        }
+    }
   
     _createResources() {
         const tagName = "div";
@@ -64,7 +77,6 @@ export class Block<T extends TProps, C extends TChildren> {
   
     _componentDidMount() {
         this.componentDidMount();
-        // console.log("_componentDidMount")
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
   
@@ -81,11 +93,12 @@ export class Block<T extends TProps, C extends TChildren> {
   
     _render() {
         const block = parseStringToHtml(this.render());
+        this._element.firstElementChild  ? this._element.replaceChild(block, this._element.firstElementChild ) : this._element.append(block);
+        
         if (this.props.onClick) {
             block.addEventListener("click", this.props.onClick)
         }
-
-        this._element.firstElementChild  ? this._element.replaceChild(block, this._element.firstElementChild ) : this._element.append(block);
+        this._addChildrenEventListeners(this.children);
     }
 
     setProps = (nextProps: T) => {
