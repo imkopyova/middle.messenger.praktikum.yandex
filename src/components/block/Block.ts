@@ -1,5 +1,5 @@
-import { EventBus } from "../../helpers/eventBus.js";
-import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
+import { EventBus } from "../../helpers/eventBus";
+import { parseStringToHtml } from "../../helpers/parseStringToHtml";
 
 export type TProps = {
     [key: string]: string | number | boolean | Function | undefined,

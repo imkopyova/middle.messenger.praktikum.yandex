@@ -1,4 +1,4 @@
-import { PasswordEditPage } from "./PasswordEditPage.js";
+import { PasswordEditPage } from "./PasswordEditPage";
 
 const root = document.querySelector(".root");
 const pageContent = new PasswordEditPage({

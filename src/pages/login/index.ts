@@ -1,4 +1,4 @@
-import { LoginPage } from "./LoginPage.js";
+import { LoginPage } from "./LoginPage";
 
 const root = document.querySelector(".root");
 const pageContent = new LoginPage().getElement();

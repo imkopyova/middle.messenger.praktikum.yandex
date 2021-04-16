@@ -1,4 +1,4 @@
-import { Error404Page } from "./Error404Page.js";
+import { Error404Page } from "./Error404Page";
 
 const root = document.querySelector(".root");
 const pageContent = new Error404Page({

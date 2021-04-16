@@ -1,6 +1,6 @@
-import { template } from "./template.js";
-import { Block } from "../../components/block/Block.js";
-import { Button } from "../../components/button/Button.js";
+import { template } from "./template";
+import { Block } from "../../components/block/Block";
+import { Button } from "../../components/button/Button";
 
 type IPasswordEditPageProps = {
     imgSrc: string,

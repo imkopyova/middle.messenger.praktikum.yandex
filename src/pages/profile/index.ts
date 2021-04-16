@@ -1,4 +1,4 @@
-import { ProfilePage } from "./ProfilePage.js";
+import { ProfilePage } from "./ProfilePage";
 
 const root = document.querySelector(".root");
 const pageContent = new ProfilePage({

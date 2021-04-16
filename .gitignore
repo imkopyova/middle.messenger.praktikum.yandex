@@ -1,2 +1,4 @@
+.cache
 node_modules/
 static/built/
+dist

@@ -1,5 +1,5 @@
-import { template } from "./template.js";
-import { Block, TChildren } from "../../components/block/Block.js";
+import { template } from "./template";
+import { Block, TChildren } from "../../components/block/Block";
 
 type IChatPageProps = {
     imgSrc: string,
