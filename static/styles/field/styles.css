@@ -9,6 +9,12 @@
     margin-bottom: 8px;
 }
 
+.field__error {
+    visibility: hidden;
+    color: #ff4848;
+    margin-left: 15px;
+}
+
 .field-state-error .field__error {
     visibility: visible;
 }
@@ -23,12 +29,6 @@
 }
 
 .field__label {
-    color: #999999;
-    margin-left: 15px;
-}
-
-.field__error {
-    visibility: hidden;
-    color: #ff4848;
+    color: #999;
     margin-left: 15px;
 }
