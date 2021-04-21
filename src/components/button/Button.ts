@@ -1,5 +1,5 @@
-import { template } from "./template";
 import { Block, TChildren } from "../../components/block/Block";
+import { template } from "./template";
 
 export type IButtonProps = {
     text: string,
@@ -11,7 +11,7 @@ export class Button extends Block<IButtonProps, TChildren> {
         super({...props}, {});
     }
 
-    render () {
+    render (): string {
         return template({
             text: this.props.text,
         });

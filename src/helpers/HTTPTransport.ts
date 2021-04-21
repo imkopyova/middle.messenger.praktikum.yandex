@@ -4,24 +4,24 @@ enum METHOD {
     PUT = "PUT",
     PATCH = "PATCH",
     DELETE = "DELETE"
-};
+}
 
 type Options = {
     method: METHOD,
     headers?: { [key: string]: string },
     timeout?: number,
-    data?: any,
+    data?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 type OptionsWithoutMethod = Omit<Options, "method">;
 
 function queryStringify(data: { [key: string]: string} ) {
-    if (typeof data !== 'object') {
-        throw new Error('Data must be object');
+    if (typeof data !== "object") {
+        throw new Error("Data must be object");
     }
     const values = [];
-    for (let key in data) {
-        values.push(`${key}=${data[key]}`)
+    for (const key in data) {
+        values.push(`${key}=${data[key]}`);
     }
     return "?" + values.join("&");
 }
@@ -71,7 +71,7 @@ export class HTTPTransport {
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data))
+                xhr.send(JSON.stringify(data));
             }
         });
     }

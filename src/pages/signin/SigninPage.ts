@@ -1,12 +1,12 @@
+import { Block, TChildren, TProps } from "../../components/block/Block";
 import { template } from "./template";
-import { Block, TProps, TChildren } from "../../components/block/Block";
 
 export class SigninPage extends Block<TProps, TChildren> {
     constructor() {
         super({}, {});
     }
 
-    render () {
+    render (): string {
         return template({});
     }
 }

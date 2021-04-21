@@ -1,5 +1,5 @@
+import { Block, TChildren, TProps } from "../../components/block/Block";
 import { template } from "./template";
-import { Block, TProps, TChildren } from "../../components/block/Block";
 
 interface IProfilePageProps extends TProps {
     imgSrc: string,
@@ -16,7 +16,7 @@ export class ProfilePage extends Block<IProfilePageProps, TChildren> {
         super({ ...props}, {});
     }
 
-    render () {
+    render (): string {
         return template({
             imgSrc: this.props.imgSrc,
             mail: this.props.mail,
