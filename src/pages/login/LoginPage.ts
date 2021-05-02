@@ -1,12 +1,12 @@
-import { template } from "./template.js";
-import { Block, TProps, TChildren} from "../../components/block/Block.js";
+import { Block, TChildren, TProps} from "../../components/block/Block";
+import { template } from "./template";
 
 export class LoginPage extends Block<TProps, TChildren> {
     constructor() {
         super({}, {});
     }
 
-    render () {
+    render (): string {
         return template({});
     }
 }

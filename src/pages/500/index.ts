@@ -1,4 +1,4 @@
-import { Error500Page } from "./Error500Page.js";
+import { Error500Page } from "./Error500Page";
 const root = document.querySelector(".root");
 const pageContent = new Error500Page({
     errorCode: "500",

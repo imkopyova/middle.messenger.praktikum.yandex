@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./static/built",
+        "outDir": "./dist",
         "allowJs": true,
         "target": "es6",
         "noImplicitAny": true,

@@ -1,4 +1,4 @@
-import { SigninPage } from "./SigninPage.js";
+import { SigninPage } from "./SigninPage";
 
 const root = document.querySelector(".root");
 const pageContent = new SigninPage().getElement();

@@ -1,13 +1,13 @@
-import { template } from "./template.js";
-import { Block } from "../../components/block/Block.js";
-import { Button } from "../../components/button/Button.js";
+import { Block } from "../../components/block/Block";
+import { Button } from "../../components/button/Button";
+import { template } from "./template";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
 }
 
 type IPasswordEditPageChildren = {
-    button: any,
+    button: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEditPageChildren> {
@@ -24,7 +24,7 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
         );
     }
 
-    render () {
+    render (): string {
         return template({
             imgSrc: this.props.imgSrc,
             button: this.children.button.getElement(),

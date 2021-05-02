@@ -1,11 +1,11 @@
-import { EventBus } from "../../helpers/eventBus.js";
-import { parseStringToHtml } from "../../helpers/parseStringToHtml.js";
+import { EventBus } from "../../helpers/eventBus";
+import { parseStringToHtml } from "../../helpers/parseStringToHtml";
 
 export type TProps = {
-    [key: string]: string | number | boolean | Function | undefined,
+    [key: string]: string | number | boolean | Function | undefined, // eslint-disable-line @typescript-eslint/ban-types
     onClick?: (e?: Event) => void,
 };
-export type TChildren = {[key: string]: any};
+export type TChildren = {[key: string]: any}; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export class Block<T extends TProps, C extends TChildren> {
     static EVENTS = {
@@ -32,7 +32,7 @@ export class Block<T extends TProps, C extends TChildren> {
         eventBus.emit(Block.EVENTS.INIT);
     }
   
-    _registerEvents(eventBus: EventBus) {
+    _registerEvents(eventBus: EventBus): void {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -48,39 +48,39 @@ export class Block<T extends TProps, C extends TChildren> {
             deleteProperty() {
                 throw new Error("нет доступа");
             }
-        })
+        });
         return proxyProps;
     }
 
     _addChildrenEventListeners(children: TChildren): void {
-        for (let name in children) {
+        for (const name in children) {
             const childProps = children[name].props;
 
             if (childProps.onClick) {
-                const elementChildren = this._element.querySelectorAll(`[data-child="${name}"]`)
-                for (let child of elementChildren) {
-                    child.addEventListener("click", childProps.onClick)
+                const elementChildren = this._element.querySelectorAll(`[data-child="${name}"]`);
+                for (const child of elementChildren) {
+                    child.addEventListener("click", childProps.onClick);
                 }
             }
         }
     }
   
-    _createResources() {
+    _createResources(): void {
         const tagName = "div";
         this._element = document.createElement(tagName);
     }
   
-    init() {
+    init(): void {
         this._createResources();
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
   
-    _componentDidMount() {
+    _componentDidMount(): void {
         this.componentDidMount();
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
   
-    _componentDidUpdate(oldProps: T, newProps: T) {
+    _componentDidUpdate(oldProps: T, newProps: T): boolean {
 
         if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
             return false;
@@ -91,17 +91,17 @@ export class Block<T extends TProps, C extends TChildren> {
         return response;
     }
   
-    _render() {
+    _render(): void {
         const block = parseStringToHtml(this.render());
         this._element.firstElementChild  ? this._element.replaceChild(block, this._element.firstElementChild ) : this._element.append(block);
         
         if (this.props.onClick) {
-            block.addEventListener("click", this.props.onClick)
+            block.addEventListener("click", this.props.onClick);
         }
         this._addChildrenEventListeners(this.children);
     }
 
-    setProps = (nextProps: T) => {
+    setProps = (nextProps: T): void => {
         if (!nextProps) {
             return;
         }
@@ -110,11 +110,11 @@ export class Block<T extends TProps, C extends TChildren> {
         this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 
-    componentDidMount(): void {}
-    componentDidUpdate(): boolean { return true }
-    render(): string { return "" }
+    componentDidMount(): void {} // eslint-disable-line @typescript-eslint/no-empty-function
+    componentDidUpdate(): boolean { return true; }
+    render(): string { return ""; }
 
-    get element() {
+    get element(): HTMLElement {
         return this._element;
     }
 
@@ -122,11 +122,11 @@ export class Block<T extends TProps, C extends TChildren> {
         return this.element;
     }
   
-    show() {
+    show(): void {
         this.getElement().style.display = "block";
     }
   
-    hide() {
+    hide(): void {
         this.getElement().style.display = "none";
     }
 }

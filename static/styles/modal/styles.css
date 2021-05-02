@@ -21,7 +21,7 @@
 }
 
 .modal__container {
-    background-color: #ffffff;
+    background-color: #fff;
     width: 341px;
     padding: 23px;
     box-sizing: border-box;
@@ -45,9 +45,9 @@
 }
 
 .modal__button-type-warning {
-    color: #ff4848;;
+    color: #ff4848;
 }
 
 .modal__button-type-disabled {
-    color: #999999;
+    color: #999;
 }

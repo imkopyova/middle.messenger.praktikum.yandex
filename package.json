@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "dev": "tsc -w"
+    "tscw": "tsc -w",
+    "start": "parcel static/index.html -p 3000",
+    "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,13 @@
   },
   "homepage": "https://github.com/imkopyova/mf.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "express": "4.17.1"
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
+    "eslint": "7.24.0",
+    "express": "4.17.1",
+    "parcel-bundler": "1.12.5",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0"
   },
   "dependencies": {
     "handlebars": "4.7.6",

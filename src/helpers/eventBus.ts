@@ -7,7 +7,7 @@ export class EventBus {
         this.listeners = {};
     }
   
-    on(event: string, callback: TListener) {
+    on(event: string, callback: TListener): void {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -15,7 +15,7 @@ export class EventBus {
         this.listeners[event].push(callback);
     }
   
-    off(event: string, callback: TListener) {
+    off(event: string, callback: TListener): void {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }
@@ -25,7 +25,7 @@ export class EventBus {
         );
     }
   
-    emit<T>(event: string, ...args: T[]) {
+    emit<T>(event: string, ...args: T[]): void {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
         }

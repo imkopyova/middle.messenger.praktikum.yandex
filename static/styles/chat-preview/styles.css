@@ -1,14 +1,14 @@
 @import "/styles/avatar/styles.css";
 
 .chat-preview {
-    background-color: #ffffff;
+    background-color: #fff;
     width: 100%;
     height: 70px;
     padding: 11px 16px;
     box-sizing: border-box;
 }
 
-.chat-preview:hover{
+.chat-preview:hover {
     background-color: #f8f8f8;
 }
 
@@ -41,11 +41,11 @@
 .chat-preview__title {
     margin: 0;
     margin-bottom: 4px;
-    color: #333333;
+    color: #333;
 }
 
 .chat-preview__text {
-    color: #999999;
+    color: #999;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,7 +66,7 @@
 }
 
 .chat-preview__datetime {
-    color: #999999;
+    color: #999;
 }
 
 .chat-preview__counter {
@@ -74,7 +74,7 @@
     height: 23px;
     border-radius: 100%;
     background-color: #ff4848;
-    color: #ffffff;
+    color: #fff;
     font-weight: 600;
     display: flex;
     justify-content: center;

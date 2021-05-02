@@ -29,7 +29,7 @@
 .circle-button__content {
     width: 24px;
     height: 24px;
-    background-color: #333333;
+    background-color: #333;
     mask-size: contain;
     position: absolute;
     top: 50%;
@@ -38,11 +38,11 @@
 }
 
 .circle-button__content-color-grey {
-    background-color: #999999;
+    background-color: #999;
 }
 
 .circle-button__content-color-white {
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .circle-button__content-type-profile {

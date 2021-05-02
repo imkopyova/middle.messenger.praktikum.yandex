@@ -39,14 +39,14 @@
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-  }
+}
 
 .profile__avatar-input:focus {
-    border-color:#6c63ff;
+    border-color: #6c63ff;
 }
 
 .profile__avatar-input:hover {
-    color: #ffffff;
+    color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -80,7 +80,7 @@
 
 .profile__tooltip {
     visibility: hidden;
-    color: #333333;
+    color: #333;
     position: absolute;
     bottom: -25px;
     left: 50%;
@@ -107,11 +107,11 @@
 }
 
 .profile__param {
-    color: #333333;
+    color: #333;
 }
 
 .profile__value {
-    color: #999999;
+    color: #999;
 }
 
 .profile__base-button {

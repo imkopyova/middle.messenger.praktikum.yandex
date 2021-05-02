@@ -1,5 +1,5 @@
-import { template } from "./template.js";
-import { Block, TChildren } from "../../components/block/Block.js";
+import { Block, TChildren } from "../../components/block/Block";
+import { template } from "./template";
 
 type IError500PageProps = {
     errorCode: string,
@@ -11,7 +11,7 @@ export class Error500Page extends Block<IError500PageProps, TChildren> {
         super({...props}, {});
     }
 
-    render () {
+    render (): string {
         return template({
             errorCode: this.props.errorCode,
             errorText: this.props.errorText,

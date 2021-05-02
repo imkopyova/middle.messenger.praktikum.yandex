@@ -5,16 +5,16 @@ const validations: {[key: string]: RegExp} = {
     tel: /\+7\s\([0-9]{3}\)\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}/i,
     text: /\w+/,
     password: /\w+/,
-}
+};
 
-export function onSubmit(event: Event) {
+export function onSubmit(event: Event): void {
     event.preventDefault();
     const element = <HTMLFormElement>event.target;
-    let formData = new FormData(element);
+    const formData = new FormData(element);
     let hasErrors = false;
 
     const fields = document.querySelectorAll(".field");
-    for (let field of fields) {
+    for (const field of fields) {
         const input = <HTMLInputElement>field.querySelector("input");
         const isValid = validateInput(input, field);
         if (!isValid) {
@@ -23,8 +23,8 @@ export function onSubmit(event: Event) {
     }
 
     if (!hasErrors) {
-        for (let [name, value] of formData) {
-            console.log(`${name}: ${value}`)
+        for (const [name, value] of formData) {
+            console.log(`${name}: ${value}`);
         }
     } 
 }
@@ -61,9 +61,9 @@ function addBlurFocusListener(field: Element) {
     input.addEventListener("blur", e => onBlur(e, field));
 }
 
-for (let form of forms) {
+for (const form of forms) {
     const fields = document.querySelectorAll(".field");
-    for (let field of fields) {
+    for (const field of fields) {
         addBlurFocusListener(field);
     }
 

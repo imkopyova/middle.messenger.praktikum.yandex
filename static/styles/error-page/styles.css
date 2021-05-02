@@ -10,8 +10,7 @@
     font-size: 48px;
     line-height: 65px;
     text-align: center;
-
-    color: #1E1E1E;
+    color: #1e1e1e;
 }
 
 .error-page__text {
@@ -20,9 +19,7 @@
     font-size: 24px;
     line-height: 33px;
     text-align: center;
-    
-    color: #1E1E1E;
-    
+    color: #1e1e1e;
 }
 
 .error-page__link {
@@ -32,6 +29,5 @@
     text-align: center;
     text-decoration: none;
     margin-top: 40px;
-    
-    color: #6C63FF;
+    color: #6c63ff;
 }

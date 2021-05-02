@@ -1,4 +1,4 @@
-import { ChatPage } from "./ChatPage.js";
+import { ChatPage } from "./ChatPage";
 
 const root = document.querySelector(".root");
 const pageContent = new ChatPage({
