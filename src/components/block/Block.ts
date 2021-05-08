@@ -1,4 +1,4 @@
-import { EventBus } from "../../helpers/eventBus";
+import { EventBus } from "../../helpers/EventBus";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml";
 
 export type TProps = {
@@ -7,7 +7,19 @@ export type TProps = {
 };
 export type TChildren = {[key: string]: any}; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-export class Block<T extends TProps, C extends TChildren> {
+export interface IBlock {
+    element: HTMLElement;
+    init: () => void;
+    hide: () => void;
+    show: () => void;
+    render: () => void;
+    componentDidMount: () => void;
+    componentDidUpdate: () => boolean;
+    setProps: (nextProps: unknown) => void;
+    getElement: () => HTMLElement;
+}
+
+export class Block<T extends TProps, C extends TChildren> implements IBlock {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
@@ -20,10 +32,10 @@ export class Block<T extends TProps, C extends TChildren> {
     children: C;
     eventBus: EventBus;
   
-    constructor(props: T, children: C) {
+    constructor(props: T, children: C)  {
         const eventBus = new EventBus();
   
-        this.props = this._makePropsProxy(props);
+        this.props = this._makePropsProxy(props) || {};
         this.children = children || {};
     
         this.eventBus = eventBus;
@@ -41,6 +53,8 @@ export class Block<T extends TProps, C extends TChildren> {
 
     _makePropsProxy(props: T): T {
         const proxyProps = new Proxy(props, {
+            // eslint-disable-next-line
+            // @ts-ignore
             set(target: T, prop: keyof T, value) {
                 target[prop] = value;
                 return true;

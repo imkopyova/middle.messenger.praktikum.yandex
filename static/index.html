@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/auth/styles.css">
+    <link rel="stylesheet" href="/styles/avatar/styles.css">
+    <link rel="stylesheet" href="/styles/base-button/styles.css">
+    <link rel="stylesheet" href="/styles/base-input/styles.css">
+    <link rel="stylesheet" href="/styles/chat/styles.css">
+    <link rel="stylesheet" href="/styles/chat-preview/styles.css">
+    <link rel="stylesheet" href="/styles/circle-button/styles.css">
+    <link rel="stylesheet" href="/styles/error-page/styles.css">
+    <link rel="stylesheet" href="/styles/field/styles.css">
+    <link rel="stylesheet" href="/styles/login/styles.css">
+    <link rel="stylesheet" href="/styles/message/styles.css">
+    <link rel="stylesheet" href="/styles/modal/styles.css">
+    <link rel="stylesheet" href="/styles/options/styles.css">
+    <link rel="stylesheet" href="/styles/page/styles.css">
+    <link rel="stylesheet" href="/styles/profile/styles.css">
     <link rel="stylesheet" href="/styles/typography.css">
     <title>Messenger</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script type="module" src="../src/helpers/childComponentHelper.ts"></script>
+    <script type="module" src="../src/pages/index.ts"></script>
+    <script type="module" src="../src/helpers/submitForm.ts"></script>
 </head>
 <body>
-    <ul>
-        <li class="text-type-normal"><a href="/login.html">Вход</a></li>
-        <li class="text-type-normal"><a href="/signin.html">Регистрация</a></li>
-        <li class="text-type-normal"><a href="/chat.html">Чат</a></li>
-        <li class="text-type-normal"><a href="/profile.html">Профиль</a></li>
-        <li class="text-type-normal"><a href="/profile-edit.html">Изменить профиль</a></li>
-        <li class="text-type-normal"><a href="/password-edit.html">Изменить пароль</a></li>
-        <li class="text-type-normal"><a href="/404.html">404</a></li>
-        <li class="text-type-normal"><a href="/500.html">500</a></li>
-    </ul>
+    <div class="root"></div>
 </body>
 </html>
