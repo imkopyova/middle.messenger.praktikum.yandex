@@ -1,6 +1,8 @@
+import { ROUTES } from "../../router";
+
 export const template = Handlebars.compile(`
     <div class="page-centered">
-        <a href="/chat/" class="page__back circle-button circle-button-hover-color">                        
+        <a href=${ROUTES.CHAT} class="page__back circle-button circle-button-hover-color">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>
             <div class="circle-button__content circle-button__content-type-arrow-left"></div>
         </a>
@@ -13,21 +15,21 @@ export const template = Handlebars.compile(`
             </div>
             <nav class="profile__buttons">
                 <div class="profile__button-container">
-                    <a href="/profile-edit/" class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.PASSWORD_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-profile"></div>
                     </a>
                     <span class="text-small profile__tooltip">Изменить профиль</span>
                 </div>
                 <div class="profile__button-container">
-                    <a href="/password-edit/" class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.PASSWORD_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-lock"></div>
                     </a>
                     <span class="text-small profile__tooltip">Изменить пароль</span>
                 </div>
                 <div class="profile__button-container">
-                    <a href="/login/" class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.LOGIN} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-circle-x"></div>
                     </a>

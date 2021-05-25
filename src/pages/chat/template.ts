@@ -1,3 +1,5 @@
+import { ROUTES } from "../../router";
+
 export const template = Handlebars.compile(`
     <div class="chat__page">
         <aside class="chat__aside aside">
@@ -8,7 +10,7 @@ export const template = Handlebars.compile(`
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-newchat"></div>
                     </button>
-                    <a href="/profile/" class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">
+                    <a href=${ROUTES.PROFILE} class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-profile"></div>
                     </a>
@@ -19,7 +21,7 @@ export const template = Handlebars.compile(`
             </form>
             <ul class="aside__list">
                 <li class="chat-preview">
-                    <a href="/chat/" class="chat-preview__link">
+                    <a href=${ROUTES.CHAT} class="chat-preview__link">
                         <div class="avatar__placeholder chat-preview__avatar"></div>
                         <div class="chat-preview__content">
                             <h2 class="chat-preview__title text-semibold">Киноклуб</h2>
@@ -31,7 +33,7 @@ export const template = Handlebars.compile(`
                     </a>
                 </li>
                 <li class="chat-preview chat-preview-type-active">
-                    <a href="/chat/" class="chat-preview__link">
+                    <a href=${ROUTES.CHAT} class="chat-preview__link">
                         <div class="avatar__placeholder chat-preview__avatar">
                             <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
                         </div>
