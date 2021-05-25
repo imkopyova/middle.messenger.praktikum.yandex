@@ -7,7 +7,9 @@ export const template = Handlebars.compile(`
 
         <main class="profile">
             <div class="avatar__placeholder profile__avatar">
-                <img src={{ imgSrc }} alt="avatar" class="avatar">
+                {{#if imgSrc}}
+                    <img src={{ imgSrc }} alt="avatar" class="avatar">
+                {{/if}}
             </div>
             <nav class="profile__buttons">
                 <div class="profile__button-container">

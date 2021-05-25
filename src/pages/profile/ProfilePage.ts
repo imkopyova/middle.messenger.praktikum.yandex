@@ -1,29 +1,30 @@
 import { Block, TChildren, TProps } from "../../components/block/Block";
 import { template } from "./template";
+import { UserController } from "../../controllers/UserController";
+import { TUser } from "../../domain/entities/TUser";
 
-interface IProfilePageProps extends TProps {
-    imgSrc: string,
-    mail: string,
-    login: string,
-    first_name: string,
-    last_name: string,
-    nickname: string,
-    phone: string,
-}
+type IProfilePageProps = TProps & Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>;
+
+const userController = new UserController();
 
 export class ProfilePage extends Block<IProfilePageProps, TChildren> {
-    constructor(props: IProfilePageProps) {
-        super({ ...props}, {});
+    constructor() {
+        super({}, {});
     }
 
-    render (): string {
+    componentDidMount() {
+        userController.getUserData((user: TUser) => this.setProps(user));
+    }
+
+
+    render(): string {
         return template({
-            imgSrc: this.props.imgSrc,
-            mail: this.props.mail,
+            imgSrc: this.props.avatar,
+            mail: this.props.email,
             login: this.props.login,
             first_name: this.props.first_name,
-            last_name: this.props.last_name,
-            nickname: this.props.nickname,
+            last_name: this.props.second_name,
+            nickname: this.props.display_name,
             phone: this.props.phone,
         });
     }

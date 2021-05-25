@@ -16,7 +16,7 @@ export const template = Handlebars.compile(`
             </label>
         </div>
         <div class="auth__buttons">
-            <button type="submit" class="base-button auth__button">Авторизоваться</button>
+            {{ childComponent this "button" }}
             <a href="/signin/" class="base-button base-button-inverse base-button-type-link auth__button">Нет аккаунта?</a>
         </div>
     </form>

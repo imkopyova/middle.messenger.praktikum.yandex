@@ -6,16 +6,31 @@ enum METHOD {
     DELETE = "DELETE"
 }
 
-type Options = {
+enum CREDENTIALS {
+    omit = "omit",
+    sameOrigin = "same-origin",
+    include = "include"
+}
+
+enum MODE {
+    sameOrigin = "same-origin",
+    noCors = "no-cors",
+    cors = "cors",
+    navigate = "navigate"
+}
+
+type Options<TRequest> = {
     method: METHOD,
     headers?: { [key: string]: string },
     timeout?: number,
-    data?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    credentials?: CREDENTIALS,
+    mode?: MODE,
+    data?: TRequest,
 }
 
-type OptionsWithoutMethod = Omit<Options, "method">;
+type OptionsWithoutMethod<TRequest> = Omit<Options<TRequest>, "method">;
 
-function queryStringify(data: { [key: string]: string} ) {
+function queryStringify<TRequest>(data: TRequest ) {
     if (typeof data !== "object") {
         throw new Error("Data must be object");
     }
@@ -26,26 +41,26 @@ function queryStringify(data: { [key: string]: string} ) {
     return "?" + values.join("&");
 }
 
-export class HTTPTransport {
+export class HTTPTransport<TRequest, TResponse> {
 
-    get = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
+    get = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
         return this.request(url, {...options, method: METHOD.GET});
     };
 
-    put = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
+    put = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
         return this.request(url, {...options, method: METHOD.PUT});
     };
 
-    post = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
+    post = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
         return this.request(url, {...options, method: METHOD.POST});
     }
 
-    delete = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
+    delete = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
         return this.request(url, {...options, method: METHOD.DELETE});
     }
 
-    request(url: string, options: Options = {method: METHOD.GET}): Promise<XMLHttpRequest> {
-        const {method, data, headers = {}, timeout = 5000} = options;
+    request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TResponse> {
+        const {method, data, credentials = CREDENTIALS.include, mode = MODE.cors, headers = {"Content-Type": "application/json"}, timeout = 5000} = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -56,11 +71,13 @@ export class HTTPTransport {
             const xhr = new XMLHttpRequest();
 
             xhr.open(method, (method === METHOD.GET && !!data) ? `${url}${queryStringify(data)}` : url);
+            
+            xhr.withCredentials = credentials === CREDENTIALS.include;
 
             Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
 
             xhr.onload = function() {
-                resolve(xhr);
+                resolve(xhr.response);
             };
 
             xhr.onabort = reject;
