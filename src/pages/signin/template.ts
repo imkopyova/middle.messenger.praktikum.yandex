@@ -23,7 +23,7 @@ export const template = Handlebars.compile(`
                 </label>
                 <label class="field">
                     <span class="text-small field__label">Фамилия</span>
-                    <input name="last_name" type="text" class="field__input base-input">
+                    <input name="second_name" type="text" class="field__input base-input">
                     <span class="text-small field__error"></span>
                 </label>
                 <label class="field">
@@ -43,7 +43,7 @@ export const template = Handlebars.compile(`
                 </label>
             </div>
             <div class="auth__buttons">
-                <button class="base-button auth__button">Зарегестрироваться</button>
+                {{ childComponent this "button" }}
                 <a href=${ROUTES.LOGIN} class="base-button base-button-inverse base-button-type-link auth__button">Войти</a>
             </div>
         </form>
