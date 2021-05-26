@@ -41,25 +41,30 @@ function queryStringify<TRequest>(data: TRequest ) {
     return "?" + values.join("&");
 }
 
+type TPromiseResponse = {
+    response: unknown,
+    status: number
+}
+
 export class HTTPTransport<TRequest, TResponse> {
 
-    get = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
+    get = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
         return this.request(url, {...options, method: METHOD.GET});
     };
 
-    put = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
+    put = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
         return this.request(url, {...options, method: METHOD.PUT});
     };
 
-    post = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
+    post = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
         return this.request(url, {...options, method: METHOD.POST});
     }
 
-    delete = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TResponse> => {
+    delete = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
         return this.request(url, {...options, method: METHOD.DELETE});
     }
 
-    request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TResponse> {
+    request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TPromiseResponse> {
         const {method, data, credentials = CREDENTIALS.include, mode = MODE.cors, headers = {"Content-Type": "application/json"}, timeout = 5000} = options;
 
         return new Promise((resolve, reject) => {
@@ -77,7 +82,10 @@ export class HTTPTransport<TRequest, TResponse> {
             Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
 
             xhr.onload = function() {
-                resolve(xhr.response);
+                resolve({
+                    response: xhr.response,
+                    status: xhr.status
+                });
             };
 
             xhr.onabort = reject;

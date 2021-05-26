@@ -9,10 +9,11 @@ export class UserController {
         userStore.on(STORE_EVENTS.UPDATE, callback);
 
         try {
-            const userData = await authAPI.getUser();
+            const { response } = await authAPI.getUser();
+            const userData = JSON.parse(response as string);
             userStore.update(userData);
         } catch (error) {
-            console.warn(error)
+            console.log(error)
         }
     }
 }

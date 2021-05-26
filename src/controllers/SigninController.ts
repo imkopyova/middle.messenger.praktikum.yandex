@@ -1,17 +1,20 @@
 import { AuthAPI } from "../api/auth-api";
 import { TSigninData } from "../domain/value-objects/TSigninData";
-import { router } from "../router";
+import { router, ROUTES } from "../router";
 
 const authAPI = new AuthAPI();
 
 export class SigninController {
     public async signin(data: TSigninData) {
         try {
-            await authAPI.login(data);
+            const { status } = await authAPI.login(data);
+            if (status === 200) {
+                router.go(ROUTES.CHAT);
+            }
+            
         } catch (error) {
-            console.warn(error)
+            console.log(error);
         }
-        router.go("/profile/");
     }
 
 }

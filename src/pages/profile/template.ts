@@ -29,11 +29,7 @@ export const template = Handlebars.compile(`
                     <span class="text-small profile__tooltip">Изменить пароль</span>
                 </div>
                 <div class="profile__button-container">
-                    <a href=${ROUTES.LOGIN} class="profile__button circle-button circle-button-hover-scale">                        
-                        <div class="circle-button__background circle-button__background-color-grey"></div>
-                        <div class="circle-button__content circle-button__content-type-circle-x"></div>
-                    </a>
-                    <span class="text-small profile__tooltip">Выйти</span>
+                    {{ childComponent this "buttonLogout" }}
                 </div>
             </nav>
             <ul class="profile__data-list">

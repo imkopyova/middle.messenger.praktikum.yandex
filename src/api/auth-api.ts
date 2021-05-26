@@ -9,7 +9,11 @@ export class AuthAPI extends BaseAPI {
     public login(data: TSigninData) {
         return AuthAPIInstance.post(`${AUTH_URL}/signin`, { data: data });
     }
-    public async getUser() {
-        return JSON.parse(await AuthAPIInstance.get(`${AUTH_URL}/user`) as string);
+    public getUser() {
+        return AuthAPIInstance.get(`${AUTH_URL}/user`);
+    }
+
+    public logout() {
+        return AuthAPIInstance.post(`${AUTH_URL}/logout`);
     }
 }
