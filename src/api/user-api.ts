@@ -2,6 +2,7 @@ import { HTTPTransport } from "../helpers/HTTPTransport";
 import { BaseAPI, API_URL } from "./base-api";
 import { TUser } from "../domain/entities/TUser";
 import { TUserEditData } from "../domain/value-objects/TUserEditData";
+import { TPasswordData } from "../domain/value-objects/TPasswordData";
 
 const userAPIInstance = new HTTPTransport<unknown, TUser>();
 const USER_URL = `${API_URL}/user`;
@@ -17,5 +18,9 @@ export class UserAPI extends BaseAPI {
 
     public putAvatar(data: unknown) {
         return userAPIInstance.put(`${USER_URL}/profile/avatar`, { data: data });
+    }
+
+    public putPassword(data: TPasswordData) {
+        return userAPIInstance.put(`${USER_URL}/password`, { data: data });
     }
 }

@@ -1,6 +1,8 @@
 import { Block } from "../../components/block/Block";
 import { Button } from "../../components/button/Button";
 import { template } from "./template";
+import { onSubmit } from "../../helpers/submitForm";
+import { EditProfileController } from "../../controllers/EditProfileController";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
@@ -10,6 +12,8 @@ type IPasswordEditPageChildren = {
     button: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
+const editProfileController = new EditProfileController();
+
 export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEditPageChildren> {
     constructor(props: IPasswordEditPageProps) {
         super(
@@ -18,8 +22,11 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
                 button: 
                     new Button({
                         text: "Сохранить",
-                        onClick: () => console.log("event from child component")}
-                    )
+                        onClick: (e) => {
+                            const data = onSubmit(e);
+                            editProfileController.editPassword(data as any);
+                        }
+                    })
             }
         );
     }

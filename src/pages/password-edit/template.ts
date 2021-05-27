@@ -13,12 +13,12 @@ export const template = Handlebars.compile(`
         <form name="password-edit" method="POST" class="profile__form">
             <label class="field">
                 <span class="text-small field__label">Старый пароль</span>
-                <input name="password_old" type="password" class="field__input base-input">
+                <input name="oldPassword" type="password" class="field__input base-input">
                 <span class="text-small field__error"></span>
             </label>
             <label class="field">
                 <span class="text-small field__label">Новый пароль</span>
-                <input name="password_new" type="password" class="field__input base-input">
+                <input name="newPassword" type="password" class="field__input base-input">
                 <span class="text-small field__error"></span>
             </label>
             <label class="field">
