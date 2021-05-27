@@ -2,7 +2,7 @@ import { ROUTES } from "../../router";
 
 export const template = Handlebars.compile(`
 <div class="page-centered">
-    <a href=${ROUTES.CHAT} class="page__back circle-button circle-button-hover-color">                        
+    <a href=${ROUTES.PROFILE} class="page__back circle-button circle-button-hover-color">                        
         <div class="circle-button__background circle-button__background-color-grey"></div>
         <div class="circle-button__content circle-button__content-type-arrow-left"></div>
     </a>
@@ -12,7 +12,7 @@ export const template = Handlebars.compile(`
         </div>
         <form name="password-edit" method="POST" class="profile__form">
             <label class="field">
-                <span class="text-small field__label">Старый ароль</span>
+                <span class="text-small field__label">Старый пароль</span>
                 <input name="password_old" type="password" class="field__input base-input">
                 <span class="text-small field__error"></span>
             </label>

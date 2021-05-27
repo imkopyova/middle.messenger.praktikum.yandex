@@ -2,7 +2,7 @@ const forms = document.forms;
 
 const validations: {[key: string]: RegExp} = {
     email: /^\S+@\S+$/i,
-    tel: /\+7\s\([0-9]{3}\)\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}/i, //+7 (123) 456 78 90
+    tel: /\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}/i,
     text: /\w+/,
     password: /\w+/,
 };
@@ -23,7 +23,6 @@ export function onSubmit(event: Event): unknown {
         for (const [name, value] of formData) {
             dataObj[name] = value;
         }
-        console.log(dataObj)
         return dataObj;
     }
 }

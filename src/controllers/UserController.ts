@@ -1,8 +1,8 @@
 import { AuthAPI } from "../api/auth-api";
-import { Store, STORE_EVENTS } from "../helpers/Store";
+import { STORE_EVENTS } from "../helpers/Store";
+import { userStore } from "../stores/userStore";
 
 const authAPI = new AuthAPI();
-export const userStore = new Store();
 
 export class UserController {
     public async getUserData(callback: (storeData: unknown) => void) {

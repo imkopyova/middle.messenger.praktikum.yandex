@@ -15,7 +15,7 @@ export const template = Handlebars.compile(`
             </div>
             <nav class="profile__buttons">
                 <div class="profile__button-container">
-                    <a href=${ROUTES.PASSWORD_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.PROFILE_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-profile"></div>
                     </a>
