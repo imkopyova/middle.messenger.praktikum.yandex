@@ -3,6 +3,7 @@ import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { onSubmit } from "../../helpers/submitForm";
 import { template } from "./template";
+import { AuthController } from "../../controllers/AuthController";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
@@ -12,6 +13,7 @@ type IPasswordEditPageChildren = {
     button: any, // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
+const authController = new AuthController();
 const editProfileController = new EditProfileController();
 
 export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEditPageChildren> {
@@ -29,6 +31,10 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
                     })
             }
         );
+    }
+
+    componentDidMount() {
+        authController.auth();
     }
 
     render (): string {

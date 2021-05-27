@@ -4,9 +4,11 @@ import { UserController } from "../../controllers/UserController";
 import { LogoutController } from "../../controllers/LogoutController";
 import { TUser } from "../../domain/entities/TUser";
 import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
+import { AuthController } from "../../controllers/AuthController";
 
 type IProfilePageProps = TProps & Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>;
 
+const authController = new AuthController();
 const userController = new UserController();
 const logoutController = new LogoutController();
 
@@ -24,6 +26,7 @@ export class ProfilePage extends Block<IProfilePageProps, TChildren> {
     }
 
     componentDidMount() {
+        authController.auth();
         userController.getUserData((user: TUser) => this.setProps(user));
     }
 

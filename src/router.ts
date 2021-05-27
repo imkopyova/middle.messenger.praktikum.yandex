@@ -5,7 +5,7 @@ export enum ROUTES {
     SIGNIN = "/signin",
     PROFILE_EDIT = "/profile-edit",
     PASSWORD_EDIT = "/password-edit",
-    CHAT = "/chat",
+    CHAT = "/",
     PROFILE = "/profile",
     SERVER_ERROR = "/500",
     NOT_FOUND = "/404",

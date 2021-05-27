@@ -19,6 +19,10 @@ export class AuthAPI extends BaseAPI {
         return AuthAPIInstance.get(`${AUTH_URL}/user`);
     }
 
+    public auth() {
+        return AuthAPIInstance.get(`${AUTH_URL}/user`);
+    }
+
     public logout() {
         return AuthAPIInstance.post(`${AUTH_URL}/logout`);
     }

@@ -9,22 +9,12 @@ import { router, ROUTES } from "./router";
 import { SigninPage } from "./pages/signin/SigninPage";
 
 router
-    .use(ROUTES.LOGIN, new LoginPage())
-    .use(ROUTES.SIGNIN, new SigninPage())
-    .use(ROUTES.PROFILE_EDIT, new ProfileEditPage())
-    .use(ROUTES.PASSWORD_EDIT, new PasswordEditPage({
-        imgSrc: "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60"
-    }))
-    .use(ROUTES.CHAT, new ChatPage({
-        imgSrc: "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60"
-    }))
-    .use(ROUTES.PROFILE, new ProfilePage())
-    .use(ROUTES.SERVER_ERROR, new Error500Page({
-        errorCode: "500",
-        errorText: "Мы уже фиксим",
-    }))
-    .use(ROUTES.NOT_FOUND, new Error404Page({
-        errorCode: "404",
-        errorText: "Не туда попали"
-    }))
+    .use(ROUTES.CHAT, ChatPage)
+    .use(ROUTES.LOGIN, LoginPage)
+    .use(ROUTES.SIGNIN, SigninPage)
+    .use(ROUTES.PROFILE_EDIT, ProfileEditPage)
+    .use(ROUTES.PASSWORD_EDIT, PasswordEditPage)
+    .use(ROUTES.PROFILE, ProfilePage)
+    .use(ROUTES.SERVER_ERROR, Error500Page)
+    .use(ROUTES.NOT_FOUND, Error404Page)
     .start();

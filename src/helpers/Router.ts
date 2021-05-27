@@ -1,4 +1,4 @@
-import { IBlock } from "../components/block/Block";
+import { IBlock, Block } from "../components/block/Block";
 
 function render(query: string, block: IBlock) {
     const root = document.querySelector(query);
@@ -12,11 +12,11 @@ export type TRouteProps = {
 
 class Route {
     _pathname: string;
-    _blockClass: IBlock;
+    _blockClass: any;
     _block: IBlock | null;
     _props: TRouteProps;
 
-    constructor(pathname: string, view: IBlock, props: TRouteProps) {
+    constructor(pathname: string, view: any, props: TRouteProps) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
@@ -42,7 +42,7 @@ class Route {
 
     render() {
         if (!this._block) {
-            this._block = this._blockClass;
+            this._block = new this._blockClass();
             this._block && render(this._props.rootQuery, this._block);
             return;
         }
@@ -72,7 +72,7 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname: string, block: IBlock): Router {
+    use(pathname: string, block: any): Router {
         const route = new Route(pathname, block, {rootQuery: this._rootQuery});
         this.routes.push(route);
         return this;

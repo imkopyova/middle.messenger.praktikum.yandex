@@ -5,7 +5,9 @@ import { UserController } from "../../controllers/UserController";
 import { onSubmit } from "../../helpers/submitForm";
 import { Button } from "../../components/button/Button";
 import { TUser } from "../../domain/entities/TUser";
+import { AuthController } from "../../controllers/AuthController";
 
+const authController = new AuthController();
 const editProfileController = new EditProfileController();
 const userController = new UserController();
 
@@ -30,6 +32,7 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
     }
 
     componentDidMount() {
+        authController.auth();
         userController.getUserData((user: TUser) => this.setProps(user));
     }
 

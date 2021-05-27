@@ -3,7 +3,9 @@ import { Button } from "../../components/button/Button";
 import { template } from "./template";
 import { SigninController } from "../../controllers/SigninController";
 import { onSubmit } from "../../helpers/submitForm";
+import { AuthController } from "../../controllers/AuthController";
 
+const authController = new AuthController();
 const signinController = new SigninController();
 export class LoginPage extends Block<TProps, TChildren> {
     constructor() {
@@ -19,8 +21,11 @@ export class LoginPage extends Block<TProps, TChildren> {
                         }
                     })
             }
-        );
-        
+        );  
+    }
+
+    componentDidMount() {
+        authController.redirectToChat();
     }
 
     render (): string {

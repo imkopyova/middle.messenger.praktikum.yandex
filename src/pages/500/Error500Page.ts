@@ -1,14 +1,21 @@
 import { Block, TChildren } from "../../components/block/Block";
 import { template } from "./template";
+import { AuthController } from "../../controllers/AuthController";
 
 type IError500PageProps = {
     errorCode: string,
     errorText: string,
 }
 
+const authController = new AuthController();
+
 export class Error500Page extends Block<IError500PageProps, TChildren> {
     constructor(props: IError500PageProps) {
         super({...props}, {});
+    }
+
+    componentDidMount() {
+        authController.auth();
     }
 
     render (): string {

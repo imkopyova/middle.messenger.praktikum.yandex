@@ -3,8 +3,9 @@ import { template } from "./template";
 import { Button } from "../../components/button/Button";
 import { onSubmit } from "../../helpers/submitForm";
 import { SignupController } from "../../controllers/SignupController";
+import { AuthController } from "../../controllers/AuthController";
 
-
+const authController = new AuthController();
 const signupController = new SignupController();
 export class SigninPage extends Block<TProps, TChildren> {
     constructor() {
@@ -19,6 +20,10 @@ export class SigninPage extends Block<TProps, TChildren> {
                     }
                 })
         });
+    }
+
+    componentDidMount() {
+        authController.redirectToChat();
     }
 
     render (): string {

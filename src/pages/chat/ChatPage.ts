@@ -2,6 +2,7 @@ import { Block, TChildren, TProps } from "../../components/block/Block";
 import { template } from "./template";
 import { TChat } from "../../domain/entities/TChat";
 import { ChatController } from "../../controllers/ChatController";
+import { AuthController } from "../../controllers/AuthController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
 import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
 
@@ -10,6 +11,7 @@ interface IChatPageProps extends TProps {
 }
 
 const chatController = new ChatController();
+const authController = new AuthController();
 
 export class ChatPage extends Block<IChatPageProps, TChildren> {
     constructor() {
@@ -41,6 +43,7 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
     }
 
     componentDidMount() {
+        authController.auth();
         chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({chats: chats}));
         chatController.getChats();
     }
