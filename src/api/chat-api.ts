@@ -1,10 +1,15 @@
 import { HTTPTransport } from "../helpers/HTTPTransport";
-import { BaseAPI } from "./base-api";
+import { BaseAPI, API_URL } from "./base-api";
 
 const chatAPIInstance = new HTTPTransport();
+const CHAT_URL = `${API_URL}/chats`;
 
 export class ChatAPI extends BaseAPI {
-    request() {
-        return chatAPIInstance.get("api/v1/chats/", {data : {title: "string"}});
+    getChats() {
+        return chatAPIInstance.get(`${CHAT_URL}`);
+    }
+
+    createChat(title: string) {
+        return chatAPIInstance.post(`${CHAT_URL}`, {data : { title: title }});
     }
 }

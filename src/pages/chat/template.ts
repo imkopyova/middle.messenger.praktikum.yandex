@@ -6,10 +6,7 @@ export const template = Handlebars.compile(`
             <header class="aside__header">
                 <h3 class="heading-bid aside__title">Чаты</h3>
                 <div class="aside-buttons">
-                    <button type="button" class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">                        
-                        <div class="circle-button__background circle-button__background-color-grey"></div>
-                        <div class="circle-button__content circle-button__content-type-newchat"></div>
-                    </button>
+                    {{ childComponent this "buttonCreateChat" }}
                     <a href=${ROUTES.PROFILE} class="chat__button chat__button-spacing-with-space circle-button circle-button-hover-scale">
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-profile"></div>
@@ -20,33 +17,25 @@ export const template = Handlebars.compile(`
                 <input name="search"  type="text" placeholder="Поиск" class="base-input text-normal" />
             </form>
             <ul class="aside__list">
-                <li class="chat-preview">
-                    <a href=${ROUTES.CHAT} class="chat-preview__link">
-                        <div class="avatar__placeholder chat-preview__avatar"></div>
-                        <div class="chat-preview__content">
-                            <h2 class="chat-preview__title text-semibold">Киноклуб</h2>
-                            <p class="chat-preview__text text-normal">Вы: Друзья, у меня для вас особенная новость!</p>
-                        </div>
-                        <div class="chat-preview__indicators">
-                            <time class="chat-preview__datetime text-small">11:49</time>
-                        </div>
-                    </a>
-                </li>
-                <li class="chat-preview chat-preview-type-active">
-                    <a href=${ROUTES.CHAT} class="chat-preview__link">
-                        <div class="avatar__placeholder chat-preview__avatar">
-                            <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
-                        </div>
-                        <div class="chat-preview__content">
-                            <h2 class="chat-preview__title text-semibold">Вася</h2>
-                            <p class="chat-preview__text text-normal">Супер!</p>
-                        </div>
-                        <div class="chat-preview__indicators">
-                            <time class="chat-preview__datetime text-small">11 окт</time>
-                            <mark class="chat-preview__counter text-small">1</mark>
-                        </div>
-                    </a>
-                </li>
+                {{#each chats}}
+                    <li class="chat-preview">
+                        <a href=${ROUTES.CHAT} class="chat-preview__link">
+                            <div class="avatar__placeholder chat-preview__avatar"></div>
+                            <div class="chat-preview__content">
+                                <h2 class="chat-preview__title text-semibold">{{ this.title }}</h2>
+                                {{#if this.last_message}}
+                                    <p class="chat-preview__text text-normal">{{ this.user.first_name }}: {{ this.content }}</p>
+                                {{/if}}
+                            </div>
+                            <div class="chat-preview__indicators">
+                                <time class="chat-preview__datetime text-small">{{ this.last_message.time }}</time>
+                                {{#if this.unread_count}}
+                                    <mark class="chat-preview__counter text-small">{{ this.unread_count }}</mark>
+                                {{/if}}
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
             </ul>        
         </aside>
         <main class="chat__main">

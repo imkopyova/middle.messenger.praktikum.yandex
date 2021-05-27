@@ -2,7 +2,7 @@ import { EventBus } from "../../helpers/EventBus";
 import { parseStringToHtml } from "../../helpers/parseStringToHtml";
 
 export type TProps = {
-    [key: string]: string | number | boolean | Function | undefined, // eslint-disable-line @typescript-eslint/ban-types
+    [key: string]: string | number | boolean | Function | undefined | Array<Object>, // eslint-disable-line @typescript-eslint/ban-types
     onClick?: (e?: Event) => void,
 };
 export type TChildren = {[key: string]: any}; // eslint-disable-line @typescript-eslint/no-explicit-any
