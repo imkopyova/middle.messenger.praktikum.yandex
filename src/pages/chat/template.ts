@@ -52,30 +52,8 @@ export const template = Handlebars.compile(`
                         <div class="circle-button__content circle-button__content-type-options"></div>
                     </button>
                     <ul class="options__list  options__list-visibility-visible">
-                        <li class="options__item">
-                            <button type="button" class="options__button">
-                                <div class="options__item-icon options__item-icon-type-circle-plus"></div>
-                                <span class="text-caption options__item-text">Добавить пользователя</span>
-                            </button>
-                        </li>
-                        <li class="options__item">
-                            <button type="button" class="options__button">
-                                <div class="options__item-icon options__item-icon-type-circle-minus"></div>
-                                <span class="text-caption options__item-text">Удалить пользователя</span>
-                            </button>
-                        </li>
-                        <li class="options__item">
-                            <button type="button" class="options__button">
-                                <div class="options__item-icon options__item-icon-type-sticker"></div>
-                                <span class="text-caption options__item-text">Измененить аватара чата</span>
-                            </button>
-                        </li>
-                        <li class="options__item">
-                            <button type="button" class="options__button options__button-color-warning">
-                                <div class="options__item-icon options__item-icon-type-circle-x"></div>
-                                <span class="text-caption options__item-text">Удалить чат</span>
-                            </button>
-                        </li>
+                        {{ childComponent this "menuButtonAddUser" }}
+                        {{ childComponent this "menuButtonDeleteUser" }}
                     </ul>
                 </div>
             </header>

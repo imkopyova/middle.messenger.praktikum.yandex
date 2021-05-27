@@ -29,4 +29,26 @@ export class ChatController {
             console.log(error)
         }
     }
+
+    public async addUsersToChat() {
+        try {
+            chatAPI.addUsersToChat({
+                users: [1],
+                chatId : 676
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    public async deleteUsersFromChat() {
+        try {
+            chatAPI.deleteUserFromChat({
+                users: [1],
+                chatId : 676
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

@@ -3,6 +3,7 @@ import { template } from "./template";
 import { TChat } from "../../domain/entities/TChat";
 import { ChatController } from "../../controllers/ChatController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
+import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
 
 interface IChatPageProps extends TProps {
     chats?: TChat[],
@@ -16,8 +17,24 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
             buttonCreateChat: 
                 new ButtonCreateChat({
                     onClick: (e) => {
-                        console.log("ButtonCreateChat", e);
                         chatController.createChat();
+                    }
+                }),
+            menuButtonAddUser:
+                new MenuButton({
+                    iconClassName: MenuButtonTypes.Plus,
+                    text: "Добавить пользователя",
+                    onClick: (e) => {
+                        chatController.addUsersToChat();
+                    }
+                }),
+            menuButtonDeleteUser:
+                new MenuButton({
+                    iconClassName: MenuButtonTypes.Minus,
+                    text: "Удалить пользователя",
+                    isWarning: true,
+                    onClick: (e) => {
+                        chatController.deleteUsersFromChat();
                     }
                 })
         });
@@ -32,6 +49,8 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
         return template({
             chats: this.props.chats,
             buttonCreateChat: this.children.buttonCreateChat.getElement(),
+            menuButtonAddUser: this.children.menuButtonAddUser.getElement(),
+            menuButtonDeleteUser: this.children.menuButtonDeleteUser.getElement(),
         });
     }
 }

@@ -1,8 +1,8 @@
 import { Block } from "../../components/block/Block";
 import { Button } from "../../components/button/Button";
-import { template } from "./template";
-import { onSubmit } from "../../helpers/submitForm";
 import { EditProfileController } from "../../controllers/EditProfileController";
+import { onSubmit } from "../../helpers/submitForm";
+import { template } from "./template";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
