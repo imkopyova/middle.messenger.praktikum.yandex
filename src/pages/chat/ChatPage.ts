@@ -7,6 +7,7 @@ import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCrea
 import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
 
 interface IChatPageProps extends TProps {
+    chat?: TChat,
     chats?: TChat[],
 }
 
@@ -44,13 +45,17 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
 
     componentDidMount() {
         authController.auth();
-        chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({chats: chats}));
+        chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({...this.props, chats: chats}));
+        chatController.subscribeChatUpdate((chat: TChat) => this.setProps({...this.props, chat: chat}));
         chatController.getChats();
+        chatController.getChatData();
     }
 
     render(): string {
         return template({
             chats: this.props.chats,
+            chatTitle: this.props.chat?.title,
+            chatAvatar: this.props.chat?.avatar,
             buttonCreateChat: this.children.buttonCreateChat.getElement(),
             menuButtonAddUser: this.children.menuButtonAddUser.getElement(),
             menuButtonDeleteUser: this.children.menuButtonDeleteUser.getElement(),

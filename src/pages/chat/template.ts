@@ -19,7 +19,7 @@ export const template = Handlebars.compile(`
             <ul class="aside__list">
                 {{#each chats}}
                     <li class="chat-preview">
-                        <a href=${ROUTES.CHAT} class="chat-preview__link">
+                        <a href="${ROUTES.CHAT}{{ this.id }}" class="chat-preview__link">
                             <div class="avatar__placeholder chat-preview__avatar"></div>
                             <div class="chat-preview__content">
                                 <h2 class="chat-preview__title text-semibold">{{ this.title }}</h2>
@@ -42,9 +42,11 @@ export const template = Handlebars.compile(`
             <header class="chat__header">
                 <div class="chat__info">
                     <div class="avatar__placeholder chat__avatar">
-                        <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0fHRvd0paRnNrcEdnfHxlbnwwfHx8&auto=format&fit=crop&w=500&q=60" alt="avatar" class="avatar">
+                        {{#if chatAvatar }}
+                            <img src={{ chatAvatar }} alt="avatar" class="avatar">
+                        {{/if}}
                     </div>
-                    <h1 class="heading-normal chat__name">Вася</h1>
+                    <h1 class="heading-normal chat__name">{{ chatTitle }}</h1>
                 </div>
                 <div class="options__container">
                     <button type="button" type="button" class="chat__button circle-button circle-button-hover-scale">

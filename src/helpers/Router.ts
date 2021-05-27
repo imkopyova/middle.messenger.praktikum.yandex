@@ -1,4 +1,4 @@
-import { IBlock, Block } from "../components/block/Block";
+import { IBlock } from "../components/block/Block";
 
 function render(query: string, block: IBlock) {
     const root = document.querySelector(query);
@@ -15,6 +15,7 @@ class Route {
     _blockClass: any;
     _block: IBlock | null;
     _props: TRouteProps;
+    _lastPathname: string;
 
     constructor(pathname: string, view: any, props: TRouteProps) {
         this._pathname = pathname;
@@ -27,6 +28,7 @@ class Route {
         if (this.match(pathname)) {
             this._pathname = pathname;
             this.render();
+            this._lastPathname = pathname;
         }
     }
 
@@ -37,7 +39,8 @@ class Route {
     }
 
     match(pathname: string) {
-        return pathname === this._pathname;
+        const isMatch = pathname.match(this._pathname);
+        return !!isMatch; 
     }
 
     render() {
@@ -48,6 +51,10 @@ class Route {
         }
 
         this._block.show();
+    }
+
+    getPathname() {
+        return this._lastPathname;
     }
 }
 
@@ -114,5 +121,9 @@ export class Router {
 
     getRoute(pathname: string): Route | null {
         return this.routes.find(route => route.match(pathname)) || null;
+    }
+
+    getCurrentRoute(): string | null {
+        return document.URL;
     }
 }
