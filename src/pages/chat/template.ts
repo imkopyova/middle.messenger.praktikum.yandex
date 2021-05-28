@@ -62,18 +62,9 @@ export const template = Handlebars.compile(`
             </header>
             <div class="chat__messages">
                 <div class="message__day">
-                    {{#each messages}}
-                        {{this}}
-                    {{/each}}
+                    {{childComponentArray this "messages"}}
                     <div class="message message-author-they message-content-image">
                         <img src="https://images.unsplash.com/photo-1605867700633-c410783f70f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="photo" class="message__image" />
-                        <time class="message__time text-small">11:49</time>
-                    </div>
-                    <div class="message message-author-they">
-                        <p class="message__text text-normal">
-                            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-                            Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали.
-                        </p>
                         <time class="message__time text-small">11:49</time>
                     </div>
                     <p class="text-semibold message__date">11 октября</p> 

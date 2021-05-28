@@ -80,7 +80,6 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
             chats: this.props.chats,
             chatTitle: this.props.chat?.title,
             chatAvatar: this.props.chat?.avatar,
-            // TO DO refactor: не отображается правильно
             messages: this.props.messages ? this.props.messages.map(message => new Message({
                 text: message.content,
                 time: message.time,
