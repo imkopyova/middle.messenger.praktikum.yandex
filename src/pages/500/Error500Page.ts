@@ -1,6 +1,6 @@
 import { Block, TChildren } from "../../components/block/Block";
-import { template } from "./template";
 import { AuthController } from "../../controllers/AuthController";
+import { template } from "./template";
 
 type IError500PageProps = {
     errorCode: string,

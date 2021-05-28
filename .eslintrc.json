@@ -11,8 +11,7 @@
     },
     "rules": {
         "quotes": ["error", "double"],
-        "semi": ["error", "always"],
-        "sort-imports": ["error", { "ignoreCase": true }]
+        "semi": ["error", "always"]
     },
     "overrides": [
         {

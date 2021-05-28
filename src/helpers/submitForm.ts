@@ -16,7 +16,7 @@ export function onSubmit(event: Event): unknown {
         return;
     }
     const formData = new FormData(form);
-    let hasErrors = document.querySelectorAll(".field-state-error").length > 0;
+    const hasErrors = document.querySelectorAll(".field-state-error").length > 0;
 
     if (!hasErrors) {
         const dataObj: any = {};

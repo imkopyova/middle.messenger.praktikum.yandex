@@ -1,10 +1,10 @@
 import { Block, TChildren, TProps } from "../../components/block/Block";
-import { template } from "./template";
-import { UserController } from "../../controllers/UserController";
+import { AuthController } from "../../controllers/AuthController";
+import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
 import { LogoutController } from "../../controllers/LogoutController";
 import { TUser } from "../../domain/entities/TUser";
-import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
-import { AuthController } from "../../controllers/AuthController";
+import { UserController } from "../../controllers/UserController";
+import { template } from "./template";
 
 type IProfilePageProps = TProps & Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>;
 

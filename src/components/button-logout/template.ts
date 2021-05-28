@@ -6,4 +6,4 @@ export const template = Handlebars.compile(`
         </button>
         <span class="text-small profile__tooltip">Выйти</span>
     </div>
-`)
+`);

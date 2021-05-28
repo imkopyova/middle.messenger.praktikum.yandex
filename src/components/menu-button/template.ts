@@ -16,4 +16,4 @@ export const template = Handlebars.compile(`
             <span class="text-caption options__item-text">{{ text }}</span>
         </button>
     </li>
-`)
+`);

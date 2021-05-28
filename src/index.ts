@@ -1,3 +1,4 @@
+import { router, ROUTES } from "./router";
 import { ChatPage } from "./pages/chat/ChatPage";
 import { ChatsPage } from "./pages/chats/ChatsPage";
 import { Error404Page } from "./pages/404/Error404Page";
@@ -6,7 +7,6 @@ import { LoginPage } from "./pages/login/LoginPage";
 import { PasswordEditPage } from "./pages/password-edit/PasswordEditPage";
 import { ProfileEditPage } from "./pages/profile-edit/ProfileEditPage";
 import { ProfilePage } from "./pages/profile/ProfilePage";
-import { router, ROUTES } from "./router";
 import { SigninPage } from "./pages/signin/SigninPage";
 
 router

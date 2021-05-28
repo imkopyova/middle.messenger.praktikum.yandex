@@ -12,7 +12,7 @@ export class UserController {
             const userData = JSON.parse(response as string);
             userStore.update(userData);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 }

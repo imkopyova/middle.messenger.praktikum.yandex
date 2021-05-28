@@ -1,6 +1,6 @@
+import { router, ROUTES } from "../router";
 import { AuthAPI } from "../api/auth-api";
 import { TSigninData } from "../domain/value-objects/TSigninData";
-import { router, ROUTES } from "../router";
 import { userStore } from "../stores/userStore";
 
 const authAPI = new AuthAPI();

@@ -1,9 +1,9 @@
 import { Block, TChildren, TProps} from "../../components/block/Block";
+import { AuthController } from "../../controllers/AuthController";
 import { Button } from "../../components/button/Button";
-import { template } from "./template";
 import { SigninController } from "../../controllers/SigninController";
 import { onSubmit } from "../../helpers/submitForm";
-import { AuthController } from "../../controllers/AuthController";
+import { template } from "./template";
 
 const authController = new AuthController();
 const signinController = new SigninController();

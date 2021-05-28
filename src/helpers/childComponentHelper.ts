@@ -6,7 +6,7 @@ Handlebars.registerHelper("childComponent", function (object, propertyName) {
 
 Handlebars.registerHelper("childComponentArray", function (object, propertyName) {
     const stubs = [];
-    for (let stub of object[propertyName]) {
+    for (const stub of object[propertyName]) {
         stub.setAttribute("data-child", propertyName);
         stubs.push(stub.innerHTML);
     }

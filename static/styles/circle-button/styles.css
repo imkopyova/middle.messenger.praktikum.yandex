@@ -86,7 +86,7 @@
 }
 
 .circle-button__content-type-circle-x {
-    mask-box-image: url("/styles/icons/circle-x.svg");
+    mask-image: url("/styles/icons/circle-x.svg");
     -webkit-mask-box-image: url("/styles/icons/circle-x.svg");
 }
 

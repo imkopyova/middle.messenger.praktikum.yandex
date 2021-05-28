@@ -1,13 +1,11 @@
-import { ChatAPI } from "../api/chat-api";
-import { AuthAPI } from "../api/auth-api";
-import { WSAPI } from "../api/ws-api";
-import { STORE_EVENTS } from "../helpers/Store";
-import { chatsStore } from "../stores/chatsStore";
-import { chatDataStore } from "../stores/chatDataStore";
-import { userStore } from "../stores/userStore";
 import { router, ROUTES } from "../router";
+import { AuthAPI } from "../api/auth-api";
+import { ChatAPI } from "../api/chat-api";
+import { STORE_EVENTS } from "../helpers/Store";
 import { TChat } from "../domain/entities/TChat";
-import { UserController } from "./UserController";
+import { WSAPI } from "../api/ws-api";
+import { chatDataStore } from "../stores/chatDataStore";
+import { chatsStore } from "../stores/chatsStore";
 
 const chatAPI = new ChatAPI();
 const authAPI = new AuthAPI();
@@ -28,7 +26,7 @@ export class ChatController {
             const chatsList = JSON.parse(response as string);
             chatsStore.update(chatsList);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -39,7 +37,7 @@ export class ChatController {
                 this.getChats();
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -51,7 +49,7 @@ export class ChatController {
                 router.go(ROUTES.HOME);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -63,7 +61,7 @@ export class ChatController {
             const chat = chatsList.find((chat: TChat) => chat.id.toString() === chatID);
             chatDataStore.update(chat);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -75,7 +73,7 @@ export class ChatController {
                 chatId : parseInt(chatId)
             });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -87,7 +85,7 @@ export class ChatController {
                 chatId : parseInt(chatId)
             });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -115,12 +113,11 @@ export class ChatController {
                 });
 
                 socket.addEventListener("message", event => {
-                    console.log(event)
                     onGetMessage(JSON.parse(event.data));
                 });
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 }

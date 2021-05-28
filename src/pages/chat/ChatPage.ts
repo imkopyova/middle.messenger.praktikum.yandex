@@ -1,11 +1,11 @@
 import { Block, TChildren, TProps } from "../../components/block/Block";
-import { template } from "./template";
-import { TChat } from "../../domain/entities/TChat";
-import { ChatController } from "../../controllers/ChatController";
+import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
 import { AuthController } from "../../controllers/AuthController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
-import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
+import { ChatController } from "../../controllers/ChatController";
 import { Message } from "../../components/message/Message";
+import { TChat } from "../../domain/entities/TChat";
+import { template } from "./template";
 
 interface IChatPageProps extends TProps {
     chat?: TChat,
@@ -21,7 +21,7 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
         super({}, {
             buttonCreateChat: 
                 new ButtonCreateChat({
-                    onClick: (e) => {
+                    onClick: () => {
                         chatController.createChat();
                     }
                 }),
@@ -29,7 +29,7 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 new MenuButton({
                     iconClassName: MenuButtonTypes.Plus,
                     text: "Добавить пользователя",
-                    onClick: (e) => {
+                    onClick: () => {
                         chatController.addUsersToChat();
                     }
                 }),
@@ -37,7 +37,7 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 new MenuButton({
                     iconClassName: MenuButtonTypes.Minus,
                     text: "Удалить пользователя",
-                    onClick: (e) => {
+                    onClick: () => {
                         chatController.deleteUsersFromChat();
                     }
                 }),
@@ -46,31 +46,25 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                     iconClassName: MenuButtonTypes.Del,
                     text: "Удалить чат",
                     isWarning: true,
-                    onClick: (e) => {
+                    onClick: () => {
                         chatController.deleteChat();
                     }
-                }),
-            message:
-                new Message({
-                    text: "",
-                    time: "",
-                    isAuthorMe: false
                 })
         });
     }
 
     componentDidMount() {
-        authController.auth()
+        authController.auth();
         chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({...this.props, chats: chats}));
         chatController.subscribeChatUpdate((chat: TChat) => this.setProps({...this.props, chat: chat}));
         chatController.getChats();
         chatController.getChatData();
         chatController.openWS(
             (userId: string) => {
-                this.setProps({userId})
+                this.setProps({userId});
             },
             (messages: any) => {
-                this.setProps({messages})
+                this.setProps({messages});
             }
         );
     }
@@ -89,7 +83,6 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
             menuButtonAddUser: this.children.menuButtonAddUser.getElement(),
             menuButtonDeleteUser: this.children.menuButtonDeleteUser.getElement(),
             menuButtonDeleteChat: this.children.menuButtonDeleteChat.getElement(),
-            message: this.children.message.getElement(),
         });
     }
 }

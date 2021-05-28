@@ -1,5 +1,5 @@
+import { API_URL, BaseAPI } from "./base-api";
 import { HTTPTransport } from "../helpers/HTTPTransport";
-import { BaseAPI, API_URL } from "./base-api";
 import { TAddUserToChatParams } from "../domain/value-objects/TAddUserToChatParams";
 
 const chatAPIInstance = new HTTPTransport();

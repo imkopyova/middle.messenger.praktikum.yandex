@@ -65,7 +65,7 @@ export class HTTPTransport<TRequest, TResponse> {
     }
 
     request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TPromiseResponse> {
-        const {method, data, credentials = CREDENTIALS.include, mode = MODE.cors, headers = {"Content-Type": "application/json"}, timeout = 5000} = options;
+        const {method, data, credentials = CREDENTIALS.include, headers = {"Content-Type": "application/json"}, timeout = 5000} = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {

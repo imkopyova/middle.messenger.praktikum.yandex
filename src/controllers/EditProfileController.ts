@@ -1,8 +1,7 @@
-import { UserAPI } from "../api/user-api";
-import { TUserEditData } from "../domain/value-objects/TUserEditData";
-import { TPasswordData } from "../domain/value-objects/TPasswordData";
 import { router, ROUTES } from "../router";
-import { userStore } from "../stores/userStore";
+import { TPasswordData } from "../domain/value-objects/TPasswordData";
+import { TUserEditData } from "../domain/value-objects/TUserEditData";
+import { UserAPI } from "../api/user-api";
 
 const userAPI = new UserAPI();
 

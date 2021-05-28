@@ -1,5 +1,5 @@
+import { API_URL, BaseAPI } from "./base-api";
 import { HTTPTransport } from "../helpers/HTTPTransport";
-import { BaseAPI, API_URL } from "./base-api";
 import { TSigninData } from "../domain/value-objects/TSigninData";
 import { TSignupData } from "../domain/value-objects/TSignupData";
 
@@ -12,7 +12,7 @@ export class AuthAPI extends BaseAPI {
     }
 
     public signup(data: TSignupData) {
-        return AuthAPIInstance.post(`${AUTH_URL}/signup`, { data: data })
+        return AuthAPIInstance.post(`${AUTH_URL}/signup`, { data: data });
     }
 
     public getUser() {

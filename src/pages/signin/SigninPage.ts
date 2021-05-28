@@ -1,9 +1,9 @@
-import { Block, TChildren, TProps } from "../../components/block/Block";
-import { template } from "./template";
-import { Button } from "../../components/button/Button";
-import { onSubmit } from "../../helpers/submitForm";
-import { SignupController } from "../../controllers/SignupController";
 import { AuthController } from "../../controllers/AuthController";
+import { Block, TChildren, TProps } from "../../components/block/Block";
+import { Button } from "../../components/button/Button";
+import { SignupController } from "../../controllers/SignupController";
+import { onSubmit } from "../../helpers/submitForm";
+import { template } from "./template";
 
 const authController = new AuthController();
 const signupController = new SignupController();
@@ -15,7 +15,7 @@ export class SigninPage extends Block<TProps, TChildren> {
                     text: "Зарегестрироваться",
                     onClick: (e) => {
                         const data = onSubmit(e);
-                        console.log(data)
+                        console.log(data);
                         data && signupController.signup(data as any);
                     }
                 })

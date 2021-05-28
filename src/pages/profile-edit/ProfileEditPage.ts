@@ -1,11 +1,11 @@
 import { Block, TChildren, TProps } from "../../components/block/Block";
-import { template } from "./template";
+import { AuthController } from "../../controllers/AuthController";
+import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
+import { TUser } from "../../domain/entities/TUser";
 import { UserController } from "../../controllers/UserController";
 import { onSubmit } from "../../helpers/submitForm";
-import { Button } from "../../components/button/Button";
-import { TUser } from "../../domain/entities/TUser";
-import { AuthController } from "../../controllers/AuthController";
+import { template } from "./template";
 
 const authController = new AuthController();
 const editProfileController = new EditProfileController();
