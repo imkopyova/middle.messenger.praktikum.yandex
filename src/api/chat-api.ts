@@ -11,7 +11,11 @@ export class ChatAPI extends BaseAPI {
     }
 
     createChat(title: string) {
-        return chatAPIInstance.post(`${CHAT_URL}`, {data : { title: title }});
+        return chatAPIInstance.post(`${CHAT_URL}`, {data : { title }});
+    }
+
+    deleteChat(chatId: string) {
+        return chatAPIInstance.delete(`${CHAT_URL}`, {data : { chatId }});
     }
 
     addUsersToChat(data: TAddUserToChatParams) {
@@ -20,5 +24,9 @@ export class ChatAPI extends BaseAPI {
 
     deleteUserFromChat(data: TAddUserToChatParams) {
         return chatAPIInstance.delete(`${CHAT_URL}/users`, { data });
+    }
+
+    getToken(chatId: number) {
+        return chatAPIInstance.post(`${CHAT_URL}/token/${chatId}`);
     }
 }

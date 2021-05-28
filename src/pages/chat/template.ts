@@ -56,16 +56,15 @@ export const template = Handlebars.compile(`
                     <ul class="options__list  options__list-visibility-visible">
                         {{ childComponent this "menuButtonAddUser" }}
                         {{ childComponent this "menuButtonDeleteUser" }}
+                        {{ childComponent this "menuButtonDeleteChat" }}
                     </ul>
                 </div>
             </header>
             <div class="chat__messages">
                 <div class="message__day">
-                    <div class="message message-author-me">
-                        <p class="message__text text-normal">Супер!</p>
-                        <time class="message__time text-small">13:47</time>
-                        <span class="message__check"></span>
-                    </div>
+                    {{#each messages}}
+                        {{this}}
+                    {{/each}}
                     <div class="message message-author-they message-content-image">
                         <img src="https://images.unsplash.com/photo-1605867700633-c410783f70f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="photo" class="message__image" />
                         <time class="message__time text-small">11:49</time>

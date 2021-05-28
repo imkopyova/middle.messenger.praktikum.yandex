@@ -2,7 +2,7 @@ import { ROUTES } from "../../router";
 
 export const template = Handlebars.compile(`
     <div class="page-centered">
-        <a href=${ROUTES.CHAT} class="page__back circle-button circle-button-hover-color">                        
+        <a href=${ROUTES.HOME} class="page__back circle-button circle-button-hover-color">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>
             <div class="circle-button__content circle-button__content-type-arrow-left"></div>
         </a>

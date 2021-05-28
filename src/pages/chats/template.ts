@@ -19,7 +19,7 @@ export const template = Handlebars.compile(`
             <ul class="aside__list">
                 {{#each chats}}
                     <li class="chat-preview">
-                        <a href="${ROUTES.CHAT}/chat/{{ this.id }}" class="chat-preview__link">
+                        <a href="${ROUTES.CHAT}{{ this.id }}" class="chat-preview__link">
                             <div class="avatar__placeholder chat-preview__avatar"></div>
                             <div class="chat-preview__content">
                                 <h2 class="chat-preview__title text-semibold">{{ this.title }}</h2>

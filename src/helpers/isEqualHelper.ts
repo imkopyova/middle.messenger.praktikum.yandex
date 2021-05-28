@@ -1,5 +1,6 @@
 Handlebars.registerHelper("isEqual", function (a, b) {
-    return a === b;
+    console.log(a,b);
+    return a == b;
 });
 
 

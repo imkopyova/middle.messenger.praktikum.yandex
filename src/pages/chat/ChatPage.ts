@@ -5,10 +5,12 @@ import { ChatController } from "../../controllers/ChatController";
 import { AuthController } from "../../controllers/AuthController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
 import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
+import { Message } from "../../components/message/Message";
 
 interface IChatPageProps extends TProps {
     chat?: TChat,
     chats?: TChat[],
+    messages?: any[],
 }
 
 const chatController = new ChatController();
@@ -35,20 +37,42 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 new MenuButton({
                     iconClassName: MenuButtonTypes.Minus,
                     text: "Удалить пользователя",
-                    isWarning: true,
                     onClick: (e) => {
                         chatController.deleteUsersFromChat();
                     }
+                }),
+            menuButtonDeleteChat:
+                new MenuButton({
+                    iconClassName: MenuButtonTypes.Del,
+                    text: "Удалить чат",
+                    isWarning: true,
+                    onClick: (e) => {
+                        chatController.deleteChat();
+                    }
+                }),
+            message:
+                new Message({
+                    text: "",
+                    time: "",
+                    isAuthorMe: false
                 })
         });
     }
 
     componentDidMount() {
-        authController.auth();
+        authController.auth()
         chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({...this.props, chats: chats}));
         chatController.subscribeChatUpdate((chat: TChat) => this.setProps({...this.props, chat: chat}));
         chatController.getChats();
         chatController.getChatData();
+        chatController.openWS(
+            (userId: string) => {
+                this.setProps({userId})
+            },
+            (messages: any) => {
+                this.setProps({messages})
+            }
+        );
     }
 
     render(): string {
@@ -56,9 +80,17 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
             chats: this.props.chats,
             chatTitle: this.props.chat?.title,
             chatAvatar: this.props.chat?.avatar,
+            // TO DO refactor: не отображается правильно
+            messages: this.props.messages ? this.props.messages.map(message => new Message({
+                text: message.content,
+                time: message.time,
+                isAuthorMe: message.user_id === this.props.userId
+            }).getElement()) : [],
             buttonCreateChat: this.children.buttonCreateChat.getElement(),
             menuButtonAddUser: this.children.menuButtonAddUser.getElement(),
             menuButtonDeleteUser: this.children.menuButtonDeleteUser.getElement(),
+            menuButtonDeleteChat: this.children.menuButtonDeleteChat.getElement(),
+            message: this.children.message.getElement(),
         });
     }
 }

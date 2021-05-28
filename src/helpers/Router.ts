@@ -126,4 +126,9 @@ export class Router {
     getCurrentRoute(): string | null {
         return document.URL;
     }
+
+    // TO DO refactor
+    getUrlParam(): string {
+        return document.URL.split("/").reverse()[0];
+    }
 }

@@ -13,7 +13,7 @@ export class SigninController {
             const userData = JSON.parse(response as string);
             userStore.update(userData);
             if (status === 200) {
-                router.go(ROUTES.CHAT);
+                router.go(ROUTES.HOME);
             }
             
         } catch (error) {

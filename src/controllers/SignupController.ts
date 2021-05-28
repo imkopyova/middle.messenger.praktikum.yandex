@@ -9,7 +9,7 @@ export class SignupController {
         try {
             const { status } = await authAPI.signup(data);
             if (status === 200) {
-                router.go(ROUTES.CHAT);
+                router.go(ROUTES.HOME);
             }
             
         } catch (error) {
