@@ -92,7 +92,6 @@ export class ChatController {
     public async openWS(
         onGetUser: (userId: string) => void,
         onGetMessage: (data: any) => void,
-        onPostMessage?: (data: any) => void
     ) {
         try {
             const chatId = parseInt(router.getUrlParam());

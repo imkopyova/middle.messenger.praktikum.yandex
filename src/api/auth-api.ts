@@ -3,7 +3,7 @@ import { HTTPTransport } from "../helpers/HTTPTransport";
 import { TSigninData } from "../domain/value-objects/TSigninData";
 import { TSignupData } from "../domain/value-objects/TSignupData";
 
-const AuthAPIInstance = new HTTPTransport<TSigninData, unknown>();
+const AuthAPIInstance = new HTTPTransport<TSigninData>();
 const AUTH_URL = `${API_URL}/auth`;
 
 export class AuthAPI extends BaseAPI {

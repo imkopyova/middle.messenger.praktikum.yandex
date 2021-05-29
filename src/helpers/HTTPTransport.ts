@@ -46,7 +46,7 @@ type TPromiseResponse = {
     status: number
 }
 
-export class HTTPTransport<TRequest, TResponse> {
+export class HTTPTransport<TRequest> {
 
     get = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
         return this.request(url, {...options, method: METHOD.GET});
