@@ -7,8 +7,6 @@
     "start": "parcel static/index.html -p 3000",
     "build": "parcel build static/index.html",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register",
-    "tsc": "tsc",
-    "tscw": "tsc -w",
     "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix"
   },
   "repository": {
