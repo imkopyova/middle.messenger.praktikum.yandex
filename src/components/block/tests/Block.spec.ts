@@ -2,8 +2,9 @@ import "jsdom-global";
 import { expect } from "chai";
 import { Block } from "../Block";
 
-//@ts-ignore
-global.DOMParser = window.DOMParser
+// eslint-disable-next-line
+// @ts-ignore
+global.DOMParser = window.DOMParser;
 
 describe("Block", () => {
     function createBlock() {
@@ -14,7 +15,8 @@ describe("Block", () => {
         const block = createBlock();
         const newProps = {id: 1};
         block.setProps(newProps);
-        //@ts-ignore
+        // eslint-disable-next-line
+        // @ts-ignore
         expect(block.props.id).to.equal(1);
     });
   });
