@@ -1,3 +1,5 @@
+import { sanitize } from "./sanitize";
+
 const forms = document.forms;
 
 const validations: {[key: string]: RegExp} = {
@@ -21,8 +23,9 @@ export function onSubmit(event: Event): unknown {
     if (!hasErrors) {
         const dataObj: any = {};
         for (const [name, value] of formData) {
-            dataObj[name] = value;
+            dataObj[name] = typeof value == "string" ? sanitize(value) : value;
         }
+        console.log(dataObj)
         return dataObj;
     }
 }
