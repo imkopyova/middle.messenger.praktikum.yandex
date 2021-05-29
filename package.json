@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "parcel static/index.html -p 3000",
-    "build": "parcel build static/index.html",
+    "start": "parcel src/index.html -p 3000",
+    "build": "parcel build src/index.html",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register",
     "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix"
   },
