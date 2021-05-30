@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "clean": "rimraf ./static/*",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register",
     "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix",
-    "server": "node server.js",
-    "start": "npm run clean & parcel watch src/index.html --out-dir static & npm run server"
+    "start": "rm -rf ./static/* & parcel watch src/index.html --out-dir static & node server.js"
   },
   "repository": {
     "type": "git",
