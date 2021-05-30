@@ -9,19 +9,11 @@ Messenger – приложение для обмена сообщениями
 ## Запуск
 В режиме разработки:
 ```bash
-npm run dev
+npm run start
 ```
 Тесты:
 ```bash
 npm run test
-```
-Продакшен-сборка:
-```bash
-npm run build
-```
-Сервер:
-```bash
-node server.js
 ```
 
 ## Документация

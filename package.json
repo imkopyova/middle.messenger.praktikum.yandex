@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "parcel src/index.html -p 3000",
-    "build": "parcel build src/index.html",
+    "clean": "rimraf ./static/*",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register",
-    "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix"
+    "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix",
+    "server": "node server.js",
+    "watch": "parcel watch src/index.html --out-dir static",
+    "start": "npm run clean & npm run watch & npm run server"
   },
   "repository": {
     "type": "git",
