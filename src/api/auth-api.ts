@@ -1,4 +1,4 @@
-import { API_URL, BaseAPI } from "./base-api";
+import { API_URL } from "./base-api";
 import { HTTPTransport } from "../helpers/HTTPTransport";
 import { TSigninData } from "../domain/value-objects/TSigninData";
 import { TSignupData } from "../domain/value-objects/TSignupData";
@@ -6,7 +6,7 @@ import { TSignupData } from "../domain/value-objects/TSignupData";
 const AuthAPIInstance = new HTTPTransport<TSigninData>();
 const AUTH_URL = `${API_URL}/auth`;
 
-export class AuthAPI extends BaseAPI {
+export class AuthAPI {
     public login(data: TSigninData) {
         return AuthAPIInstance.post(`${AUTH_URL}/signin`, { data });
     }

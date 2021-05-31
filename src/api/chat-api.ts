@@ -1,11 +1,11 @@
-import { API_URL, BaseAPI } from "./base-api";
+import { API_URL } from "./base-api";
 import { HTTPTransport } from "../helpers/HTTPTransport";
 import { TAddUserToChatParams } from "../domain/value-objects/TAddUserToChatParams";
 
 const chatAPIInstance = new HTTPTransport();
 const CHAT_URL = `${API_URL}/chats`;
 
-export class ChatAPI extends BaseAPI {
+export class ChatAPI {
     getChats() {
         return chatAPIInstance.get(`${CHAT_URL}`);
     }
