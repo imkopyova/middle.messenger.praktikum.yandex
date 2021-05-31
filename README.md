@@ -1,6 +1,9 @@
 # [Messenger](https://messenger-imkopyova.netlify.app/)
 Messenger – приложение для обмена сообщениями
 
+### Спринт 3
+Pull request – https://github.com/imkopyova/middle.messenger.praktikum.yandex/pull/2
+
 ### Функционал
 - авторизация
 - изменение данных пользователя
@@ -25,10 +28,3 @@ npm run test
 - Для сборки [Parcel](https://ru.parceljs.org/)
 - Для тестов [Mocha](https://mochajs.org/) и [Chai](https://www.chaijs.com/)
 - Шаблонизатор [Handlebars](https://handlebarsjs.com/)
-
-
-## Проблемы
-Не полностью тестируется Роутер с History API из-за ошибки
-```bash
-SecurityError: Could not parse url argument "/login" to pushState against base URL "about:blank"
-```
