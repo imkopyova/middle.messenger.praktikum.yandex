@@ -8,11 +8,11 @@ const AUTH_URL = `${API_URL}/auth`;
 
 export class AuthAPI extends BaseAPI {
     public login(data: TSigninData) {
-        return AuthAPIInstance.post(`${AUTH_URL}/signin`, { data: data });
+        return AuthAPIInstance.post(`${AUTH_URL}/signin`, { data });
     }
 
     public signup(data: TSignupData) {
-        return AuthAPIInstance.post(`${AUTH_URL}/signup`, { data: data });
+        return AuthAPIInstance.post(`${AUTH_URL}/signup`, { data });
     }
 
     public getUser() {

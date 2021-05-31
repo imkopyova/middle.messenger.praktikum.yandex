@@ -1,1 +1,1 @@
-export const sanitize = (str: string) => str.replace(/[&<>"']/gi, '');
+export const sanitize = (str: string) => str.replace(/[&<>"']/gi, "");

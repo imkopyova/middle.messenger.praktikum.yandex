@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -r jsdom-global/register",
-    "lint": "node_modules/.bin/eslint . --fix & npx stylelint . --fix",
-    "start": "rm -rf ./static/* && (parcel watch src/index.html --out-dir static & node server.js)"
+    "test": "mocha -r jsdom-global/register",
+    "lint": "eslint . --fix & npx stylelint . --fix",
+    "start": "rimraf ./static/* && (parcel watch src/index.html --out-dir static & node server.js)"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "handlebars": "4.7.6",
+    "rimraf": "^3.0.2",
     "ts-node": "10.0.0",
     "typescript": "4.1.3"
   },

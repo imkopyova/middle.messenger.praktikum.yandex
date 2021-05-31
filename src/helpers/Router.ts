@@ -39,8 +39,7 @@ class Route {
     }
 
     match(pathname: string) {
-        const isMatch = pathname.match(this._pathname);
-        return !!isMatch; 
+        return !!pathname.match(this._pathname); 
     }
 
     render() {
@@ -103,7 +102,9 @@ export class Router {
         }
 
         this._currentRoute = route;
-        route && route.render();
+        if (route) {
+            route.render();
+        }
     }
 
     go(pathname: string): void {

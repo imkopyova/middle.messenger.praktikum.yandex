@@ -25,7 +25,7 @@ export function onSubmit(event: Event): unknown {
         for (const [name, value] of formData) {
             dataObj[name] = typeof value == "string" ? sanitize(value) : value;
         }
-        console.log(dataObj)
+        console.log(dataObj);
         return dataObj;
     }
 }
