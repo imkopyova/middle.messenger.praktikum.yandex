@@ -4,9 +4,11 @@ import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { onSubmit } from "../../helpers/submitForm";
 import { template } from "./template";
+import { TUser } from "../../domain/entities/TUser";
 
 type IPasswordEditPageProps = {
     imgSrc: string,
+    user?: TUser,
 }
 
 type IPasswordEditPageChildren = {
@@ -34,7 +36,7 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
     }
 
     componentDidMount() {
-        authController.auth();
+        authController.auth((user: TUser) => this.setProps({...this.props, user: user}));
     }
 
     render (): string {

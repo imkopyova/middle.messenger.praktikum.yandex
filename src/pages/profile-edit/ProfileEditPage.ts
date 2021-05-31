@@ -9,7 +9,6 @@ import { template } from "./template";
 
 const authController = new AuthController();
 const editProfileController = new EditProfileController();
-const userController = new UserController();
 
 export class ProfileEditPage extends Block<TProps, TChildren> {
     constructor() {
@@ -32,8 +31,7 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth();
-        userController.getUserData((user: TUser) => this.setProps(user));
+        authController.auth((user: TUser) => this.setProps({...this.props, user: user}));
     }
 
     render (): string {

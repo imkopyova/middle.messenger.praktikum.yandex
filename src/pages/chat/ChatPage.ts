@@ -5,12 +5,14 @@ import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCrea
 import { ChatController } from "../../controllers/ChatController";
 import { Message } from "../../components/message/Message";
 import { TChat } from "../../domain/entities/TChat";
+import { TUser } from "../../domain/entities/TUser";
 import { template } from "./template";
 
 interface IChatPageProps extends TProps {
     chat?: TChat,
     chats?: TChat[],
     messages?: any[],
+    user?: TUser,
 }
 
 const chatController = new ChatController();
@@ -54,13 +56,13 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth();
+        authController.auth((user: TUser) => this.setProps({...this.props, user: user}));
         chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({...this.props, chats: chats}));
         chatController.subscribeChatUpdate((chat: TChat) => this.setProps({...this.props, chat: chat}));
         chatController.getChats();
         chatController.getChatData();
         chatController.openWS(
-            (userId: string) => {
+            (userId: any) => {
                 this.setProps({userId});
             },
             (messages: any) => {

@@ -6,13 +6,13 @@ import { TUser } from "../../domain/entities/TUser";
 import { UserController } from "../../controllers/UserController";
 import { template } from "./template";
 
-type IProfilePageProps = TProps & Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>;
+type ProfileUserData = Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>
 
 const authController = new AuthController();
 const userController = new UserController();
 const logoutController = new LogoutController();
 
-export class ProfilePage extends Block<IProfilePageProps, TChildren> {
+export class ProfilePage extends Block<TProps & ProfileUserData, TChildren> {
     constructor() {
         super({}, {
             buttonLogout: 
@@ -26,8 +26,7 @@ export class ProfilePage extends Block<IProfilePageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth();
-        userController.getUserData((user: TUser) => this.setProps(user));
+        authController.auth(<TUser>(user: TUser) => this.setProps({...this.props, ...user}));
     }
 
     render(): string {

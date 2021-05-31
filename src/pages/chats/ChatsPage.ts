@@ -3,10 +3,12 @@ import { AuthController } from "../../controllers/AuthController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
 import { ChatController } from "../../controllers/ChatController";
 import { TChat } from "../../domain/entities/TChat";
+import { TUser } from "../../domain/entities/TUser";
 import { template } from "./template";
 
 interface IChatPageProps extends TProps {
     chats?: TChat[],
+    user?: TUser,
 }
 
 const chatController = new ChatController();
@@ -25,8 +27,8 @@ export class ChatsPage extends Block<IChatPageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth();
-        chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({chats: chats}));
+        authController.auth((user: TUser) => this.setProps({...this.props, user: user}));
+        chatController.subscribeChatsUpdate((chats: TChat[]) => this.setProps({...this.props, chats: chats}));
         chatController.getChats();
     }
 

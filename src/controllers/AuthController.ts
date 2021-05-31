@@ -1,32 +1,29 @@
 import { router, ROUTES } from "../router";
 import { AuthAPI } from "../api/auth-api";
 import { userStore } from "../stores/userStore";
+import { STORE_EVENTS } from "../helpers/Store";
 
 const authAPI = new AuthAPI();
 
 export class AuthController {
-    public async auth() {
+    public async auth(callback: (storeData: any) => void) {
+        userStore.on(STORE_EVENTS.UPDATE, callback);
         try {
-            const { status, response } = await authAPI.auth();
-            if (status !== 200) {
-                userStore.update(JSON.parse(response as string));
-                router.go(ROUTES.LOGIN);
-            }
-            
+            const response = await authAPI.auth();
+            userStore.update(response);
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            router.go(ROUTES.LOGIN);
         }
     }
 
     public async redirectToChat() {
         try {
-            const { status } = await authAPI.auth();
-            if (status === 200) {
-                router.go(ROUTES.HOME);
-            }
+            await authAPI.auth();
+            router.go(ROUTES.HOME);
             
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 

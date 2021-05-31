@@ -7,11 +7,8 @@ const authAPI = new AuthAPI();
 export class SigninController {
     public async signin(data: TSigninData) {
         try {
-            const { status } = await authAPI.login(data);
-            if (status === 200) {
-                router.go(ROUTES.HOME);
-            }
-            
+            await authAPI.login(data);
+            router.go(ROUTES.HOME);
         } catch (error) {
             console.log(error);
         }

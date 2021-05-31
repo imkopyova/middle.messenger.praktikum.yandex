@@ -8,8 +8,7 @@ export class UserController {
     public async getUserData(callback: (storeData: unknown) => void) {
         userStore.on(STORE_EVENTS.UPDATE, callback);
         try {
-            const { response } = await authAPI.getUser();
-            const userData = JSON.parse(response as string);
+            const userData = await authAPI.getUser();
             userStore.update(userData);
         } catch (error) {
             console.log(error);

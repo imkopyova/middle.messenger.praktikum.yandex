@@ -1,3 +1,5 @@
+import { parseJSON } from "../helpers/parseJSON";
+
 enum METHOD {
     GET = "GET",
     POST = "POST",
@@ -48,20 +50,36 @@ type TPromiseResponse = {
 
 export class HTTPTransport<TRequest> {
 
-    get = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
-        return this.request(url, {...options, method: METHOD.GET});
+    get = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.GET});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     };
 
-    put = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
-        return this.request(url, {...options, method: METHOD.PUT});
+    put = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.PUT});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     };
 
-    post = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
-        return this.request(url, {...options, method: METHOD.POST});
+    post = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.POST});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     }
 
-    delete = (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<TPromiseResponse> => {
-        return this.request(url, {...options, method: METHOD.DELETE});
+    delete = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.DELETE});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     }
 
     request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TPromiseResponse> {

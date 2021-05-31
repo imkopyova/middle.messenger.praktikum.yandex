@@ -12,18 +12,17 @@ const authAPI = new AuthAPI();
 const wsAPI = new WSAPI();
 
 export class ChatController {
-    public subscribeChatsUpdate(callback: (storeData: unknown) => void) {
+    public subscribeChatsUpdate(callback: (storeData: any) => void) {
         chatsStore.on(STORE_EVENTS.UPDATE, callback);
     }
 
-    public subscribeChatUpdate(callback: (storeData: unknown) => void) {
+    public subscribeChatUpdate(callback: (storeData: any) => void) {
         chatDataStore.on(STORE_EVENTS.UPDATE, callback);
     }
 
     public async getChats() {
         try {
-            const { response } = await chatAPI.getChats();
-            const chatsList = JSON.parse(response as string);
+            const chatsList = await chatAPI.getChats();
             chatsStore.update(chatsList);
         } catch (error) {
             console.log(error);
@@ -32,10 +31,8 @@ export class ChatController {
 
     public async createChat() {
         try {
-            const { status } = await chatAPI.createChat("Test Chat");
-            if (status === 200) {
-                this.getChats();
-            }
+            await chatAPI.createChat("Test Chat");
+            this.getChats();
         } catch (error) {
             console.log(error);
         }
@@ -44,10 +41,8 @@ export class ChatController {
     public async deleteChat() {
         try {
             const chatID = router.getUrlParam();
-            const { status } = await chatAPI.deleteChat(chatID);
-            if (status === 200) {
-                router.go(ROUTES.HOME);
-            }
+            await chatAPI.deleteChat(chatID);
+            router.go(ROUTES.HOME);
         } catch (error) {
             console.log(error);
         }
@@ -56,8 +51,7 @@ export class ChatController {
     public async getChatData() {
         try {
             const chatID = router.getUrlParam();
-            const { response } = await chatAPI.getChats();
-            const chatsList = JSON.parse(response as string);
+            const chatsList = await chatAPI.getChats();
             const chat = chatsList.find((chat: TChat) => chat.id.toString() === chatID);
             chatDataStore.update(chat);
         } catch (error) {
@@ -90,17 +84,17 @@ export class ChatController {
     }
 
     public async openWS(
-        onGetUser: (userId: string) => void,
+        onGetUser: (userId: number) => void,
         onGetMessage: (data: any) => void,
     ) {
         try {
             const chatId = parseInt(router.getUrlParam());
-            const { response: userIdResponse } = await authAPI.getUser();
-            const { response: tokenResponse } = await chatAPI.getToken(chatId);
+            const userIdResponse = await authAPI.getUser();
+            const tokenResponse = await chatAPI.getToken(chatId);
 
             if (tokenResponse && userIdResponse && chatId) {
-                const token = JSON.parse(tokenResponse as string).token;
-                const userId = JSON.parse(userIdResponse as string).id;
+                const token = tokenResponse.token;
+                const userId = userIdResponse.id;
                 onGetUser(userId);
                 const socket = wsAPI.connect({userId, chatId, token});
                 

@@ -7,11 +7,8 @@ const authAPI = new AuthAPI();
 export class SignupController {
     public async signup(data: TSignupData) {
         try {
-            const { status } = await authAPI.signup(data);
-            if (status === 200) {
-                router.go(ROUTES.HOME);
-            }
-            
+            await authAPI.signup(data);
+            router.go(ROUTES.HOME);
         } catch (error) {
             console.log(error);
         }
