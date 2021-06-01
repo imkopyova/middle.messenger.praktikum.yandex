@@ -1,32 +1,33 @@
+import { sanitize } from "./sanitize";
+
 const forms = document.forms;
 
 const validations: {[key: string]: RegExp} = {
     email: /^\S+@\S+$/i,
-    tel: /\+7\s\([0-9]{3}\)\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}/i,
+    tel: /\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}/i,
     text: /\w+/,
     password: /\w+/,
 };
 
-export function onSubmit(event: Event): void {
+export function onSubmit(event: Event): unknown {
     event.preventDefault();
+    
     const element = <HTMLFormElement>event.target;
-    const formData = new FormData(element);
-    let hasErrors = false;
-
-    const fields = document.querySelectorAll(".field");
-    for (const field of fields) {
-        const input = <HTMLInputElement>field.querySelector("input");
-        const isValid = validateInput(input, field);
-        if (!isValid) {
-            hasErrors = true;
-        }
+    const form = element.closest("form");
+    if (!form) {
+        return;
     }
+    const formData = new FormData(form);
+    const hasErrors = document.querySelectorAll(".field-state-error").length > 0;
 
     if (!hasErrors) {
+        const dataObj: any = {};
         for (const [name, value] of formData) {
-            console.log(`${name}: ${value}`);
+            dataObj[name] = typeof value == "string" ? sanitize(value) : value;
         }
-    } 
+        console.log(dataObj);
+        return dataObj;
+    }
 }
 
 function onFocus(field: Element) {
@@ -62,10 +63,8 @@ function addBlurFocusListener(field: Element) {
 }
 
 for (const form of forms) {
-    const fields = document.querySelectorAll(".field");
+    const fields = form.querySelectorAll(".field");
     for (const field of fields) {
         addBlurFocusListener(field);
     }
-
-    form.addEventListener("submit", onSubmit);
 }

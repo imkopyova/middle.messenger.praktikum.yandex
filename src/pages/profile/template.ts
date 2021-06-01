@@ -1,35 +1,35 @@
+import { ROUTES } from "../../router";
+
 export const template = Handlebars.compile(`
     <div class="page-centered">
-        <a href="/chat/" class="page__back circle-button circle-button-hover-color">                        
+        <a href=${ROUTES.HOME} class="page__back circle-button circle-button-hover-color">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>
             <div class="circle-button__content circle-button__content-type-arrow-left"></div>
         </a>
 
         <main class="profile">
             <div class="avatar__placeholder profile__avatar">
-                <img src={{ imgSrc }} alt="avatar" class="avatar">
+                {{#if imgSrc}}
+                    <img src={{ imgSrc }} alt="avatar" class="avatar">
+                {{/if}}
             </div>
             <nav class="profile__buttons">
                 <div class="profile__button-container">
-                    <a href="/profile-edit/" class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.PROFILE_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-profile"></div>
                     </a>
                     <span class="text-small profile__tooltip">Изменить профиль</span>
                 </div>
                 <div class="profile__button-container">
-                    <a href="/password-edit/" class="profile__button circle-button circle-button-hover-scale">                        
+                    <a href=${ROUTES.PASSWORD_EDIT} class="profile__button circle-button circle-button-hover-scale">                        
                         <div class="circle-button__background circle-button__background-color-grey"></div>
                         <div class="circle-button__content circle-button__content-type-lock"></div>
                     </a>
                     <span class="text-small profile__tooltip">Изменить пароль</span>
                 </div>
                 <div class="profile__button-container">
-                    <a href="/login/" class="profile__button circle-button circle-button-hover-scale">                        
-                        <div class="circle-button__background circle-button__background-color-grey"></div>
-                        <div class="circle-button__content circle-button__content-type-circle-x"></div>
-                    </a>
-                    <span class="text-small profile__tooltip">Выйти</span>
+                    {{ childComponent this "buttonLogout" }}
                 </div>
             </nav>
             <ul class="profile__data-list">

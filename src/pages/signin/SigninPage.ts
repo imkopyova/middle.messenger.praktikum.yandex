@@ -1,12 +1,34 @@
+import { AuthController } from "../../controllers/AuthController";
 import { Block, TChildren, TProps } from "../../components/block/Block";
+import { Button } from "../../components/button/Button";
+import { SignupController } from "../../controllers/SignupController";
+import { onSubmit } from "../../helpers/submitForm";
 import { template } from "./template";
 
+const authController = new AuthController();
+const signupController = new SignupController();
 export class SigninPage extends Block<TProps, TChildren> {
     constructor() {
-        super({}, {});
+        super({}, {
+            button: 
+                new Button({
+                    text: "Зарегестрироваться",
+                    onClick: (e) => {
+                        const data = onSubmit(e);
+                        console.log(data);
+                        data && signupController.signup(data as any);
+                    }
+                })
+        });
+    }
+
+    componentDidMount() {
+        authController.redirectToChat();
     }
 
     render (): string {
-        return template({});
+        return template({
+            button: this.children.button.getElement(),
+        });
     }
 }

@@ -1,3 +1,5 @@
+import { ROUTES } from "../../router";
+
 export const template = Handlebars.compile(`
 <div class="page-centered">
 <main class="auth__container">
@@ -16,8 +18,8 @@ export const template = Handlebars.compile(`
             </label>
         </div>
         <div class="auth__buttons">
-            <button type="submit" class="base-button auth__button">Авторизоваться</button>
-            <a href="/signin/" class="base-button base-button-inverse base-button-type-link auth__button">Нет аккаунта?</a>
+            {{ childComponent this "button" }}
+            <a href=${ROUTES.SIGNIN} class="base-button base-button-inverse base-button-type-link auth__button">Нет аккаунта?</a>
         </div>
     </form>
 </main>

@@ -3,6 +3,7 @@ import { template } from "./template";
 
 export type IButtonProps = {
     text: string,
+    className?: string,
     onClick: (e: Event) => void,
 }
 
@@ -14,6 +15,7 @@ export class Button extends Block<IButtonProps, TChildren> {
     render (): string {
         return template({
             text: this.props.text,
+            className: this.props.className
         });
     }
 }

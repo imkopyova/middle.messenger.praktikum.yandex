@@ -1,3 +1,5 @@
+import { parseJSON } from "../helpers/parseJSON";
+
 enum METHOD {
     GET = "GET",
     POST = "POST",
@@ -6,16 +8,31 @@ enum METHOD {
     DELETE = "DELETE"
 }
 
-type Options = {
+enum CREDENTIALS {
+    omit = "omit",
+    sameOrigin = "same-origin",
+    include = "include"
+}
+
+enum MODE {
+    sameOrigin = "same-origin",
+    noCors = "no-cors",
+    cors = "cors",
+    navigate = "navigate"
+}
+
+type Options<TRequest> = {
     method: METHOD,
     headers?: { [key: string]: string },
     timeout?: number,
-    data?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    credentials?: CREDENTIALS,
+    mode?: MODE,
+    data?: TRequest,
 }
 
-type OptionsWithoutMethod = Omit<Options, "method">;
+type OptionsWithoutMethod<TRequest> = Omit<Options<TRequest>, "method">;
 
-function queryStringify(data: { [key: string]: string} ) {
+function queryStringify<TRequest>(data: TRequest ) {
     if (typeof data !== "object") {
         throw new Error("Data must be object");
     }
@@ -26,26 +43,47 @@ function queryStringify(data: { [key: string]: string} ) {
     return "?" + values.join("&");
 }
 
-export class HTTPTransport {
+type TPromiseResponse = {
+    response: unknown,
+    status: number
+}
 
-    get = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, {...options, method: METHOD.GET});
+export class HTTPTransport<TRequest> {
+
+    get = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.GET});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     };
 
-    put = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, {...options, method: METHOD.PUT});
+    put = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.PUT});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     };
 
-    post = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, {...options, method: METHOD.POST});
+    post = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.POST});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     }
 
-    delete = (url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> => {
-        return this.request(url, {...options, method: METHOD.DELETE});
+    delete = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
+        const { response, status } = await this.request(url, {...options, method: METHOD.DELETE});
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason);
+        }
+        return response;
     }
 
-    request(url: string, options: Options = {method: METHOD.GET}): Promise<XMLHttpRequest> {
-        const {method, data, headers = {}, timeout = 5000} = options;
+    request(url: string, options: Options<TRequest> = {method: METHOD.GET}): Promise<TPromiseResponse> {
+        const {method, data, credentials = CREDENTIALS.include, headers = {"Content-Type": "application/json"}, timeout = 5000} = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -56,11 +94,16 @@ export class HTTPTransport {
             const xhr = new XMLHttpRequest();
 
             xhr.open(method, (method === METHOD.GET && !!data) ? `${url}${queryStringify(data)}` : url);
+            
+            xhr.withCredentials = credentials === CREDENTIALS.include;
 
             Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
 
             xhr.onload = function() {
-                resolve(xhr);
+                resolve({
+                    response: xhr.response,
+                    status: xhr.status
+                });
             };
 
             xhr.onabort = reject;
