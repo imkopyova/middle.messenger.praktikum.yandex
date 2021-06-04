@@ -1,7 +1,5 @@
 import { sanitize } from "./sanitize";
 
-const forms = document.forms;
-
 const validations: {[key: string]: RegExp} = {
     email: /^\S+@\S+$/i,
     tel: /\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}/i,
@@ -57,14 +55,18 @@ function validateInput(input: HTMLInputElement, field: Element): boolean {
 }
 
 function addBlurFocusListener(field: Element) {
+    console.log("addBlurFocusListener")
     const input = <HTMLInputElement>field.querySelector("input");
     input.addEventListener("focus", () => onFocus(field));
     input.addEventListener("blur", e => onBlur(e, field));
 }
 
-for (const form of forms) {
-    const fields = form.querySelectorAll(".field");
-    for (const field of fields) {
-        addBlurFocusListener(field);
+export function addFormValidateListeners() {
+    const forms = document.forms;
+    for (const form of forms) {
+        const fields = form.querySelectorAll(".field");
+        for (const field of fields) {
+            addBlurFocusListener(field);
+        }
     }
 }

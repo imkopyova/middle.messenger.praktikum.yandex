@@ -1,6 +1,7 @@
+import { compile } from "handlebars";
 import { ROUTES } from "../../router";
 
-export const template = Handlebars.compile(`
+export const template = compile(`
 <div class="page-centered">
 <main class="auth__container">
     <h1 class="heading-bid auth__title login__title">Вход</h1>

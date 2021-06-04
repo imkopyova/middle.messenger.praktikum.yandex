@@ -1,6 +1,7 @@
+import { compile } from "handlebars";
 import { ROUTES } from "../../router";
 
-export const template = Handlebars.compile(`
+export const template = compile(`
     <div class="chat__page">
         <aside class="chat__aside aside">
             <header class="aside__header">

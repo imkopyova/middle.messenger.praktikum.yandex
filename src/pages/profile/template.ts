@@ -1,6 +1,7 @@
+import { compile } from "handlebars";
 import { ROUTES } from "../../router";
 
-export const template = Handlebars.compile(`
+export const template = compile(`
     <div class="page-centered">
         <a href=${ROUTES.HOME} class="page__back circle-button circle-button-hover-color">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>

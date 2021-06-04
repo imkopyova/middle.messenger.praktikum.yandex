@@ -8,6 +8,11 @@ import { PasswordEditPage } from "./pages/password-edit/PasswordEditPage";
 import { ProfileEditPage } from "./pages/profile-edit/ProfileEditPage";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { SigninPage } from "./pages/signin/SigninPage";
+import { childComponentHelper, childComponentArrayHelper, isEqualHelper } from "./helpers/handlebarHelper";
+
+childComponentHelper();
+childComponentArrayHelper();
+isEqualHelper();
 
 router
     .use(ROUTES.CHAT, ChatPage)

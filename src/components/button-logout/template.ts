@@ -1,4 +1,6 @@
-export const template = Handlebars.compile(`
+import { compile } from "handlebars";
+
+export const template = compile(`
     <div>
         <button class="{{ className }} circle-button circle-button-hover-scale">                        
             <div class="circle-button__background circle-button__background-color-grey"></div>

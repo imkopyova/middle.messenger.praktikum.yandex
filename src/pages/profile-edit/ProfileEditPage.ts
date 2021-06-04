@@ -3,7 +3,6 @@ import { AuthController } from "../../controllers/AuthController";
 import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { TUser } from "../../domain/entities/TUser";
-import { UserController } from "../../controllers/UserController";
 import { onSubmit } from "../../helpers/submitForm";
 import { template } from "./template";
 

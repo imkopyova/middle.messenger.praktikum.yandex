@@ -15,7 +15,7 @@ export class Error404Page extends Block<IError404PageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth();
+        authController.auth(() => {});
     }
 
     render (): string {

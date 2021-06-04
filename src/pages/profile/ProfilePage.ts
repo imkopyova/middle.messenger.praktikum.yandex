@@ -3,13 +3,11 @@ import { AuthController } from "../../controllers/AuthController";
 import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
 import { LogoutController } from "../../controllers/LogoutController";
 import { TUser } from "../../domain/entities/TUser";
-import { UserController } from "../../controllers/UserController";
 import { template } from "./template";
 
 type ProfileUserData = Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>
 
 const authController = new AuthController();
-const userController = new UserController();
 const logoutController = new LogoutController();
 
 export class ProfilePage extends Block<TProps & ProfileUserData, TChildren> {

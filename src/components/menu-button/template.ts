@@ -1,4 +1,6 @@
-export const template = Handlebars.compile(`
+import { compile } from "handlebars";
+
+export const template = compile(`
     <li class="options__item">
         <button type="button" class="options__button {{#if isWarning}}options__button-color-warning{{/if}}">
             {{#if (isEqual iconClassName "plus")}}

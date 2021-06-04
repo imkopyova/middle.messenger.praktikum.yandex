@@ -4,6 +4,7 @@ import { Button } from "../../components/button/Button";
 import { SigninController } from "../../controllers/SigninController";
 import { onSubmit } from "../../helpers/submitForm";
 import { template } from "./template";
+import { addFormValidateListeners } from "../../helpers/submitForm";
 
 const authController = new AuthController();
 const signinController = new SigninController();
@@ -25,7 +26,8 @@ export class LoginPage extends Block<TProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.redirectToChat();
+        addFormValidateListeners();
+        authController.redirectToChat(); 
     }
 
     render (): string {
