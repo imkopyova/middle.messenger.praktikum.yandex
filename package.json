@@ -9,6 +9,7 @@
     "test": "mocha -r jsdom-global/register",
     "lint": "eslint . --fix & npx stylelint . --fix"
   },
+  "pre-commit": ["lint", "test"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/imkopyova/mf.messenger.praktikum.yandex.git"
@@ -30,6 +31,7 @@
     "jsdom": "16.6.0",
     "jsdom-global": "3.0.2",
     "mocha": "8.4.0",
+    "pre-commit": "1.2.2",
     "stylelint": "13.12.0",
     "stylelint-config-standard": "21.0.0",
     "webpack": "5.38.1",
@@ -38,8 +40,8 @@
   },
   "dependencies": {
     "css-loader": "5.2.6",
-    "handlebars": "^4.7.7",
-    "handlebars-loader": "^1.7.1",
+    "handlebars": "4.7.7",
+    "handlebars-loader": "1.7.1",
     "rimraf": "3.0.2",
     "style-loader": "2.0.0",
     "ts-loader": "9.2.2",
