@@ -4,6 +4,9 @@ Messenger – приложение для обмена сообщениями
 ### Спринт 3
 Pull request – https://github.com/imkopyova/middle.messenger.praktikum.yandex/pull/2
 
+### Спринт 4
+Pull request – https://github.com/imkopyova/middle.messenger.praktikum.yandex/pull/3
+
 ### Функционал
 - авторизация
 - изменение данных пользователя
@@ -25,6 +28,6 @@ npm run test
 
 
 ## Использованы инструменты
-- Для сборки [Parcel](https://ru.parceljs.org/)
+- Для сборки [Webpack](https://webpack.js.org/)
 - Для тестов [Mocha](https://mochajs.org/) и [Chai](https://www.chaijs.com/)
 - Шаблонизатор [Handlebars](https://handlebarsjs.com/)
