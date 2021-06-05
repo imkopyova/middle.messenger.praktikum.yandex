@@ -25,6 +25,6 @@ npm run test
 
 
 ## Использованы инструменты
-- Для сборки [Parcel](https://ru.parceljs.org/)
+- Для сборки [Webpack](https://webpack.js.org/)
 - Для тестов [Mocha](https://mochajs.org/) и [Chai](https://www.chaijs.com/)
 - Шаблонизатор [Handlebars](https://handlebarsjs.com/)
