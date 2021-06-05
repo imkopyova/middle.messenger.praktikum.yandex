@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
     "start": "webpack serve",
     "test": "mocha -r jsdom-global/register",
-    "lint": "eslint . --fix && npx stylelint . --fix && git add ."
+    "lint": "eslint . --fix && npx stylelint . --fix && git add .",
+    "server": "node server.js"
   },
   "pre-commit": [
     "lint",
