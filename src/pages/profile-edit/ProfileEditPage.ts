@@ -4,7 +4,10 @@ import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { TUser } from "../../domain/entities/TUser";
 import { onSubmit } from "../../helpers/submitForm";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 const authController = new AuthController();
 const editProfileController = new EditProfileController();
@@ -35,6 +38,7 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
 
     render (): string {
         return template({
+            routes: ROUTES,
             avatar: this.props.avatar,
             email: this.props.email,
             login: this.props.login,

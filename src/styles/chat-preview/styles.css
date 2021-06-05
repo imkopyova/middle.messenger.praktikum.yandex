@@ -1,4 +1,4 @@
-@import "/styles/avatar/styles.css";
+@import "../avatar/styles.css";
 
 .chat-preview {
     background-color: #fff;

@@ -3,7 +3,10 @@ import { Block } from "../../components/block/Block";
 import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { onSubmit } from "../../helpers/submitForm";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 import { TUser } from "../../domain/entities/TUser";
 
 type IPasswordEditPageProps = {
@@ -41,6 +44,7 @@ export class PasswordEditPage extends Block<IPasswordEditPageProps, IPasswordEdi
 
     render (): string {
         return template({
+            routes: ROUTES,
             imgSrc: this.props.imgSrc,
             button: this.children.button.getElement(),
            

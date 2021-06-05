@@ -1,6 +1,6 @@
-@import url("/styles/field/styles.css");
-@import url("/styles/base-input/styles.css");
-@import url("/styles/base-button/styles.css");
+@import url("../field/styles.css");
+@import url("../base-input/styles.css");
+@import url("../base-button/styles.css");
 
 .modal__background {
     width: 100vw;

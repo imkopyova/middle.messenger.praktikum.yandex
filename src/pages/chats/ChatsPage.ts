@@ -4,7 +4,10 @@ import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCrea
 import { ChatController } from "../../controllers/ChatController";
 import { TChat } from "../../domain/entities/TChat";
 import { TUser } from "../../domain/entities/TUser";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 interface IChatPageProps extends TProps {
     chats?: TChat[],
@@ -34,6 +37,7 @@ export class ChatsPage extends Block<IChatPageProps, TChildren> {
 
     render(): string {
         return template({
+            routes: ROUTES,
             chats: this.props.chats,
             buttonCreateChat: this.children.buttonCreateChat.getElement(),
         });

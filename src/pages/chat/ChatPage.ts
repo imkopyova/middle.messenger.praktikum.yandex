@@ -6,7 +6,10 @@ import { ChatController } from "../../controllers/ChatController";
 import { Message } from "../../components/message/Message";
 import { TChat } from "../../domain/entities/TChat";
 import { TUser } from "../../domain/entities/TUser";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 interface IChatPageProps extends TProps {
     chat?: TChat,
@@ -73,6 +76,7 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
 
     render(): string {
         return template({
+            routes: ROUTES,
             chats: this.props.chats,
             chatTitle: this.props.chat?.title,
             chatAvatar: this.props.chat?.avatar,

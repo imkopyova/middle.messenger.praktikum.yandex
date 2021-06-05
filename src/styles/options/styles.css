@@ -75,21 +75,21 @@
 }
 
 .options__item-icon-type-circle-plus {
-    mask-image: url("/styles/icons/circle-plus.svg");
-    -webkit-mask-box-image: url("/styles/icons/circle-plus.svg");
+    mask-image: url("../icons/circle-plus.svg");
+    -webkit-mask-box-image: url("../icons/circle-plus.svg");
 }
 
 .options__item-icon-type-circle-minus {
-    mask-image: url("/styles/icons/circle-minus.svg");
-    -webkit-mask-box-image: url("/styles/icons/circle-minus.svg");
+    mask-image: url("../icons/circle-minus.svg");
+    -webkit-mask-box-image: url("../icons/circle-minus.svg");
 }
 
 .options__item-icon-type-sticker {
-    mask-image: url("/styles/icons/sticker.svg");
-    -webkit-mask-box-image: url("/styles/icons/sticker.svg");
+    mask-image: url("../icons/sticker.svg");
+    -webkit-mask-box-image: url("../icons/sticker.svg");
 }
 
 .options__item-icon-type-circle-x {
-    mask-image: url("/styles/icons/circle-x.svg");
-    -webkit-mask-box-image: url("/styles/icons/circle-x.svg");
+    mask-image: url("../icons/circle-x.svg");
+    -webkit-mask-box-image: url("../icons/circle-x.svg");
 }

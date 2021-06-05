@@ -3,7 +3,10 @@ import { AuthController } from "../../controllers/AuthController";
 import { Button } from "../../components/button/Button";
 import { SigninController } from "../../controllers/SigninController";
 import { onSubmit } from "../../helpers/submitForm";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 import { addFormValidateListeners } from "../../helpers/submitForm";
 
 const authController = new AuthController();
@@ -31,7 +34,9 @@ export class LoginPage extends Block<TProps, TChildren> {
     }
 
     render (): string {
+        console.log(template);
         return template({
+            routes: ROUTES,
             button: this.children.button.getElement(),
         });
     }

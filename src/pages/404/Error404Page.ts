@@ -1,6 +1,9 @@
 import { Block, TChildren } from "../../components/block/Block";
 import { AuthController } from "../../controllers/AuthController";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 type IError404PageProps = {
     errorCode: string,
@@ -15,11 +18,12 @@ export class Error404Page extends Block<IError404PageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth(() => {});
+        authController.auth(() => {console.log();});
     }
 
     render (): string {
         return template({
+            routes: ROUTES,
             errorCode: this.props.errorCode,
             errorText: this.props.errorText,
         });

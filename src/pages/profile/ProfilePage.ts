@@ -3,7 +3,10 @@ import { AuthController } from "../../controllers/AuthController";
 import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
 import { LogoutController } from "../../controllers/LogoutController";
 import { TUser } from "../../domain/entities/TUser";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 type ProfileUserData = Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>
 
@@ -29,6 +32,7 @@ export class ProfilePage extends Block<TProps & ProfileUserData, TChildren> {
 
     render(): string {
         return template({
+            routes: ROUTES,
             imgSrc: this.props.avatar,
             mail: this.props.email,
             login: this.props.login,

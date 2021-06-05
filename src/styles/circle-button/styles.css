@@ -46,48 +46,48 @@
 }
 
 .circle-button__content-type-profile {
-    mask-image: url("/styles/icons/profile.svg");
-    -webkit-mask-box-image: url("/styles/icons/profile.svg");
+    mask-image: url("../icons/profile.svg");
+    -webkit-mask-box-image: url("../icons/profile.svg");
 }
 
 .circle-button__content-type-newchat {
-    mask-image: url("/styles/icons/circle-plus.svg");
-    -webkit-mask-box-image: url("/styles/icons/circle-plus.svg");
+    mask-image: url("../icons/circle-plus.svg");
+    -webkit-mask-box-image: url("../icons/circle-plus.svg");
 }
 
 .circle-button__content-type-options {
-    mask-image: url("/styles/icons/more.svg");
-    -webkit-mask-box-image: url("/styles/icons/more.svg");
+    mask-image: url("../icons/more.svg");
+    -webkit-mask-box-image: url("../icons/more.svg");
 }
 
 .circle-button__content-type-paperclip {
-    mask-image: url("/styles/icons/paperclip.svg");
-    -webkit-mask-box-image: url("/styles/icons/paperclip.svg");
+    mask-image: url("../icons/paperclip.svg");
+    -webkit-mask-box-image: url("../icons/paperclip.svg");
 }
 
 .circle-button__content-type-send {
-    mask-image: url("/styles/icons/send.svg");
-    -webkit-mask-box-image: url("/styles/icons/send.svg");
+    mask-image: url("../icons/send.svg");
+    -webkit-mask-box-image: url("../icons/send.svg");
 }
 
 .circle-button__content-type-smiled {
-    mask-image: url("/styles/icons/smiled.svg");
-    -webkit-mask-box-image: url("/styles/icons/smiled.svg");
+    mask-image: url("../icons/smiled.svg");
+    -webkit-mask-box-image: url("../icons/smiled.svg");
 }
 
 .circle-button__content-type-arrow-left {
-    mask-image: url("/styles/icons/arrow-left.svg");
-    -webkit-mask-box-image: url("/styles/icons/arrow-left.svg");
+    mask-image: url("../icons/arrow-left.svg");
+    -webkit-mask-box-image: url("../icons/arrow-left.svg");
 }
 
 .circle-button__content-type-lock {
-    mask-image: url("/styles/icons/lock.svg");
-    -webkit-mask-box-image: url("/styles/icons/lock.svg");
+    mask-image: url("../icons/lock.svg");
+    -webkit-mask-box-image: url("../icons/lock.svg");
 }
 
 .circle-button__content-type-circle-x {
-    mask-image: url("/styles/icons/circle-x.svg");
-    -webkit-mask-box-image: url("/styles/icons/circle-x.svg");
+    mask-image: url("../icons/circle-x.svg");
+    -webkit-mask-box-image: url("../icons/circle-x.svg");
 }
 
 .circle-button-hover-scale:hover .circle-button__background {

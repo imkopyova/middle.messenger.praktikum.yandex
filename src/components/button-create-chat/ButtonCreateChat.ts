@@ -1,5 +1,7 @@
 import { Block, TChildren } from "../block/Block";
-import { template } from "./template";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 export type IButtonCreateChatProps = {
     className?: string,
