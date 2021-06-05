@@ -1,12 +1,22 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development",
     entry: "./src/index.ts",
+    plugins: [
+        new HtmlWebpackPlugin({
+            templateParameters: {
+                "title": "Messenger"
+              },
+        }),
+    ],
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./dist",
         historyApiFallback: true,
+        port: 3000
+        
     },
     module: {
         rules: [
@@ -17,7 +27,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [".ts", ".js"],
         fallback: {
             childComponent: path.join(__dirname, "src/handlebars-helpers/childComponent.js"),
             childComponentArray: path.join(__dirname, "src/handlebars-helpers/childComponentArray.js"),
@@ -27,5 +37,6 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
+        clean: true,
     },
 };
