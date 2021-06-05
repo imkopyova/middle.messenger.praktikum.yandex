@@ -6,13 +6,14 @@ module.exports = {
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./dist",
+        historyApiFallback: true,
     },
     module: {
         rules: [
             { test: /\.ts$/, use: "ts-loader" },
             { test: /\.handlebars$/, use: "handlebars-loader" },
-            { test: /\.css$/i, use: ['style-loader', 'css-loader']},
-            { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource' }
+            { test: /\.css$/i, use: ["style-loader", "css-loader"]},
+            { test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource" }
         ],
     },
     resolve: {
