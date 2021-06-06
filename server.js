@@ -7,8 +7,8 @@ const app = express();
 const config = require("./webpack.config.js");
 const compiler = webpack(config);
 
-const hostname = "0.0.0.0";
-const port = 3000;
+const HOSTNAME = "0.0.0.0";
+const PORT = process.env.PORT || 3000;
 
 const instance = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -18,6 +18,6 @@ app.use(instance);
 app.use(historyApiFallback());
 app.use(instance);
 
-app.listen(port, hostname, function() {
-    console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(PORT, HOSTNAME, function() {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
 });
