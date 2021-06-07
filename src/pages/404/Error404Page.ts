@@ -1,6 +1,7 @@
 import { Block, TChildren } from "../../components/block/Block";
 import { AuthController } from "../../controllers/AuthController";
 import { ROUTES } from "../../router";
+import "../../styles/error-page/styles.css";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";

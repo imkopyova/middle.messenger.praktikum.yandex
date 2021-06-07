@@ -4,6 +4,7 @@ import { ROUTES } from "../../router";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
+import "../../styles/error-page/styles.css";
 
 type IError500PageProps = {
     errorCode: string,

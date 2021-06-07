@@ -5,6 +5,9 @@ import { ChatController } from "../../controllers/ChatController";
 import { TChat } from "../../domain/entities/TChat";
 import { TUser } from "../../domain/entities/TUser";
 import { ROUTES } from "../../router";
+import "../../styles/avatar/styles.css";
+import "../../styles/chat/styles.css";
+import "../../styles/chat-preview/styles.css";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";

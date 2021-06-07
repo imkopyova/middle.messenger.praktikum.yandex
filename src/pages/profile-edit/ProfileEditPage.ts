@@ -8,6 +8,7 @@ import { ROUTES } from "../../router";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
+import "../../styles/avatar/styles.css";
 
 const authController = new AuthController();
 const editProfileController = new EditProfileController();
@@ -23,7 +24,6 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
                         className: "profile__base-button",
                         onClick: (e) => {
                             const data = onSubmit(e);
-                            console.log(data);
                             editProfileController.edit(data as any);
                         }
                     }),

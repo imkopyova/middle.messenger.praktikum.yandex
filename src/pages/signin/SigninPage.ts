@@ -7,6 +7,7 @@ import { ROUTES } from "../../router";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
+import "../../styles/base-button/styles.css";
 
 const authController = new AuthController();
 const signupController = new SignupController();
@@ -18,7 +19,6 @@ export class SigninPage extends Block<TProps, TChildren> {
                     text: "Зарегестрироваться",
                     onClick: (e) => {
                         const data = onSubmit(e);
-                        console.log(data);
                         data && signupController.signup(data as any);
                     }
                 })

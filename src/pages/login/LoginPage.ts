@@ -8,6 +8,7 @@ import { ROUTES } from "../../router";
 // @ts-ignore
 import template from "./template.handlebars";
 import { addFormValidateListeners } from "../../helpers/submitForm";
+import "../../styles/base-button/styles.css";
 
 const authController = new AuthController();
 const signinController = new SigninController();
@@ -34,7 +35,6 @@ export class LoginPage extends Block<TProps, TChildren> {
     }
 
     render (): string {
-        console.log(template);
         return template({
             routes: ROUTES,
             button: this.children.button.getElement(),

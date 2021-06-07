@@ -7,6 +7,8 @@ import { ROUTES } from "../../router";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
+import "../../styles/avatar/styles.css";
+import "../../styles/base-button/styles.css";
 
 type ProfileUserData = Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>
 

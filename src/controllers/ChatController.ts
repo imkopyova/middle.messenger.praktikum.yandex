@@ -113,7 +113,7 @@ export class ChatController {
                 onGetUser(userId);
                 const socketInstance = wsAPI.connect({userId, chatId, token});
 
-                this.subscribeSocketUpdate((socket: WebSocket) => console.log("socketUpdate", socket));
+                this.subscribeSocketUpdate((socket: WebSocket) => socket);
                 socketStore.update({socket: socketInstance});
 
                 // eslint-disable-next-line
@@ -128,7 +128,6 @@ export class ChatController {
                 });
 
                 socket.addEventListener("message", (event: any) => {
-                    console.log(JSON.parse(event.data));
                     onGetMessage(JSON.parse(event.data));
                 });
             }

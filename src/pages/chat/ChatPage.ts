@@ -12,6 +12,11 @@ import { onSubmit } from "../../helpers/submitForm";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
+import "../../styles/avatar/styles.css";
+import "../../styles/chat/styles.css";
+import "../../styles/chat-preview/styles.css";
+import "../../styles/message/styles.css";
+import "../../styles/options/styles.css";
 
 interface IChatPageProps extends TProps {
     chat?: TChat,
@@ -82,8 +87,6 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 } else {
                     this.setProps({messages: this.props.messages ? [...this.props.messages, messages].reverse() : [messages] });
                 }
-                
-                console.warn(this.props.messages);
             }
         );
     }
