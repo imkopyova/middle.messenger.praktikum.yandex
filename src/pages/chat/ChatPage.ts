@@ -77,12 +77,10 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 this.setProps({userId});
             },
             (messages: any) => {
-                console.log("messages", this.props.messages, messages);
                 if (Array.isArray(messages)) {
-                    this.setProps({messages: this.props.messages ? [...this.props.messages, ...messages] : [...messages]});
+                    this.setProps({messages: this.props.messages ? [...this.props.messages, ...messages].reverse() : [...messages]});
                 } else {
-                    console.log("not array");
-                    this.setProps({messages: this.props.messages ?[...this.props.messages, messages].reverse() : [messages] });
+                    this.setProps({messages: this.props.messages ? [...this.props.messages, messages].reverse() : [messages] });
                 }
                 
                 console.warn(this.props.messages);
@@ -91,7 +89,6 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
     }
 
     render(): string {
-        console.log("render", this.props.messages);
         return template({
             routes: ROUTES,
             chats: this.props.chats,
