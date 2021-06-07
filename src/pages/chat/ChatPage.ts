@@ -1,5 +1,6 @@
 import { Block, TChildren, TProps } from "../../components/block/Block";
 import { MenuButton, MenuButtonTypes } from "../../components/menu-button/MenuButton";
+import { ButtonSend } from "../../components/button-send/ButtonSend";
 import { AuthController } from "../../controllers/AuthController";
 import { ButtonCreateChat } from "../../components/button-create-chat/ButtonCreateChat";
 import { ChatController } from "../../controllers/ChatController";
@@ -7,6 +8,7 @@ import { Message } from "../../components/message/Message";
 import { TChat } from "../../domain/entities/TChat";
 import { TUser } from "../../domain/entities/TUser";
 import { ROUTES } from "../../router";
+import { onSubmit } from "../../helpers/submitForm";
 // eslint-disable-next-line
 // @ts-ignore
 import template from "./template.handlebars";
@@ -30,6 +32,12 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                         chatController.createChat();
                     }
                 }),
+            buttonSend: new ButtonSend({
+                onClick: (e) => {
+                    const data = onSubmit(e);
+                    chatController.sendMessage(data as any);
+                }
+            }),
             menuButtonAddUser:
                 new MenuButton({
                     iconClassName: MenuButtonTypes.Plus,
@@ -69,23 +77,33 @@ export class ChatPage extends Block<IChatPageProps, TChildren> {
                 this.setProps({userId});
             },
             (messages: any) => {
-                this.setProps({messages});
+                console.log("messages", this.props.messages, messages);
+                if (Array.isArray(messages)) {
+                    this.setProps({messages: this.props.messages ? [...this.props.messages, ...messages] : [...messages]});
+                } else {
+                    console.log("not array");
+                    this.setProps({messages: this.props.messages ?[...this.props.messages, messages].reverse() : [messages] });
+                }
+                
+                console.warn(this.props.messages);
             }
         );
     }
 
     render(): string {
+        console.log("render", this.props.messages);
         return template({
             routes: ROUTES,
             chats: this.props.chats,
             chatTitle: this.props.chat?.title,
             chatAvatar: this.props.chat?.avatar,
-            messages: this.props.messages ? this.props.messages.map(message => new Message({
+            messages: Array.isArray(this.props.messages) ? this.props.messages.map(message => new Message({
                 text: message.content,
                 time: message.time,
                 isAuthorMe: message.user_id === this.props.userId
             }).getElement()) : [],
             buttonCreateChat: this.children.buttonCreateChat.getElement(),
+            buttonSend: this.children.buttonSend.getElement(),
             menuButtonAddUser: this.children.menuButtonAddUser.getElement(),
             menuButtonDeleteUser: this.children.menuButtonDeleteUser.getElement(),
             menuButtonDeleteChat: this.children.menuButtonDeleteChat.getElement(),

@@ -6,6 +6,7 @@ import { TChat } from "../domain/entities/TChat";
 import { WSAPI } from "../api/ws-api";
 import { chatDataStore } from "../stores/chatDataStore";
 import { chatsStore } from "../stores/chatsStore";
+import { socketStore } from "../stores/socketStore";
 
 const chatAPI = new ChatAPI();
 const authAPI = new AuthAPI();
@@ -18,6 +19,10 @@ export class ChatController {
 
     public subscribeChatUpdate(callback: (storeData: any) => void) {
         chatDataStore.on(STORE_EVENTS.UPDATE, callback);
+    }
+
+    public subscribeSocketUpdate(callback: (storeData: any) => void) {
+        socketStore.on(STORE_EVENTS.UPDATE, callback);
     }
 
     public async getChats() {
@@ -83,6 +88,16 @@ export class ChatController {
         }
     }
 
+    public async sendMessage(data: {file: File, message: string}) {
+        // eslint-disable-next-line
+        // @ts-ignore
+        const socket: any = socketStore.get().socket;
+        socket.send(JSON.stringify({
+            content: data.message,
+            type: "message",
+        }));
+    }
+
     public async openWS(
         onGetUser: (userId: number) => void,
         onGetMessage: (data: any) => void,
@@ -96,7 +111,14 @@ export class ChatController {
                 const token = tokenResponse.token;
                 const userId = userIdResponse.id;
                 onGetUser(userId);
-                const socket = wsAPI.connect({userId, chatId, token});
+                const socketInstance = wsAPI.connect({userId, chatId, token});
+
+                this.subscribeSocketUpdate((socket: WebSocket) => console.log("socketUpdate", socket));
+                socketStore.update({socket: socketInstance});
+
+                // eslint-disable-next-line
+                // @ts-ignore
+                const socket = socketStore.get().socket;
                 
                 socket.addEventListener("open", () => {
                     socket.send(JSON.stringify({
@@ -105,7 +127,8 @@ export class ChatController {
                     }));
                 });
 
-                socket.addEventListener("message", event => {
+                socket.addEventListener("message", (event: any) => {
+                    console.log(JSON.parse(event.data));
                     onGetMessage(JSON.parse(event.data));
                 });
             }

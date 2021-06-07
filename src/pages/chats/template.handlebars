@@ -11,12 +11,12 @@
             </div>
         </header>
         <form name="search" method="POST" class="aside__search">
-            <input name="search"  type="text" placeholder="Поиск" class="base-input text-normal" />
+            <input name="search" type="text" placeholder="Поиск" class="base-input text-normal" />
         </form>
         <ul class="aside__list">
             {{#each chats}}
                 <li class="chat-preview">
-                    <a href="/chat/{{ this.id }}"" class="chat-preview__link">
+                    <a href="/chat/{{ this.id }}" class="chat-preview__link">
                         <div class="avatar__placeholder chat-preview__avatar"></div>
                         <div class="chat-preview__content">
                             <h2 class="chat-preview__title text-semibold">{{ this.title }}</h2>

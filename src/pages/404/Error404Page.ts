@@ -18,7 +18,8 @@ export class Error404Page extends Block<IError404PageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth(() => {console.log();});
+        // eslint-disable-next-line
+        authController.auth(() => {});
     }
 
     render (): string {

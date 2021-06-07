@@ -18,7 +18,8 @@ export class Error500Page extends Block<IError500PageProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth(() => {console.log();});
+        // eslint-disable-next-line
+        authController.auth(() => {});
     }
 
     render (): string {

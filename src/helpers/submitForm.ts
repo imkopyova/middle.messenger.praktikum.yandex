@@ -55,7 +55,6 @@ function validateInput(input: HTMLInputElement, field: Element): boolean {
 }
 
 function addBlurFocusListener(field: Element) {
-    console.log("addBlurFocusListener");
     const input = <HTMLInputElement>field.querySelector("input");
     input.addEventListener("focus", () => onFocus(field));
     input.addEventListener("blur", e => onBlur(e, field));
