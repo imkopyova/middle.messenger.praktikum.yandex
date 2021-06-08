@@ -2,12 +2,6 @@
 Messenger – приложение для обмена сообщениями
 https://imkopyova-messenger.herokuapp.com/
 
-### Спринт 3
-Pull request – https://github.com/imkopyova/middle.messenger.praktikum.yandex/pull/2
-
-### Спринт 4
-Pull request – https://github.com/imkopyova/middle.messenger.praktikum.yandex/pull/3
-
 ### Функционал
 - авторизация
 - изменение данных пользователя
