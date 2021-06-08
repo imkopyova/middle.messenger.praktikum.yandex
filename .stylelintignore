@@ -5,3 +5,4 @@ dist
 *.json
 *.js
 *.ts
+Dockerfile

@@ -3,9 +3,12 @@ import { AuthController } from "../../controllers/AuthController";
 import { Button } from "../../components/button/Button";
 import { EditProfileController } from "../../controllers/EditProfileController";
 import { TUser } from "../../domain/entities/TUser";
-import { UserController } from "../../controllers/UserController";
 import { onSubmit } from "../../helpers/submitForm";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import "../../styles/avatar/styles.css";
 
 const authController = new AuthController();
 const editProfileController = new EditProfileController();
@@ -21,7 +24,6 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
                         className: "profile__base-button",
                         onClick: (e) => {
                             const data = onSubmit(e);
-                            console.log(data);
                             editProfileController.edit(data as any);
                         }
                     }),
@@ -36,6 +38,7 @@ export class ProfileEditPage extends Block<TProps, TChildren> {
 
     render (): string {
         return template({
+            routes: ROUTES,
             avatar: this.props.avatar,
             email: this.props.email,
             login: this.props.login,

@@ -3,7 +3,12 @@ import { AuthController } from "../../controllers/AuthController";
 import { Button } from "../../components/button/Button";
 import { SigninController } from "../../controllers/SigninController";
 import { onSubmit } from "../../helpers/submitForm";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import { addFormValidateListeners } from "../../helpers/submitForm";
+import "../../styles/base-button/styles.css";
 
 const authController = new AuthController();
 const signinController = new SigninController();
@@ -25,11 +30,13 @@ export class LoginPage extends Block<TProps, TChildren> {
     }
 
     componentDidMount() {
-        authController.redirectToChat();
+        addFormValidateListeners();
+        authController.redirectToChat(); 
     }
 
     render (): string {
         return template({
+            routes: ROUTES,
             button: this.children.button.getElement(),
         });
     }

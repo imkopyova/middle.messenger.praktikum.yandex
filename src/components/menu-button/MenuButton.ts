@@ -1,5 +1,8 @@
 import { Block, TChildren } from "../block/Block";
-import { template } from "./template";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import "../../styles/circle-button/styles.css";
 
 export enum MenuButtonTypes {
     Plus = "plus",

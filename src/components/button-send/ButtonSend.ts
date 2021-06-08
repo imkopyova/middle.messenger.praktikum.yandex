@@ -4,13 +4,13 @@ import { Block, TChildren } from "../block/Block";
 import template from "./template.handlebars";
 import "../../styles/circle-button/styles.css";
 
-export type IButtonCreateChatProps = {
+export type IButtonSendProps = {
     className?: string,
     onClick: (e: Event) => void,
 }
 
-export class ButtonCreateChat extends Block<IButtonCreateChatProps, TChildren> {
-    constructor(props: IButtonCreateChatProps) {
+export class ButtonSend extends Block<IButtonSendProps, TChildren> {
+    constructor(props: IButtonSendProps) {
         super({...props}, {});
     }
 

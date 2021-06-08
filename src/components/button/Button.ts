@@ -1,5 +1,7 @@
 import { Block, TChildren } from "../../components/block/Block";
-import { template } from "./template";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
 
 export type IButtonProps = {
     text: string,

@@ -8,6 +8,15 @@ import { PasswordEditPage } from "./pages/password-edit/PasswordEditPage";
 import { ProfileEditPage } from "./pages/profile-edit/ProfileEditPage";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { SigninPage } from "./pages/signin/SigninPage";
+import "./styles/typography.css";
+import "./styles/page.css";
+import "./styles/auth/styles.css";
+import "./styles/modal/styles.css";
+import "./styles/login/styles.css";
+import "./styles/field/styles.css";
+import "./styles/profile/styles.css";
+import "./styles/chat-preview/styles.css";
+import "./styles/base-input/styles.css";
 
 router
     .use(ROUTES.CHAT, ChatPage)

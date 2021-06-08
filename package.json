@@ -2,12 +2,17 @@
   "name": "mf.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
   "scripts": {
+    "build": "webpack",
+    "start": "webpack serve",
     "test": "mocha -r jsdom-global/register",
-    "lint": "eslint . --fix & npx stylelint . --fix",
-    "start": "rimraf ./static/* && (parcel watch src/index.html --out-dir static & node server.js)"
+    "lint": "eslint . --fix && npx stylelint . --fix && git add .",
+    "server": "node server.js"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/imkopyova/mf.messenger.praktikum.yandex.git"
@@ -26,18 +31,27 @@
     "chai": "4.3.4",
     "eslint": "7.24.0",
     "express": "4.17.1",
+    "html-webpack-plugin": "^5.3.1",
     "jsdom": "16.6.0",
     "jsdom-global": "3.0.2",
     "mocha": "8.4.0",
-    "parcel-bundler": "1.12.5",
+    "pre-commit": "1.2.2",
     "stylelint": "13.12.0",
-    "stylelint-config-standard": "21.0.0"
+    "stylelint-config-standard": "21.0.0",
+    "typescript": "^4.3.2",
+    "webpack": "5.38.1",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-middleware": "^3.7.3",
+    "webpack-dev-server": "3.11.2"
   },
   "dependencies": {
-    "handlebars": "4.7.6",
-    "rimraf": "^3.0.2",
-    "ts-node": "10.0.0",
-    "typescript": "4.1.3"
+    "css-loader": "5.2.6",
+    "handlebars": "4.7.7",
+    "handlebars-loader": "1.7.1",
+    "rimraf": "3.0.2",
+    "style-loader": "2.0.0",
+    "ts-loader": "9.2.2",
+    "ts-node": "10.0.0"
   },
   "browserslist": [
     "last 1 Chrome version"

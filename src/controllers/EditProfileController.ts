@@ -17,9 +17,7 @@ export class EditProfileController {
 
     public async editAvatar(data: unknown) {
         try {
-            const userData = await userAPI.putAvatar(data);
-            console.log(userData);
-            // userStore.update(userData);
+            await userAPI.putAvatar(data);
         } catch (error) {
             console.log(error);
         }

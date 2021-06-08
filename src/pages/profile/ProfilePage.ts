@@ -3,13 +3,16 @@ import { AuthController } from "../../controllers/AuthController";
 import { ButtonLogout } from "../../components/button-logout/ButtonLogout";
 import { LogoutController } from "../../controllers/LogoutController";
 import { TUser } from "../../domain/entities/TUser";
-import { UserController } from "../../controllers/UserController";
-import { template } from "./template";
+import { ROUTES } from "../../router";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import "../../styles/avatar/styles.css";
+import "../../styles/base-button/styles.css";
 
 type ProfileUserData = Partial<Pick<TUser, "first_name" | "second_name" | "display_name" | "login" | "email" | "phone" | "avatar">>
 
 const authController = new AuthController();
-const userController = new UserController();
 const logoutController = new LogoutController();
 
 export class ProfilePage extends Block<TProps & ProfileUserData, TChildren> {
@@ -31,6 +34,7 @@ export class ProfilePage extends Block<TProps & ProfileUserData, TChildren> {
 
     render(): string {
         return template({
+            routes: ROUTES,
             imgSrc: this.props.avatar,
             mail: this.props.email,
             login: this.props.login,

@@ -1,5 +1,8 @@
 import { Block, TChildren } from "../../components/block/Block";
-import { template } from "./template";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import "../../styles/message/styles.css";
 
 export type IMessageProps = {
     text: string,
